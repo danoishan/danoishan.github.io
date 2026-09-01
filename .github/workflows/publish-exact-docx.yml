@@ -17,6 +17,11 @@ jobs:
           ref: main
           fetch-depth: 1
 
+      - name: Verify staged chunks
+        run: |
+          wc -c .resume-upload/part*
+          sha256sum .resume-upload/part*
+
       - name: Rebuild and validate exact DOCX
         run: |
           cat .resume-upload/part* | base64 -d > Danoishan_Sinnathamby_Resume_2026.docx
