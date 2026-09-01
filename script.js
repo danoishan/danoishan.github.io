@@ -1,5 +1,10 @@
 document.querySelectorAll('[data-year]').forEach((el)=>{el.textContent=new Date().getFullYear();});
 
+document.querySelectorAll('a[href$="Danoishan_Sinnathamby_Resume.pdf"]').forEach((link)=>{
+  link.setAttribute('href',link.getAttribute('href').replace('Danoishan_Sinnathamby_Resume.pdf','Danoishan_Sinnathamby_Resume_2026.pdf'));
+  link.setAttribute('download','Danoishan_Sinnathamby_Resume.pdf');
+});
+
 const root=document.documentElement;
 const themeMeta=document.querySelector('meta[name="theme-color"]');
 const getSavedTheme=()=>{try{return localStorage.getItem('portfolio-theme');}catch{return null;}};
