@@ -36,6 +36,19 @@ document.querySelectorAll('.nav').forEach((nav)=>{
 });
 applyTheme(root.dataset.theme||initialTheme);
 
+const bestFitLabel=[...document.querySelectorAll('.section-head .label')].find((el)=>el.textContent.trim()==='Best fit');
+if(bestFitLabel){
+  const section=bestFitLabel.closest('.section');
+  const actions=section?.querySelector('.hero-actions');
+  if(section&&actions&&!section.querySelector('[data-adjacent-breadth]')){
+    const row=document.createElement('div');
+    row.className='quiet-row reveal';
+    row.dataset.adjacentBreadth='';
+    row.innerHTML='<span>Product roadmaps & prioritization</span><span>Brand, campaign & go-to-market support</span><span>Lifecycle & customer journey planning</span>';
+    actions.parentNode.insertBefore(row,actions);
+  }
+}
+
 const header=document.querySelector('.site-header');
 const setHeader=()=>{if(header)header.classList.toggle('scrolled',window.scrollY>16)};
 setHeader();
