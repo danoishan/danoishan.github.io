@@ -33,6 +33,8 @@ jobs:
             .resume-upload/part07tail \
             | base64 --decode > Danoishan_Sinnathamby_Resume.pdf
           cp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
+          echo "HASH=$(git hash-object Danoishan_Sinnathamby_Resume.pdf)"
+          echo "SIZE=$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)"
           test "$(git hash-object Danoishan_Sinnathamby_Resume.pdf)" = "7317c6196523c175ad7a094d63918f53d5b1de89"
           test "$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)" = "86842"
 
