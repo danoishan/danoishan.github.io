@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: portfolio-review-upgrades
-      - name: Build inline-file manifest
+      - name: Build inline-file manifest chunks
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -26,7 +26,7 @@ jobs:
               if not p.is_file():
                   continue
               rel=p.as_posix()
-              if rel.startswith('.git/') or rel.startswith('.github/') or rel == 'vercel-files.json':
+              if rel.startswith('.git/') or rel.startswith('.github/') or rel.startswith('vercel-files'):
                   continue
               if p.suffix.lower() not in include_ext and rel != '.nojekyll':
                   continue
@@ -34,20 +34,30 @@ jobs:
               if p.suffix.lower()=='.html':
                   live='https://danoishan.github.io/Danoishan_Sinnathamby_Resume.pdf'
                   for old in [
-                      'Danoishan_Sinnathamby_Resume_2026.pdf',
-                      'Danoishan_Sinnathamby_Resume.pdf',
                       '../Danoishan_Sinnathamby_Resume_2026.pdf',
-                      '../Danoishan_Sinnathamby_Resume.pdf'
+                      '../Danoishan_Sinnathamby_Resume.pdf',
+                      'Danoishan_Sinnathamby_Resume_2026.pdf',
+                      'Danoishan_Sinnathamby_Resume.pdf'
                   ]:
                       text=text.replace(old,live)
               files.append({'file':rel,'data':text})
-          Path('vercel-files.json').write_text(json.dumps(files,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-          print(f'Bundled {len(files)} text files')
+
+          for old in Path('.').glob('vercel-files*.json'):
+              old.unlink()
+          chunk_size=6
+          for i in range(0,len(files),chunk_size):
+              chunk=files[i:i+chunk_size]
+              n=i//chunk_size+1
+              Path(f'vercel-files-{n:02d}.json').write_text(
+                  json.dumps(chunk,ensure_ascii=False,separators=(',',':')),
+                  encoding='utf-8'
+              )
+          print(f'Bundled {len(files)} text files into {(len(files)+chunk_size-1)//chunk_size} chunks')
           PY
-      - name: Commit manifest
+      - name: Commit manifest chunks
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add vercel-files.json
-          git commit -m 'Build temporary Vercel preview manifest'
+          git add -A vercel-files*.json
+          git commit -m 'Build temporary Vercel preview manifest chunks'
           git push
