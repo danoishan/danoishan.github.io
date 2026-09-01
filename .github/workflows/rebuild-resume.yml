@@ -30,7 +30,7 @@ jobs:
             .resume-upload/part05 \
             .resume-upload/part06 \
             .resume-upload/part07 \
-            .resume-upload/part07tail \
+            | tr -d '[:space:]' \
             | base64 --decode > Danoishan_Sinnathamby_Resume.pdf
           cp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
           echo "HASH=$(git hash-object Danoishan_Sinnathamby_Resume.pdf)"
