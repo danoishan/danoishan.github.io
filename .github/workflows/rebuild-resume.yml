@@ -19,7 +19,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          cat .resume-upload/part00 .resume-upload/part01 .resume-upload/part02 .resume-upload/part03 .resume-upload/part04 .resume-upload/part05 .resume-upload/part06 .resume-upload/part07 | base64 --decode > Danoishan_Sinnathamby_Resume.pdf
+          cat \
+            .resume-upload/part00 \
+            .resume-upload/part01 \
+            .resume-upload/part02 \
+            .resume-upload/part03 \
+            .resume-upload/part04a \
+            .resume-upload/part04b \
+            .resume-upload/part04tail \
+            .resume-upload/part05 \
+            .resume-upload/part06 \
+            .resume-upload/part07 \
+            .resume-upload/part07tail \
+            | base64 --decode > Danoishan_Sinnathamby_Resume.pdf
           cp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
           test "$(git hash-object Danoishan_Sinnathamby_Resume.pdf)" = "7317c6196523c175ad7a094d63918f53d5b1de89"
           test "$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)" = "86842"
