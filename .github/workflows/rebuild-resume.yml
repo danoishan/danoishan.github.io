@@ -1,0 +1,37 @@
+name: Publish final resume PDF
+
+on:
+  push:
+    paths:
+      - '.resume-upload/trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Rebuild and verify PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .resume-upload/part00 .resume-upload/part01 .resume-upload/part02 .resume-upload/part03 .resume-upload/part04 .resume-upload/part05 .resume-upload/part06 .resume-upload/part07 | base64 --decode > Danoishan_Sinnathamby_Resume.pdf
+          cp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
+          test "$(git hash-object Danoishan_Sinnathamby_Resume.pdf)" = "7317c6196523c175ad7a094d63918f53d5b1de89"
+          test "$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)" = "86842"
+
+      - name: Commit verified resume
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -r .resume-upload
+          git rm .github/workflows/rebuild-resume.yml
+          git add Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
+          git commit -m "Publish final verified resume PDF"
+          git push
