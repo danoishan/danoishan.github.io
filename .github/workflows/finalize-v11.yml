@@ -1,0 +1,61 @@
+name: Finalize V1.1 for main
+on:
+  push:
+    branches: [portfolio-review-upgrades]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: portfolio-review-upgrades
+          fetch-depth: 1
+      - name: Apply final public-site updates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          replacements = {
+            '"jobTitle":"Account Manager / Technical Project & Program Delivery Lead"': '"jobTitle":"Senior Account Manager / Technical Project & Program Delivery Lead"',
+            'Account Manager at Vigorate. I lead technical project and program delivery': 'Senior Account Manager at Vigorate. I lead technical project and program delivery',
+            'At Vigorate, my title is Account Manager. In practice': 'At Vigorate, my title is Senior Account Manager. In practice',
+            'Account Manager · Technical Project & Program Delivery · CRM & MarTech': 'Senior Account Manager · Technical Project & Program Delivery · CRM & MarTech',
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Missing expected index.html text: {old}')
+              s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+
+          p = Path('resume.html')
+          s = p.read_text(encoding='utf-8')
+          old = '<h2>Vigorate — Account Manager</h2>'
+          new = '<h2>Vigorate — Senior Account Manager</h2>'
+          if old not in s:
+              raise SystemExit('Missing expected resume.html Vigorate heading')
+          p.write_text(s.replace(old, new), encoding='utf-8')
+
+          p = Path('artifacts/index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('/portfolio-review-upgrades/artifacts/templates', '/main/artifacts/templates')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+          rm -f vercel-files.json vercel-files-*.json vercel-files.part*.json
+          rm -f .github/workflows/build-vercel-preview-manifest.yml
+          rm -f .github/workflows/finalize-v11.yml
+
+      - name: Commit final V1.1 cleanup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Finalize V1.1 title and preview cleanup'
+          git push
