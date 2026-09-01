@@ -1,10 +1,5 @@
 document.querySelectorAll('[data-year]').forEach((el)=>{el.textContent=new Date().getFullYear();});
 
-document.querySelectorAll('a[href$="Danoishan_Sinnathamby_Resume.pdf"]').forEach((link)=>{
-  link.setAttribute('href',link.getAttribute('href').replace('Danoishan_Sinnathamby_Resume.pdf','Danoishan_Sinnathamby_Resume_2026.pdf'));
-  link.setAttribute('download','Danoishan_Sinnathamby_Resume.pdf');
-});
-
 const root=document.documentElement;
 const themeMeta=document.querySelector('meta[name="theme-color"]');
 const getSavedTheme=()=>{try{return localStorage.getItem('portfolio-theme');}catch{return null;}};
@@ -48,19 +43,6 @@ document.querySelectorAll('.nav').forEach((nav)=>{
 });
 applyTheme(root.dataset.theme||initialTheme);
 
-const bestFitLabel=[...document.querySelectorAll('.section-head .label')].find((el)=>el.textContent.trim()==='Best fit');
-if(bestFitLabel){
-  const section=bestFitLabel.closest('.section');
-  const actions=section?.querySelector('.hero-actions');
-  if(section&&actions&&!section.querySelector('[data-adjacent-breadth]')){
-    const row=document.createElement('div');
-    row.className='quiet-row reveal';
-    row.dataset.adjacentBreadth='';
-    row.innerHTML='<span>Product roadmaps & prioritization</span><span>Brand, campaign & go-to-market support</span><span>Lifecycle & customer journey planning</span>';
-    actions.parentNode.insertBefore(row,actions);
-  }
-}
-
 const header=document.querySelector('.site-header');
 const setHeader=()=>{if(header)header.classList.toggle('scrolled',window.scrollY>16);};
 setHeader();
@@ -86,3 +68,22 @@ try{
 }catch{
   reveals.forEach((el)=>{el.classList.remove('reveal-pending');el.classList.add('visible');});
 }
+
+
+document.querySelectorAll('.copy-template').forEach((button)=>{
+  button.addEventListener('click',async()=>{
+    const path=button.dataset.copyPath;
+    if(!path)return;
+    const original=button.textContent;
+    try{
+      const response=await fetch(path);
+      if(!response.ok)throw new Error('Template unavailable');
+      const text=await response.text();
+      await navigator.clipboard.writeText(text);
+      button.textContent='Copied ✓';
+    }catch{
+      button.textContent='Open Markdown to copy';
+    }
+    window.setTimeout(()=>{button.textContent=original;},1800);
+  });
+});
