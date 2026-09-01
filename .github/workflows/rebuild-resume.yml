@@ -1,4 +1,4 @@
-name: Publish final resume PDF
+name: Align final resume content
 
 on:
   push:
@@ -9,36 +9,18 @@ permissions:
   contents: write
 
 jobs:
-  publish:
+  align:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Rebuild and verify PDF
+      - uses: actions/checkout@v4
+      - name: Verify published resume PDF
         shell: bash
         run: |
           set -euo pipefail
-          cat \
-            .resume-upload/part00 \
-            .resume-upload/part01 \
-            .resume-upload/part02 \
-            .resume-upload/part03 \
-            .resume-upload/part04a \
-            .resume-upload/part04b \
-            .resume-upload/part04tail \
-            .resume-upload/part05 \
-            .resume-upload/part06 \
-            .resume-upload/part07 \
-            | tr -d '[:space:]' \
-            | base64 --decode > Danoishan_Sinnathamby_Resume.pdf
-          cp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
-          echo "HASH=$(git hash-object Danoishan_Sinnathamby_Resume.pdf)"
-          echo "SIZE=$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)"
-          test "$(git hash-object Danoishan_Sinnathamby_Resume.pdf)" = "7317c6196523c175ad7a094d63918f53d5b1de89"
-          test "$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)" = "86842"
-
-      - name: Align website resume content
+          test "$(git hash-object Danoishan_Sinnathamby_Resume.pdf)" = "15b1207c3d8a8c749162486adf3a1861bf77625a"
+          test "$(stat -c%s Danoishan_Sinnathamby_Resume.pdf)" = "21422"
+          cmp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
+      - name: Align HTML resume and credentials
         shell: bash
         run: |
           python3 - <<'PY'
@@ -47,12 +29,12 @@ jobs:
 
           index = Path('index.html')
           s = index.read_text()
-          s = s.replace('Salesforce ×6', 'Salesforce ×4')
+          s = s.replace('Salesforce ×6', 'Salesforce ×4').replace('Salesforce ×5', 'Salesforce ×4')
           index.write_text(s)
 
           resume = Path('resume.html')
           s = resume.read_text()
-          s = s.replace('Salesforce ×6', 'Salesforce ×4')
+          s = s.replace('Salesforce ×6', 'Salesforce ×4').replace('Salesforce ×5', 'Salesforce ×4')
 
           vigorate = '''<section id="vigorate"><p class="eyebrow">Sep 2021 → Present · Toronto</p><h2>Vigorate — Account Manager</h2><h3>Technical Project & Program Delivery Lead, CRM & MarTech</h3><ul><li>Own end-to-end delivery across enterprise CRM, lifecycle marketing, customer-data and MarTech engagements, translating commercial priorities into scope, delivery plans, workback schedules, technical requirements, QA plans, launch decisions and post-launch improvement actions.</li><li>Manage a portfolio of <strong>20+ concurrent client workstreams each quarter</strong> across Salesforce Marketing Cloud, Marketing Cloud Next, Salesforce Data 360, Braze and connected data environments, balancing urgent production releases with roadmap, optimization and platform-improvement work.</li><li>Lead lifecycle and customer-engagement programs supporting <strong>200M+ annual SMS/MMS and email sends</strong>, coordinating segmentation, targeting, journey logic, automation requirements, data validation, QA, reporting and performance optimization.</li><li>Frame technical recommendations around business outcomes, data authority, identity, latency, scale, consent, failure behavior and operating ownership; translate the recommendation and trade-offs for client and technical stakeholders.</li><li>Introduced structured intake, prioritization, RAID, change control, acceptance criteria, test scenarios, decision logs and release controls, <strong>reducing late-stage scope changes by 30% and shortening UAT-to-launch cycles by 20%</strong> while improving stakeholder visibility, launch readiness and production confidence.</li><li>Own commercial health across retainer and project-based engagements, including scoping, level-of-effort estimation, forecasting, budget tracking, burn management, resource allocation, SOW support and change requests; improved monthly forecast accuracy to <strong>within 5% of actual delivery effort</strong> through clearer capacity planning and earlier escalation of resourcing and scope risks.</li><li>Orchestrate cross-functional handoffs and technical readiness across client stakeholders, strategy, product, UX/design, solution architecture, engineering/development, data, QA, analytics, operations and support, keeping requirements, dependencies, ownership and acceptance criteria clear across customer-data workflows, SQL-based audience validation, consent and preference management, APIs, integrations and production releases.</li><li>Stay involved after release through stakeholder briefings, release documentation, training and handoff support; use customer feedback, support issues, adoption signals, operational data and platform analytics to prioritize optimization and broader rollout.</li><li>Provide executive-level delivery reporting that connects progress, budget, risks, dependencies, customer impact and decisions required, enabling faster action on at-risk releases and competing priorities.</li></ul></section>'''
           s, n = re.subn(r'<section id="vigorate">.*?</section>', vigorate, s, count=1, flags=re.S)
@@ -63,11 +45,9 @@ jobs:
           s, n = re.subn(r'<section id="credentials">.*?</section>', credentials, s, count=1, flags=re.S)
           if n != 1:
               raise SystemExit('Could not replace credentials section')
-
           resume.write_text(s)
           PY
-
-      - name: Commit verified resume
+      - name: Commit aligned site and remove temporary staging
         shell: bash
         run: |
           set -euo pipefail
@@ -75,6 +55,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm -r .resume-upload
           git rm .github/workflows/rebuild-resume.yml
-          git add Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf index.html resume.html
-          git commit -m "Publish final verified resume and align credentials"
+          git add index.html resume.html
+          git commit -m "Align final resume content and credentials"
           git push
