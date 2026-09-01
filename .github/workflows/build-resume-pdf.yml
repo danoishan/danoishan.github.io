@@ -1,0 +1,53 @@
+name: Build resume PDF
+
+on:
+  push:
+    branches:
+      - resume-publish
+    paths:
+      - resume-pdf-source.html
+      - .github/workflows/build-resume-pdf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-resume:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: resume-publish
+
+      - name: Install PDF dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-crosextra-carlito libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          pip install weasyprint
+
+      - name: Build and validate resume PDF
+        run: |
+          weasyprint resume-pdf-source.html Danoishan_Sinnathamby_Resume.pdf
+          cp Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
+          python - <<'PY'
+          from pathlib import Path
+          for name in ['Danoishan_Sinnathamby_Resume.pdf', 'Danoishan_Sinnathamby_Resume_2026.pdf']:
+              data = Path(name).read_bytes()
+              assert data.startswith(b'%PDF-'), f'{name} is not a PDF'
+              assert data.rstrip().endswith(b'%%EOF'), f'{name} is incomplete'
+              assert len(data) > 15000, f'{name} is unexpectedly small'
+              print(name, len(data))
+          PY
+
+      - name: Commit generated PDFs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Danoishan_Sinnathamby_Resume.pdf Danoishan_Sinnathamby_Resume_2026.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build validated resume PDFs'
+            git push origin HEAD:resume-publish
+          fi
