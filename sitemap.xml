@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://danoishan.github.io/</loc><lastmod>2026-08-31</lastmod><priority>1.0</priority></url>
-  <url><loc>https://danoishan.github.io/resume.html</loc><lastmod>2026-08-31</lastmod><priority>0.9</priority></url>
-  <url><loc>https://danoishan.github.io/artifacts/</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
-  <url><loc>https://danoishan.github.io/work/80-percent-drop.html</loc><lastmod>2026-08-31</lastmod><priority>0.9</priority></url>
-  <url><loc>https://danoishan.github.io/work/200m-messages.html</loc><lastmod>2026-08-31</lastmod><priority>0.9</priority></url>
-  <url><loc>https://danoishan.github.io/work/billing-journey.html</loc><lastmod>2026-08-31</lastmod><priority>0.9</priority></url>
-  <url><loc>https://danoishan.github.io/work/125-campaigns.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
-  <url><loc>https://danoishan.github.io/lab/waypoint.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
-  <url><loc>https://danoishan.github.io/notes/</loc><lastmod>2026-08-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://danoishan.github.io/</loc><lastmod>2026-09-01</lastmod><priority>1.0</priority></url>
+  <url><loc>https://danoishan.github.io/resume.html</loc><lastmod>2026-09-01</lastmod><priority>0.9</priority></url>
+  <url><loc>https://danoishan.github.io/artifacts/</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://danoishan.github.io/work/80-percent-drop.html</loc><lastmod>2026-09-01</lastmod><priority>0.9</priority></url>
+  <url><loc>https://danoishan.github.io/work/200m-messages.html</loc><lastmod>2026-09-01</lastmod><priority>0.9</priority></url>
+  <url><loc>https://danoishan.github.io/work/billing-journey.html</loc><lastmod>2026-09-01</lastmod><priority>0.9</priority></url>
+  <url><loc>https://danoishan.github.io/work/125-campaigns.html</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://danoishan.github.io/lab/waypoint.html</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://danoishan.github.io/notes/</loc><lastmod>2026-09-01</lastmod><priority>0.7</priority></url>
   <url><loc>https://danoishan.github.io/notes/schedule-vs-dependencies.html</loc><priority>0.6</priority></url>
   <url><loc>https://danoishan.github.io/notes/go-no-go.html</loc><priority>0.6</priority></url>
   <url><loc>https://danoishan.github.io/notes/decision-log.html</loc><priority>0.6</priority></url>
@@ -19,5 +19,5 @@
   <url><loc>https://danoishan.github.io/notes/design-exit-before-message.html</loc><priority>0.6</priority></url>
   <url><loc>https://danoishan.github.io/notes/api-docs-before-implementation.html</loc><priority>0.5</priority></url>
   <url><loc>https://danoishan.github.io/notes/synthetic-test-users.html</loc><priority>0.5</priority></url>
-  <url><loc>https://danoishan.github.io/notes/200-ok-not-outcome.html</loc><lastmod>2026-08-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://danoishan.github.io/notes/200-ok-not-outcome.html</loc><lastmod>2026-09-01</lastmod><priority>0.7</priority></url>
 </urlset>
