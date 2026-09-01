@@ -1,0 +1,76 @@
+name: Publish exact DOCX
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Rebuild and validate exact DOCX
+        run: |
+          cat .resume-upload/part* | base64 -d > Danoishan_Sinnathamby_Resume_2026.docx
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, zipfile
+          p = Path('Danoishan_Sinnathamby_Resume_2026.docx')
+          data = p.read_bytes()
+          expected_size = 41348
+          expected_hash = '2088af37965eba010353552c17e3e41be8d02196ab1924bee305e403f76720ec'
+          actual_hash = hashlib.sha256(data).hexdigest()
+          if len(data) != expected_size:
+              raise SystemExit(f'Unexpected DOCX size: {len(data)} != {expected_size}')
+          if actual_hash != expected_hash:
+              raise SystemExit(f'Unexpected DOCX SHA-256: {actual_hash}')
+          if not zipfile.is_zipfile(p):
+              raise SystemExit('Rebuilt file is not a valid DOCX/ZIP package')
+          print(f'Exact DOCX verified: bytes={len(data)} sha256={actual_hash}')
+          PY
+
+      - name: Point all resume downloads to the exact DOCX
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          changed = []
+          for p in Path('.').rglob('*.html'):
+              text = p.read_text(encoding='utf-8')
+              updated = text.replace(
+                  'Danoishan_Sinnathamby_Resume_2026.pdf',
+                  'Danoishan_Sinnathamby_Resume_2026.docx'
+              ).replace(
+                  'download="Danoishan_Sinnathamby_Resume.pdf"',
+                  'download="Danoishan_Sinnathamby_Resume_2026.docx"'
+              ).replace(
+                  'Download PDF ↓',
+                  'Download DOCX ↓'
+              )
+              if updated != text:
+                  p.write_text(updated, encoding='utf-8')
+                  changed.append(str(p))
+          print('Updated download links:', ', '.join(changed))
+          if not changed:
+              raise SystemExit('No resume download links were updated')
+          PY
+
+      - name: Remove temporary staging files
+        run: |
+          rm -rf .resume-upload
+          rm -f .github/workflows/publish-exact-docx.yml
+
+      - name: Commit exact resume download
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish exact resume DOCX download'
+          git push
