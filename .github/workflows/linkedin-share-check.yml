@@ -1,0 +1,54 @@
+name: LinkedIn share check
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch homepage as LinkedInBot
+        run: |
+          set -euo pipefail
+          curl -sS -L -A 'LinkedInBot/1.0' -D /tmp/headers.txt https://danoishan.github.io/ -o /tmp/home.html
+          echo '--- RESPONSE HEADERS ---'
+          head -30 /tmp/headers.txt
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import urllib.request, struct
+
+          class OG(HTMLParser):
+              def __init__(self): super().__init__(); self.tags={}
+              def handle_starttag(self, tag, attrs):
+                  if tag!='meta': return
+                  d=dict(attrs)
+                  prop=d.get('property')
+                  if prop and prop.startswith('og:'): self.tags[prop]=d.get('content','')
+
+          p=OG(); p.feed(Path('/tmp/home.html').read_text(encoding='utf-8'))
+          required=['og:title','og:description','og:url','og:image']
+          for k in required:
+              print(f'{k}={p.tags.get(k)}')
+              if not p.tags.get(k): raise SystemExit(f'MISSING {k}')
+
+          image=p.tags['og:image']
+          req=urllib.request.Request(image, headers={'User-Agent':'LinkedInBot/1.0'})
+          data=urllib.request.urlopen(req,timeout=20).read()
+          print('IMAGE_BYTES',len(data))
+          if len(data)>5*1024*1024: raise SystemExit('IMAGE OVER 5MB')
+          if data[:8]!=b'\x89PNG\r\n\x1a\n': raise SystemExit('OG image is not PNG')
+          width,height=struct.unpack('>II',data[16:24])
+          print('IMAGE_DIMENSIONS',width,height)
+          print('IMAGE_RATIO',round(width/height,4))
+          if width < 1200 or height < 627: raise SystemExit('OG image below LinkedIn recommended 1200x627')
+          print('LINKEDIN_OG_TECHNICAL_CHECK_OK')
+          PY
+      - name: Confirm Post Inspector requires authenticated UI
+        run: |
+          set +e
+          code=$(curl -L -sS -o /tmp/li.html -w '%{http_code}' https://www.linkedin.com/post-inspector/inspect/)
+          echo "POST_INSPECTOR_HTTP=$code"
+          grep -Eio 'sign in|join now|post inspector' /tmp/li.html | head -10 || true
