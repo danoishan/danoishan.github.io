@@ -1,0 +1,50 @@
+name: Add case CTAs
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  update:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add contextual case endings
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          blocks = {
+            'work/80-percent-drop.html': '''<section class="case-cta"><p><strong>Next useful view:</strong> how I apply the same delivery discipline across 20+ concurrent enterprise workstreams.</p><div class="hero-actions"><a class="button primary" href="200m-messages.html">See the 200M operating model →</a><a class="button" href="../brief.html">90-second brief →</a></div></section>''',
+            'work/200m-messages.html': '''<section class="case-cta"><p><strong>Next useful view:</strong> how I handle a failure that crosses source, integration and messaging boundaries.</p><div class="hero-actions"><a class="button primary" href="billing-journey.html">See the billing failure case →</a><a class="button" href="../brief.html">90-second brief →</a></div></section>''',
+            'work/billing-journey.html': '''<section class="case-cta"><p><strong>Next useful view:</strong> how I reason about identity, data authority, latency and integration choices before launch.</p><div class="hero-actions"><a class="button primary" href="../lab/waypoint.html">Open the architecture lab →</a><a class="button" href="../brief.html">90-second brief →</a></div></section>''',
+            'work/125-campaigns.html': '''<section class="case-cta"><p><strong>Next useful view:</strong> the current enterprise version of the operating model I first learned here.</p><div class="hero-actions"><a class="button primary" href="200m-messages.html">See the current operating model →</a><a class="button" href="../brief.html">90-second brief →</a></div></section>''',
+          }
+
+          marker='</article></div></div>'
+          for path, block in blocks.items():
+              p=Path(path)
+              text=p.read_text(encoding='utf-8')
+              if 'class="case-cta"' in text:
+                  raise SystemExit(f'CTA already exists in {path}')
+              if marker not in text:
+                  raise SystemExit(f'Could not find article closing marker in {path}')
+              text=text.replace(marker, block+'\n'+marker, 1)
+              p.write_text(text, encoding='utf-8')
+
+          for path in blocks:
+              text=Path(path).read_text(encoding='utf-8')
+              if text.count('class="case-cta"') != 1:
+                  raise SystemExit(f'CTA verification failed in {path}')
+              if '—' in text:
+                  raise SystemExit(f'Em dash reintroduced in {path}')
+          print('CASE_CTAS_OK')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add work/*.html
+          git commit -m "Add contextual CTAs to case studies"
+          git push origin HEAD:main
