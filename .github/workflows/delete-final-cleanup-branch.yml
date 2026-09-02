@@ -1,0 +1,13 @@
+name: Delete final cleanup branch
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  delete-branch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: git push origin --delete portfolio-final-cleanup || true
