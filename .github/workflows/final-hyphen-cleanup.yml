@@ -1,0 +1,48 @@
+name: Final hyphen cleanup
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  update:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clean remaining nonessential hyphens
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+            'lab/waypoint.html': {
+              'Failure-mode review': 'Failure mode review',
+              'Device interaction originates client-side': 'Device interaction originates on the client',
+            },
+            'work/200m-messages.html': {
+              'Launch-by-meeting': 'Late readiness discovery',
+              're-inventing': 'reinventing',
+            },
+            'artifacts/index.html': {
+              're-litigated': 'relitigated',
+            },
+            'notes/decision-log.html': {
+              're-litigation': 'relitigation',
+            },
+          }
+          for path, reps in replacements.items():
+              p=Path(path); text=p.read_text(encoding='utf-8')
+              for old,new in reps.items():
+                  if old not in text: raise SystemExit(f'Missing {old} in {path}')
+                  text=text.replace(old,new)
+              if '—' in text: raise SystemExit(f'Em dash found in {path}')
+              p.write_text(text, encoding='utf-8')
+          print('FINAL_HYPHEN_CLEANUP_OK')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lab/waypoint.html work/200m-messages.html artifacts/index.html notes/decision-log.html
+          git commit -m "Refine remaining hyphenation"
+          git push origin HEAD:main
