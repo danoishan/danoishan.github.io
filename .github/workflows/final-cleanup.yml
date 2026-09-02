@@ -1,0 +1,42 @@
+name: Final portfolio cleanup
+
+on:
+  push:
+    branches: [portfolio-final-cleanup]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: portfolio-final-cleanup
+      - name: Align resume links and certifications
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = [Path('index.html'), Path('brief.html'), Path('resume.html')]
+          for p in files:
+              s = p.read_text()
+              s = s.replace('Danoishan_Sinnathamby_Resume_2026.docx', 'Danoishan_Sinnathamby_Resume_2026.pdf')
+              s = s.replace('Download DOCX ↓', 'Download PDF ↓')
+              p.write_text(s)
+          p = Path('resume.html')
+          s = p.read_text().replace('Salesforce Certified Marketing Cloud Administrator', 'Salesforce Certified Administrator')
+          p.write_text(s)
+          PY
+      - name: Remove superseded resume files
+        run: |
+          rm -f Danoishan_Sinnathamby_Resume.pdf
+          rm -f Danoishan_Sinnathamby_Resume_2026.docx
+      - name: Commit cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Align resume PDF links and credentials" || exit 0
+          git push origin HEAD:portfolio-final-cleanup
