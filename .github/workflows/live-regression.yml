@@ -1,0 +1,104 @@
+name: Live portfolio regression
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  browser-regression:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+      - name: Test deployed site in Chromium
+        run: |
+          cat > /tmp/regression.js <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          const BASE = 'https://danoishan.github.io/';
+          const pages = [
+            '', 'brief.html', 'resume.html', 'artifacts/', 'lab/waypoint.html', 'notes/',
+            'work/80-percent-drop.html', 'work/200m-messages.html', 'work/billing-journey.html', 'work/125-campaigns.html'
+          ];
+          const modes = [
+            ['desktop', {width: 1440, height: 900}],
+            ['mobile', {width: 390, height: 844}],
+          ];
+          let failed = false;
+          function fail(msg){ console.log('FAIL:', msg); failed = true; }
+          function pass(msg){ console.log('PASS:', msg); }
+          (async()=>{
+            const browser = await chromium.launch({headless:true});
+            for (const [mode, viewport] of modes){
+              console.log(`\n=== ${mode.toUpperCase()} ${viewport.width}x${viewport.height} ===`);
+              const ctx = await browser.newContext({viewport, acceptDownloads:true});
+              for (const path of pages){
+                const page = await ctx.newPage();
+                const errors=[];
+                page.on('console', m => { if(m.type()==='error') errors.push(`console: ${m.text()}`); });
+                page.on('pageerror', e => errors.push(`pageerror: ${e.message}`));
+                const url = new URL(path, BASE).href;
+                try {
+                  const resp = await page.goto(url, {waitUntil:'networkidle', timeout:30000});
+                  if (!resp || resp.status() !== 200) fail(`${mode} ${path||'/'} HTTP ${resp?.status()}`);
+                  else pass(`${mode} ${path||'/'} HTTP 200`);
+                  const title = await page.title();
+                  const h1 = await page.locator('h1').first().textContent().catch(()=>null);
+                  if (!title || !h1) fail(`${mode} ${path||'/'} missing title/H1`);
+                  const dims = await page.evaluate(()=>({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth}));
+                  if (dims.sw > dims.cw + 2) fail(`${mode} ${path||'/'} horizontal document overflow ${dims.sw}>${dims.cw}`);
+                  if (errors.length) fail(`${mode} ${path||'/'} JS errors: ${errors.join(' | ')}`);
+                } catch(e){ fail(`${mode} ${path||'/'} navigation error: ${e.message}`); }
+                await page.close();
+              }
+              const home = await ctx.newPage();
+              await home.goto(BASE, {waitUntil:'networkidle', timeout:30000});
+              const nav = home.locator('nav[aria-label="Primary navigation"]');
+              if (await nav.count() !== 1) fail(`${mode} primary nav missing/duplicated`);
+              else {
+                const labels = await nav.locator('a').allTextContents();
+                const expected=['Work','Lab','Notes','Resume','About'];
+                if (expected.every(x=>labels.includes(x))) pass(`${mode} primary nav labels`); else fail(`${mode} nav labels: ${labels.join(', ')}`);
+              }
+              const toggle = home.locator('[data-theme-toggle]');
+              if (await toggle.count() !== 1) fail(`${mode} theme toggle missing`);
+              else {
+                const before = await home.locator('html').getAttribute('data-theme');
+                await toggle.click();
+                const after = await home.locator('html').getAttribute('data-theme');
+                if (before && after && before !== after) pass(`${mode} theme toggle ${before}->${after}`); else fail(`${mode} theme toggle did not change`);
+              }
+              await home.close();
+              const resume = await ctx.newPage();
+              await resume.goto(new URL('resume.html', BASE).href, {waitUntil:'networkidle', timeout:30000});
+              const dl = resume.locator('a[download]').first();
+              const href = await dl.getAttribute('href');
+              if (href !== 'Danoishan_Sinnathamby_Resume_2026.pdf') fail(`${mode} resume download href=${href}`);
+              else pass(`${mode} resume download points to PDF`);
+              try {
+                const downloadPromise = resume.waitForEvent('download', {timeout:15000});
+                await dl.click();
+                const download = await downloadPromise;
+                const p = await download.path();
+                const size = p ? fs.statSync(p).size : 0;
+                if (download.suggestedFilename()==='Danoishan_Sinnathamby_Resume_2026.pdf' && size > 10000) pass(`${mode} PDF download works (${size} bytes)`);
+                else fail(`${mode} PDF download filename/size bad: ${download.suggestedFilename()} ${size}`);
+              } catch(e){ fail(`${mode} PDF download failed: ${e.message}`); }
+              await resume.close();
+              await ctx.close();
+            }
+            await browser.close();
+            if (failed) process.exit(1);
+            console.log('\nALL LIVE REGRESSION CHECKS PASSED');
+          })();
+          JS
+          sleep 8
+          node /tmp/regression.js
