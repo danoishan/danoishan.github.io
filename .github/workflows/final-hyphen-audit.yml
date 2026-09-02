@@ -1,0 +1,44 @@
+name: Final hyphen audit
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  audit:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List remaining hyphenated terms
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from collections import Counter, defaultdict
+          import re, html
+
+          counts=Counter(); pages=defaultdict(set); contexts=defaultdict(list)
+          # Strip scripts/styles and replace tags with spaces so adjacent cells don't merge.
+          tag_re=re.compile(r'<[^>]+>', re.S)
+          script_re=re.compile(r'<(script|style)\b.*?</\1>', re.S|re.I)
+          pat=re.compile(r'(?<![A-Za-z0-9])[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+(?![A-Za-z0-9])')
+          for p in sorted(Path('.').rglob('*.html')):
+              if '.git' in p.parts or '.github' in p.parts: continue
+              raw=p.read_text(encoding='utf-8')
+              raw=script_re.sub(' ', raw)
+              text=html.unescape(tag_re.sub(' ', raw))
+              text=' '.join(text.split())
+              for m in pat.finditer(text):
+                  term=m.group(0)
+                  # Skip ISO timestamps and verification filenames.
+                  if re.match(r'^\d{4}-\d{2}-\d{2}T',term): continue
+                  if term.startswith('google-site-verification'): continue
+                  counts[term]+=1; pages[term].add(str(p))
+                  if len(contexts[term])<2:
+                      a=max(0,m.start()-65); b=min(len(text),m.end()+65)
+                      contexts[term].append(text[a:b])
+          for term in sorted(counts, key=lambda s:s.lower()):
+              print(f'TERM={term} COUNT={counts[term]} PAGES={"|".join(sorted(pages[term]))}')
+              for c in contexts[term]: print('  '+c)
+          print(f'UNIQUE={len(counts)} TOTAL={sum(counts.values())}')
+          PY
