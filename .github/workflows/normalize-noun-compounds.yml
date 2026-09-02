@@ -1,0 +1,105 @@
+name: Normalize noun compounds
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  update:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Open unnecessary noun compounds
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          # Open compounds that read naturally as noun phrases. We intentionally
+          # leave true compound modifiers such as high-volume, late-stage,
+          # cross-functional, end-to-end, real-time, in-app, etc. hyphenated.
+          replacements = {
+              'customer-data': 'customer data',
+              'customer-engagement': 'customer engagement',
+              'platform-improvement': 'platform improvement',
+              'level-of-effort': 'level of effort',
+              'service-performance': 'service performance',
+              'local-market': 'local market',
+              'customer-performance': 'customer performance',
+              'campaign-planning': 'campaign planning',
+              'asset-tracking': 'asset tracking',
+              'performance-reporting': 'performance reporting',
+              'process-improvement': 'process improvement',
+              'project-management': 'project management',
+              'technical-team': 'technical team',
+              'customer-impact': 'customer impact',
+              'source-system': 'source system',
+              'file-transfer': 'file transfer',
+              'failed-record': 'failed record',
+              'batch-processing': 'batch processing',
+              'bad-record': 'bad record',
+              'back-feed': 'back feed',
+              'event-schema': 'event schema',
+              'data-owner': 'data owner',
+              'data-readiness': 'data readiness',
+              'source-latency': 'source latency',
+              'business-rule': 'business rule',
+              'stale-data': 'stale data',
+              'rejected-row': 'rejected row',
+              'account-status': 'account status',
+              'last-purchase': 'last purchase',
+              'source-of-truth': 'source of truth',
+              'new-customer': 'new customer',
+              'next-step': 'next step',
+              'exception-handling': 'exception handling',
+              'landing-page': 'landing page',
+              'embedded-form': 'embedded form',
+              'price-drop': 'price drop',
+              'abandoned-search': 'abandoned search',
+              'batch-overwrite': 'batch overwrite',
+              'rate-limit': 'rate limit',
+              'change-management': 'change management',
+              'data-integrity': 'data integrity',
+              'live-event': 'live event',
+          }
+
+          html_files=[p for p in Path('.').rglob('*.html') if '.git' not in p.parts and '.github' not in p.parts]
+          changed=[]
+          for p in html_files:
+              text=p.read_text(encoding='utf-8')
+              original=text
+              for old,new in replacements.items():
+                  text=text.replace(old,new).replace(old.capitalize(),new.capitalize())
+              # "client-facing" is a valid compound adjective, so rather than
+              # leave an unhyphenated adjective, rephrase the two portfolio uses.
+              text=text.replace('Client-facing Technical Project Manager and delivery lead with 7+ years across',
+                                'Technical Project Manager and delivery lead with 7+ years leading client delivery across')
+              text=text.replace('7+ years client-facing delivery', '7+ years leading client delivery')
+              if text != original:
+                  p.write_text(text, encoding='utf-8')
+                  changed.append(str(p))
+
+          prohibited=list(replacements)
+          leftovers=[]
+          for p in html_files:
+              text=p.read_text(encoding='utf-8')
+              for term in prohibited:
+                  if term in text or term.capitalize() in text:
+                      leftovers.append((str(p),term))
+              if 'client-facing delivery' in text or 'Client-facing Technical Project Manager' in text:
+                  leftovers.append((str(p),'client-facing target phrase'))
+              if '—' in text:
+                  leftovers.append((str(p),'em dash'))
+          if leftovers:
+              raise SystemExit('Unresolved style targets: '+repr(leftovers))
+          print('CHANGED_FILES')
+          for p in changed: print(p)
+          print('NOUN_COMPOUND_NORMALIZATION_OK')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' lab/*.html notes/*.html work/*.html artifacts/*.html
+          git commit -m "Normalize noun compound hyphenation"
+          git push origin HEAD:main
