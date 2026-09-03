@@ -1,4 +1,4 @@
-name: Compress homepage
+name: Finalize homepage compression
 on:
   push:
     branches: [main]
@@ -10,55 +10,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Compress repeated homepage sections
+      - name: Finalize section numbering
         run: |
           python - <<'PY'
           from pathlib import Path
           import re
-
-          p = Path('index.html')
-          text = p.read_text(encoding='utf-8')
-
-          evidence = '''<section class="section"><div class="wrap"><div class="section-head reveal"><p class="label">Evidence map</p><div><h2>Find the proof you need.</h2><p>Each capability points to the strongest case or lab, so you can jump straight to the evidence instead of reading the same story twice.</p></div></div><div class="artifact reveal"><div class="artifact-head"><span>Capability</span><span>Strongest proof</span></div><div class="artifact-body"><table><tbody><tr><th>Technical troubleshooting</th><td><a href="work/80-percent-drop.html">The 80% Drop</a><br><span>Browser, forms, Salesforce, consent, identity, attribution and end-to-end validation.</span></td></tr><tr><th>Program delivery at scale</th><td><a href="work/200m-messages.html">Making 200 Million Messages Boring</a><br><span>20+ concurrent workstreams, 200M+ annual sends, RAID, capacity and release controls.</span></td></tr><tr><th>Cross-system delivery</th><td><a href="work/billing-journey.html">The Bill That Couldn’t Go Missing</a><br><span>Source files, imports, journey eligibility, exceptions, monitoring and recovery ownership.</span></td></tr><tr><th>Architecture judgment</th><td><a href="lab/waypoint.html">Waypoint Lab</a><br><span>Identity vs authority, SDK / REST / warehouse, real-time vs batch, scale and failure modes.</span></td></tr><tr><th>Team leadership</th><td><a href="work/125-campaigns.html">125 Campaigns Across Six Provinces</a><br><span>Eight-person team, six provinces, audience strategy, handoffs and repeatable execution.</span></td></tr></tbody></table></div></div><a class="case-link" href="artifacts/index.html">Open reusable delivery artifacts →</a></div></section>'''
-
-          evidence_pattern = re.compile(r'<section class="section"><div class="wrap"><div class="section-head reveal"><p class="label">Evidence map</p>.*?</section>\s*(?=<section class="section"><div class="wrap lab-feature reveal">)', re.S)
-          text, n1 = evidence_pattern.subn(evidence + '\n', text, count=1)
-          if n1 != 1:
-              raise SystemExit(f'Evidence map replacement count: {n1}')
-
-          method = '''<section class="section"><div class="wrap"><div class="section-head reveal"><p class="label">03 / How I work</p><div><h2>From outcome to operation.</h2><p>A four-step pattern keeps the work grounded in the customer outcome while preserving clear decisions, handoffs and operating ownership.</p></div></div><div class="principles"><article class="principle reveal"><span class="label">01</span><h3>Frame the outcome.</h3><p>Align on the business outcome, user need, constraints, what must be protected and the evidence that would count as success.</p></article><article class="principle reveal"><span class="label">02</span><h3>Decide the path.</h3><p>Trace the system boundary, source, identity, dependencies and failure modes, then recommend a path with the trade-off made explicit.</p></article><article class="principle reveal"><span class="label">03</span><h3>Deliver it safely.</h3><p>Translate the decision into requirements, owners, specialist handoffs, acceptance criteria, QA / UAT and release evidence.</p></article><article class="principle reveal"><span class="label">04</span><h3>Operate and scale.</h3><p>Prepare the client team with documentation, monitoring, support and ownership, then use post-launch evidence to optimize and expand the pattern.</p></article></div></div></section>'''
-
-          method_pattern = re.compile(r'<section class="section"><div class="wrap"><div class="section-head reveal"><p class="label">03 / How I work</p>.*?</section>\s*<section class="section"><div class="wrap"><div class="section-head reveal"><p class="label">04 / Handoffs, adoption (?:&amp;|&) scale</p>.*?</section>\s*(?=<section class="section"><div class="wrap"><div class="section-head reveal"><p class="label">05 / Notes</p>)', re.S)
-          text, n2 = method_pattern.subn(method + '\n', text, count=1)
-          if n2 != 1:
-              raise SystemExit(f'Method sections replacement count: {n2}')
-
-          old_notes = '<p class="label">05 / Notes</p>'
-          if text.count(old_notes) != 1:
-              raise SystemExit(f'Notes label count: {text.count(old_notes)}')
-          text = text.replace(old_notes, '<p class="label">04 / Notes</p>', 1)
-
-          text = text.replace('<p class="label">06 / About</p>', '<p class="label">05 / About</p>')
-          text = text.replace('<p class="label">06 / About me</p>', '<p class="label">05 / About me</p>')
-
-          if re.search(r'04 / Handoffs, adoption (?:&amp;|&) scale', text):
-              raise SystemExit('Old handoffs section still present')
-          if 'Capabilities, with receipts.' in text:
-              raise SystemExit('Old evidence map still present')
-          if '—' in text:
-              raise SystemExit('Em dash introduced')
-
-          p.write_text(text, encoding='utf-8')
-
-          labels = re.findall(r'<p class="label">([^<]+)</p>', text)
-          print('HOMEPAGE_COMPRESSION_OK')
-          print('SECTION_LABELS:', labels)
-          print('BYTES:', len(text.encode('utf-8')))
+          p=Path('index.html')
+          text=p.read_text(encoding='utf-8')
+          if text.count('<p class="label">07 / Career</p>') != 1:
+              raise SystemExit('Expected one 07 / Career label')
+          text=text.replace('<p class="label">07 / Career</p>', '<p class="label">06 / Career</p>', 1)
+          required=['Find the proof you need.','From outcome to operation.','04 / Notes','05 / About','06 / Career']
+          for item in required:
+              if item not in text: raise SystemExit(f'Missing {item}')
+          banned=['Capabilities, with receipts.','04 / Handoffs, adoption & scale','05 / Notes','07 / Career','—']
+          for item in banned:
+              if item in text: raise SystemExit(f'Unexpected {item}')
+          p.write_text(text,encoding='utf-8')
+          labels=re.findall(r'<p class="label">([^<]+)</p>',text)
+          print('FINAL_HOMEPAGE_LABELS',labels)
+          print('FINAL_BYTES',len(text.encode('utf-8')))
           PY
-      - name: Commit homepage
+      - name: Commit numbering
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Compress repeated homepage sections"
+          git commit -m "Finalize homepage section numbering"
           git push origin HEAD:main
