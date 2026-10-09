@@ -1,0 +1,775 @@
+[
+  {
+    "id": "eligible",
+    "title": "Eligible abandoned search",
+    "description": "Identified customer, current email consent, no matching booking, delay elapsed.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "booked",
+    "title": "Matching booking suppresses the reminder",
+    "description": "The booking carries the same customer and search IDs.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_booking_1",
+          "type": "booking_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "matched_booking"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "duplicate",
+    "title": "Duplicate delivery is ignored",
+    "description": "The same event ID and business payload arrive twice.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 1,
+      "rejected": []
+    }
+  },
+  {
+    "id": "opt-out",
+    "title": "Opt-out after entry suppresses the reminder",
+    "description": "Consent is checked at evaluation time, after the search.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_optout",
+          "type": "consent_changed",
+          "userId": "cust_01",
+          "emailConsent": false,
+          "at": "2026-10-09T13:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "no_email_consent"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "identity-merge",
+    "title": "Anonymous search resolves to an identified customer",
+    "description": "The model moves journey state to a known customer; it does not grant consent.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "anon_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_identify",
+          "type": "identify",
+          "userId": "anon_01",
+          "customerId": "cust_01",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "stale",
+    "title": "A search older than 24 hours expires",
+    "description": "The abandoned-search reminder is no longer timely.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-08T09:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "expired",
+          "reason": "stale_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "late-search",
+    "title": "Booking arrives before a delayed search event",
+    "description": "A matching booking remains an exit even when event delivery is out of order.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_booking_1",
+          "type": "booking_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T11:00:00Z"
+        },
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "matched_booking"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "partial-records",
+    "title": "Valid and invalid records are separated",
+    "description": "One missing search ID is rejected while the valid search is evaluated.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_bad",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "at": "2026-10-09T10:30:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": [
+        "missing_search_id"
+      ]
+    }
+  },
+  {
+    "id": "future",
+    "title": "A future event is rejected",
+    "description": "The event is later than the explicit evaluation clock.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T15:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [],
+      "duplicates": 0,
+      "rejected": [
+        "future_event"
+      ]
+    }
+  },
+  {
+    "id": "waiting",
+    "title": "The two-hour delay has not elapsed",
+    "description": "This search is only one hour old.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T13:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "waiting",
+          "reason": "delay_not_elapsed"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "unidentified",
+    "title": "Unresolved anonymous identity is suppressed",
+    "description": "No identify event connects this search to a known customer.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "anon_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "anon_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "unresolved_identity"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "different-search",
+    "title": "An unrelated booking does not exit this search",
+    "description": "Both customer ID and search ID must match.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_booking_1",
+          "type": "booking_completed",
+          "userId": "cust_01",
+          "searchId": "search_02",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "id-conflict",
+    "title": "Reused event ID with changed payload is rejected",
+    "description": "Event identity is separate from a transport batch ID.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_02",
+          "at": "2026-10-09T10:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": [
+        "event_id_conflict"
+      ]
+    }
+  },
+  {
+    "id": "stale-consent",
+    "title": "An older opt-in cannot reverse a newer opt-out",
+    "description": "Timestamp order governs consent updates even when delivery is out of order.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": false,
+          "consentAt": "2026-10-09T12:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_old_optin",
+          "type": "consent_changed",
+          "userId": "cust_01",
+          "emailConsent": true,
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "no_email_consent"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "merge-consent",
+    "title": "Anonymous opt-in cannot grant customer consent",
+    "description": "Identity resolution keeps the identified customer’s opt-out.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": false,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "anon_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_anon_optin",
+          "type": "consent_changed",
+          "userId": "anon_01",
+          "emailConsent": true,
+          "at": "2026-10-09T12:00:00Z"
+        },
+        {
+          "id": "evt_identify",
+          "type": "identify",
+          "userId": "anon_01",
+          "customerId": "cust_01",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "no_email_consent"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "merge-optout",
+    "title": "A newer anonymous opt-out survives identity resolution",
+    "description": "The conservative merge preserves an opt-out rather than replacing it with an older opt-in.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "anon_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_anon_optout",
+          "type": "consent_changed",
+          "userId": "anon_01",
+          "emailConsent": false,
+          "at": "2026-10-09T12:00:00Z"
+        },
+        {
+          "id": "evt_identify",
+          "type": "identify",
+          "userId": "anon_01",
+          "customerId": "cust_01",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "suppressed",
+          "reason": "no_email_consent"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
+    "id": "identified-conflict",
+    "title": "Two identified customers cannot be merged",
+    "description": "A mistaken identify event is rejected without moving the journey.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        },
+        {
+          "id": "cust_02",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_identify",
+          "type": "identify",
+          "userId": "cust_01",
+          "customerId": "cust_02",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": [
+        "cannot_merge_identified_customers"
+      ]
+    }
+  },
+  {
+    "id": "null-record",
+    "title": "A malformed record does not crash the batch",
+    "description": "A null item is rejected; the valid item still evaluates.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        null,
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": [
+        "invalid_event"
+      ]
+    }
+  }
+]

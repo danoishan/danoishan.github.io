@@ -1,0 +1,26 @@
+name: Portfolio quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check static pages and assets
+        run: python3 scripts/check_site.py
+      - name: Test Waypoint policy and mock transport
+        run: node --test lab/waypoint-demo/test.mjs
+      - name: Verify published scenario results
+        run: node lab/waypoint-demo/run.mjs --check

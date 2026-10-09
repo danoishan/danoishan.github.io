@@ -1,0 +1,509 @@
+[
+  {
+    "id": "eligible",
+    "title": "Eligible abandoned search",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      }
+    ]
+  },
+  {
+    "id": "booked",
+    "title": "Matching booking suppresses the reminder",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "matched_booking",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_booking_1",
+        "action": "booking_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      }
+    ]
+  },
+  {
+    "id": "duplicate",
+    "title": "Duplicate delivery is ignored",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 1,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_search_1",
+        "action": "ignore_duplicate"
+      }
+    ]
+  },
+  {
+    "id": "opt-out",
+    "title": "Opt-out after entry suppresses the reminder",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "no_email_consent",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_optout",
+        "action": "consent_updated",
+        "customerId": "cust_01"
+      }
+    ]
+  },
+  {
+    "id": "identity-merge",
+    "title": "Anonymous search resolves to an identified customer",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "anon_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_identify",
+        "action": "identity_resolved",
+        "customerId": "cust_01"
+      }
+    ]
+  },
+  {
+    "id": "stale",
+    "title": "A search older than 24 hours expires",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "expired",
+        "reason": "stale_search",
+        "dueAt": "2026-10-08T11:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      }
+    ]
+  },
+  {
+    "id": "late-search",
+    "title": "Booking arrives before a delayed search event",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "matched_booking",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_booking_1",
+        "action": "booking_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      }
+    ]
+  },
+  {
+    "id": "partial-records",
+    "title": "Valid and invalid records are separated",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [
+      {
+        "eventId": "evt_bad",
+        "reason": "missing_search_id"
+      }
+    ],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_bad",
+        "action": "reject",
+        "reason": "missing_search_id"
+      }
+    ]
+  },
+  {
+    "id": "future",
+    "title": "A future event is rejected",
+    "decisions": [],
+    "duplicates": 0,
+    "rejected": [
+      {
+        "eventId": "evt_search_1",
+        "reason": "future_event"
+      }
+    ],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "reject",
+        "reason": "future_event"
+      }
+    ]
+  },
+  {
+    "id": "waiting",
+    "title": "The two-hour delay has not elapsed",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "waiting",
+        "reason": "delay_not_elapsed",
+        "dueAt": "2026-10-09T15:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      }
+    ]
+  },
+  {
+    "id": "unidentified",
+    "title": "Unresolved anonymous identity is suppressed",
+    "decisions": [
+      {
+        "customerId": "anon_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "unresolved_identity",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "anon_01",
+        "searchId": "search_01"
+      }
+    ]
+  },
+  {
+    "id": "different-search",
+    "title": "An unrelated booking does not exit this search",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_booking_1",
+        "action": "booking_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_02"
+      }
+    ]
+  },
+  {
+    "id": "id-conflict",
+    "title": "Reused event ID with changed payload is rejected",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [
+      {
+        "eventId": "evt_search_1",
+        "reason": "event_id_conflict"
+      }
+    ],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_search_1",
+        "action": "reject",
+        "reason": "event_id_conflict"
+      }
+    ]
+  },
+  {
+    "id": "stale-consent",
+    "title": "An older opt-in cannot reverse a newer opt-out",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "no_email_consent",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_old_optin",
+        "action": "ignore_stale_consent",
+        "customerId": "cust_01"
+      }
+    ]
+  },
+  {
+    "id": "merge-consent",
+    "title": "Anonymous opt-in cannot grant customer consent",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "no_email_consent",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "anon_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_anon_optin",
+        "action": "consent_updated",
+        "customerId": "anon_01"
+      },
+      {
+        "eventId": "evt_identify",
+        "action": "identity_resolved",
+        "customerId": "cust_01"
+      }
+    ]
+  },
+  {
+    "id": "merge-optout",
+    "title": "A newer anonymous opt-out survives identity resolution",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "suppressed",
+        "reason": "no_email_consent",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "anon_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_anon_optout",
+        "action": "consent_updated",
+        "customerId": "anon_01"
+      },
+      {
+        "eventId": "evt_identify",
+        "action": "identity_resolved",
+        "customerId": "cust_01"
+      }
+    ]
+  },
+  {
+    "id": "identified-conflict",
+    "title": "Two identified customers cannot be merged",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [
+      {
+        "eventId": "evt_identify",
+        "reason": "cannot_merge_identified_customers"
+      }
+    ],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_identify",
+        "action": "reject",
+        "reason": "cannot_merge_identified_customers"
+      }
+    ]
+  },
+  {
+    "id": "null-record",
+    "title": "A malformed record does not crash the batch",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [
+      {
+        "eventId": null,
+        "reason": "invalid_event"
+      }
+    ],
+    "trace": [
+      {
+        "eventId": null,
+        "action": "reject",
+        "reason": "invalid_event"
+      },
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      }
+    ]
+  }
+]

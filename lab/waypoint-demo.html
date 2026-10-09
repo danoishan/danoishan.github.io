@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f0e8">
+<title>Run the Waypoint exercise | Danoishan Sinnathamby</title>
+<link rel="canonical" href="https://danoishan.github.io/lab/waypoint-demo.html">
+<meta name="description" content="Run a fictional abandoned-search policy model with inspectable identity, consent, timing, duplicate and booking-exit scenarios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles-base.css">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Run the Waypoint exercise | Danoishan Sinnathamby">
+<meta property="og:description" content="Run a fictional abandoned-search policy model with inspectable identity, consent, timing, duplicate and booking-exit scenarios.">
+<meta property="og:url" content="https://danoishan.github.io/lab/waypoint-demo.html">
+<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Run the Waypoint exercise | Danoishan Sinnathamby">
+<meta name="twitter:description" content="Run a fictional abandoned-search policy model with inspectable identity, consent, timing, duplicate and booking-exit scenarios.">
+<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header"><div class="wrap nav">
+<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ brief</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
+</div></header><main id="main-content"><section class="case-hero"><div class="wrap">
+<a class="back-link" href="waypoint.html">← architecture rationale</a><p class="eyebrow">Fictional portfolio exercise · local policy model</p>
+<h1>Run the decision. Inspect the evidence.</h1>
+<p class="case-dek">Should this search qualify for a reminder? Choose a scenario and inspect the exact input, policy decision and processing trace.</p>
+<p class="case-note">Original, AI-assisted exercise using synthetic data. It evaluates eligibility locally. It makes no Braze calls, sends no messages and does not use client records.</p>
+</div></section><div class="wrap case-body"><div class="case-content">
+<section id="exercise"><h2>Abandoned-search evaluator.</h2>
+<p>Policy: known identity, current email consent, no matching booking, a two-hour delay and a 24-hour freshness window. Evaluate at the fixture’s explicit clock.</p>
+<div class="demo-controls">
+<label for="scenario">Scenario</label><select id="scenario" disabled><option>Loading scenarios…</option></select><button class="button primary" id="run-scenario" type="button" disabled>Run scenario</button>
+</div>
+<p id="scenario-description"></p>
+<p id="demo-status" role="status" aria-live="polite">Loading the local exercise…</p>
+<div id="demo-summary" class="evidence-callout" hidden></div>
+<div class="demo-panels">
+<details open><summary>Policy decisions</summary><pre class="code" id="demo-decisions"></pre></details><details><summary>Input fixture</summary><pre class="code" id="demo-input"></pre></details><details><summary>Processing trace and rejected records</summary><pre class="code" id="demo-trace"></pre></details>
+</div>
+<noscript><p>JavaScript is needed for the evaluator. The <a href="waypoint-demo/results.json">recorded results</a> and <a href="waypoint-demo/fixtures.json">input fixtures</a> are available without it.</p></noscript></section><section id="inspect"><h2>Inspect and reproduce.</h2>
+<p>The browser and Node tests use the same policy engine. The published result file is checked against fresh execution.</p>
+<div class="hero-actions">
+<a class="button" href="https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo" target="_blank" rel="noreferrer">Source and tests ↗</a><a class="button" href="waypoint-demo/results.json">Recorded results →</a><a class="button" href="../artifacts/waypoint-validation-matrix.md">Filled validation matrix →</a>
+</div>
+<pre class="code">node --test lab/waypoint-demo/test.mjs
+node lab/waypoint-demo/run.mjs --check</pre></section><section id="limits"><h2>What this model leaves to production.</h2>
+<p>The event ledger exists only during one evaluation. The model does not implement a durable queue, cross-run deduplication, message delivery, device identity, warehouse integration, production throughput or a live vendor response contract. Separate mock-adapter tests exercise bounded retries and partial responses.</p>
+<p>The business journey key is customer ID plus search ID. A transport batch ID is not a deduplication key. Identity resolution never grants consent from an anonymous profile and preserves an equally recent or newer opt-out.</p>
+<p>Before a real release, specialists would validate platform identity semantics, source authority, scheduling, persistent idempotency, channel eligibility, cooldowns, monitoring and recovery. <a href="waypoint.html">Read the broader architecture and rollout rationale →</a></p></section>
+</div></div></main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js" defer></script><script type="module" src="waypoint-demo/browser.mjs"></script>
+</body>
+</html>

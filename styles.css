@@ -1,5 +1,3 @@
-@import url("styles-base.css");
-
 /* Fail open: portfolio content is visible even if JavaScript is blocked or fails. */
 .reveal{opacity:1;transform:none}
 .reveal.reveal-pending{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
@@ -64,4 +62,79 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   .visual-kicker{display:block}.visual-kicker strong{display:block;text-align:left;margin-top:6px}
   .ops-flow{grid-template-columns:repeat(2,1fr)}
   .related-links>div{grid-template-columns:1fr}
+}
+
+/* Portfolio reading and evidence controls. Base CSS is loaded directly in HTML. */
+.hero{padding:64px 0 52px}
+.hero-grid{grid-template-columns:1.6fr .7fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,5.4vw,66px);line-height:1.04;letter-spacing:-.05em;margin:16px 0 20px}
+.hero-copy{font-size:18px;max-width:710px}
+.hero-aside p{margin:0 0 16px}
+.hero-aside a{color:var(--accent);overflow-wrap:anywhere}
+.hero-actions{margin-top:24px}
+.proof-item strong{font-size:29px}
+.proof-item span{max-width:290px;font-size:13px}
+.section{padding:76px 0}
+.section-head{margin-bottom:36px}
+.evidence-label{font-family:var(--mono);font-size:11px!important;color:var(--accent)!important;margin-bottom:12px!important}
+.eyebrow,.label,.work-meta,.work-meta b,.quiet-row,.case-note,.case-fact small,.artifact-head,.artifact th,.decision-table th,.note-date,.related-links small,.visual-kicker span,.control-rail{font-size:11px}
+.work-main h3{font-size:clamp(28px,3.2vw,40px)}
+.case-hero{padding:60px 0 48px}
+.case-hero h1{font-size:clamp(42px,6vw,78px);line-height:1.02}
+.case-dek{font-size:19px}
+.case-body{padding:60px 0}
+.case-content section{margin-bottom:52px}
+.case-content h2{font-size:32px}
+.case-nav{font-size:12px;gap:4px}
+.case-nav a{color:#565c65;min-height:34px;display:flex;align-items:center}
+.case-link,.back-link,.footer{font-size:12px}
+.artifact table{font-size:12px}
+.trace-track .fault b,.billing-flow .fault b{font-size:11px}
+:root[data-theme="dark"] .trace-track .fault b,:root[data-theme="dark"] .billing-flow .fault b{color:#f1d6d0}
+.theme-toggle{width:44px;height:44px;flex-shrink:0}
+.nav-links{min-width:0}
+.nav-links a,.nav-cta{min-height:44px;display:inline-flex;align-items:center}
+.footer nav{display:flex;gap:18px;flex-wrap:wrap}
+.footer nav a{min-height:36px;display:inline-flex;align-items:center}
+.evidence-callout{border-left:3px solid var(--accent);padding:16px 20px;background:var(--paper-2);margin:24px 0}
+.evidence-callout p{margin:8px 0 16px}
+.credential-note{font-size:13px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.demo-controls{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;margin:24px 0 12px}
+.demo-controls label{grid-column:1/-1;font-weight:700}
+.demo-controls select{min-width:0;max-width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--ink);padding:12px;min-height:48px}
+.demo-controls button{cursor:pointer;min-height:48px}
+.demo-controls :disabled{opacity:.65;cursor:wait}
+.demo-controls select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.demo-panels{display:grid;gap:12px}
+.demo-panels details{min-width:0;border:1px solid var(--line);padding:16px}
+.demo-panels summary{cursor:pointer;font-weight:700;min-height:32px}
+.demo-panels .code{max-height:560px;margin-bottom:0;font-size:12px}
+[hidden]{display:none!important}
+.copy-status{font-size:13px;color:var(--accent)}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .hero-aside{max-width:600px}
+  .nav-links{max-width:100%;flex-basis:100%}
+  .proof-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .proof-item,.proof-item+ .proof-item{padding:20px 12px;border-right:1px solid var(--line);border-bottom:0}
+  .proof-item:first-child{padding-left:0}.proof-item:last-child{border-right:0}
+}
+@media(max-width:620px){
+  .hero{padding:40px 0}.hero h1{font-size:40px}.hero-copy{font-size:17px}
+  .proof-grid{grid-template-columns:1fr}.proof-item,.proof-item+ .proof-item{padding:16px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .proof-item:last-child{border-bottom:0}.proof-item strong{font-size:26px}
+  .section{padding:56px 0}.case-hero{padding:40px 0}.case-hero h1{font-size:42px}
+  .case-content h2{font-size:28px}.demo-controls{grid-template-columns:1fr}
+  .footer nav{margin-top:14px}.footer span{display:inline}
+}
+@media(prefers-reduced-motion:reduce){.button:hover{transform:none}}
+@media print{
+  .site-header,.footer,.skip-link,.case-nav,.hero-actions,.back-link{display:none!important}
+  body{background:white;color:#111;font-size:10pt;line-height:1.4}
+  .wrap{width:100%;max-width:none}.case-grid{display:block}.case-body,.case-hero{padding:0}
+  .case-hero h1{font-size:26pt}.case-dek{font-size:11pt}.case-content h2{font-size:16pt;break-after:avoid}
+  .case-content h3{font-size:12pt;break-after:avoid}.case-content section{margin-bottom:18pt}
+  .case-facts{break-inside:avoid}.reveal,.reveal.reveal-pending{opacity:1!important;transform:none!important}
+  a{text-decoration:none}.code{white-space:pre-wrap}.artifact{break-inside:avoid}
 }
