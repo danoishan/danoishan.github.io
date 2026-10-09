@@ -1,1 +1,89 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f3f0e8"><title>Design the Exit Before the Message | Danoishan Sinnathamby</title><link rel="canonical" href="https://danoishan.github.io/notes/design-exit-before-message.html"><meta name="description" content="A lifecycle design note on defining the business event that makes a triggered message irrelevant before building the message itself."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../styles.css"><meta property="og:type" content="website"><meta property="og:title" content="Design the Exit Before the Message | Danoishan Sinnathamby"><meta property="og:description" content="A lifecycle design note on defining the business event that makes a triggered message irrelevant before building the message itself."><meta property="og:url" content="https://danoishan.github.io/notes/design-exit-before-message.html"><meta property="og:image" content="https://danoishan.github.io/social-card.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Design the Exit Before the Message | Danoishan Sinnathamby"><meta name="twitter:description" content="A lifecycle design note on defining the business event that makes a triggered message irrelevant before building the message itself."><meta name="twitter:image" content="https://danoishan.github.io/social-card.png"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body><a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header"><div class="wrap nav"><a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ notes</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="index.html">Notes</a><a href="../resume.html">Resume</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a></div></header><main id="main-content"><section class="case-hero"><div class="wrap reveal"><a class="back-link" href="index.html">← all notes</a><p class="eyebrow">SEP 2026 · Technical note</p><h1>Design the exit before the message.</h1><p class="case-dek">A triggered journey is defined as much by what makes the message irrelevant as by what starts it.</p></div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>The trigger is only half the business rule.</h2><p>An abandoned search, incomplete application or cart event can justify a message. But the system also needs to know what should stop the message from being relevant.</p><p>If the customer books, buys, cancels, completes service or changes consent, the journey may need to exit immediately. Designing that condition late is how customers receive reminders for things they already completed.</p><div class="pullquote">For every trigger, ask which later event should make the trigger obsolete.</div></section><section><h2>Exit logic protects relevance.</h2><div class="artifact"><div class="artifact-head"><span>Journey pattern</span><span>Exit condition</span></div><div class="artifact-body"><table><thead><tr><th>Trigger</th><th>Possible exit</th><th>Why</th></tr></thead><tbody><tr><td>Search abandoned</td><td>Booking completed</td><td>The original intent has converted</td></tr><tr><td>Cart abandoned</td><td>Purchase completed</td><td>Reminder is no longer relevant</td></tr><tr><td>Application started</td><td>Application submitted</td><td>Nudge would contradict current state</td></tr><tr><td>Service reminder</td><td>Service completed / cancelled</td><td>Customer status changed</td></tr><tr><td>Any marketing journey</td><td>Consent revoked</td><td>Eligibility changed</td></tr></tbody></table></div></div></section><section><h2>Exit events also reveal architecture questions.</h2><p>Where does the business know the customer completed the action? How quickly does that truth reach the engagement platform? Is the event server-authoritative? Can the journey react before the next message step?</p><p>Those questions often matter more than the creative because they determine whether the orchestration can stay aligned to reality.</p></section><section><h2>The practical rule.</h2><p>When designing a triggered journey, write the trigger and exit condition together. If the team cannot define the exit, the business rule probably is not finished yet.</p></section><section class="related-links"><p class="label">Keep going</p><div><a href="../lab/waypoint.html#journey"><small>Related lab</small><strong>Abandoned search journey</strong></a><a href="../artifacts/index.html#validation"><small>Related artifact</small><strong>End-to-End Validation Matrix</strong></a></div></section></article></div></div></main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><span><a href="index.html">All notes →</a></span></footer><script src="../script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f0e8">
+<title>Design the Exit Before the Message | Danoishan Sinnathamby</title>
+<link rel="canonical" href="https://danoishan.github.io/notes/design-exit-before-message.html">
+<meta name="description" content="A lifecycle design note on defining the business event that makes a triggered message irrelevant before building the message itself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles-base.css">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Design the Exit Before the Message | Danoishan Sinnathamby">
+<meta property="og:description" content="A lifecycle design note on defining the business event that makes a triggered message irrelevant before building the message itself.">
+<meta property="og:url" content="https://danoishan.github.io/notes/design-exit-before-message.html">
+<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Design the Exit Before the Message | Danoishan Sinnathamby">
+<meta name="twitter:description" content="A lifecycle design note on defining the business event that makes a triggered message irrelevant before building the message itself.">
+<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header"><div class="wrap nav">
+<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ notes</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
+</div></header><main id="main-content"><section class="case-hero"><div class="wrap reveal">
+<a class="back-link" href="index.html">← all notes</a><p class="eyebrow">SEP 2026 · Technical note</p>
+<h1>Design the exit before the message.</h1>
+<p class="case-dek">A triggered journey is defined as much by what makes the message irrelevant as by what starts it.</p>
+</div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>The trigger is only half the business rule.</h2>
+<p>An abandoned search, incomplete application or cart event can justify a message. But the system also needs to know what should stop the message from being relevant.</p>
+<p>If the customer books, buys, cancels, completes service or changes consent, the journey may need to exit immediately. Designing that condition late is how customers receive reminders for things they already completed.</p>
+<div class="pullquote">For every trigger, ask which later event should make the trigger obsolete.</div></section><section><h2>Exit logic protects relevance.</h2>
+<div class="artifact">
+<div class="artifact-head">
+<span>Journey pattern</span><span>Exit condition</span>
+</div>
+<div class="artifact-body"><table>
+<caption class="sr-only">Exit logic protects relevance.</caption>
+<thead><tr>
+<th scope="col">Trigger</th>
+<th scope="col">Possible exit</th>
+<th scope="col">Why</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Search abandoned</td>
+<td>Booking completed</td>
+<td>The original intent has converted</td>
+</tr>
+<tr>
+<td>Cart abandoned</td>
+<td>Purchase completed</td>
+<td>Reminder is no longer relevant</td>
+</tr>
+<tr>
+<td>Application started</td>
+<td>Application submitted</td>
+<td>Nudge would contradict current state</td>
+</tr>
+<tr>
+<td>Service reminder</td>
+<td>Service completed / cancelled</td>
+<td>Customer status changed</td>
+</tr>
+<tr>
+<td>Any marketing journey</td>
+<td>Consent revoked</td>
+<td>Eligibility changed</td>
+</tr>
+</tbody>
+</table></div>
+</div></section><section><h2>Exit events also reveal architecture questions.</h2>
+<p>Where does the business know the customer completed the action? How quickly does that truth reach the engagement platform? Is the event server-authoritative? Can the journey react before the next message step?</p>
+<p>Those questions often matter more than the creative because they determine whether the orchestration can stay aligned to reality.</p></section><section><h2>The practical rule.</h2>
+<p>When designing a triggered journey, write the trigger and exit condition together. If the team cannot define the exit, the business rule probably is not finished yet.</p></section><section class="related-links"><p class="label">Keep going</p>
+<div>
+<a href="../lab/waypoint.html#journey"><small>Related lab</small><strong>Abandoned search journey</strong></a><a href="../artifacts/index.html#validation"><small>Related artifact</small><strong>End-to-End Validation Matrix</strong></a>
+</div></section><section id="worked-example" class="note-worked-example"><p class="eyebrow">Worked example · October 9, 2026</p>
+<h2>Test the exit before the reminder.</h2>
+<p>The matching-booking scenario suppresses search_01. The unrelated-booking scenario keeps search_01 eligible because the booking belongs to search_02. A third test delivers the matching booking before the delayed search event; the reminder remains suppressed. Matching on customer alone would fail this boundary.</p>
+<p><a class="case-link" href="../lab/waypoint-demo.html">Inspect the example →</a></p>
+<p class="case-note">Fictional local exercise; no live vendor or client outcome is asserted.</p></section></article></div></div></main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js"></script>
+</body>
+</html>

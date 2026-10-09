@@ -70,19 +70,33 @@ try{
 }
 
 
-document.querySelectorAll('.copy-template').forEach((button)=>{
+const copyButtons=[...document.querySelectorAll('.copy-template')];
+let copyStatus;
+if(copyButtons.length){
+  copyStatus=document.createElement('p');
+  copyStatus.id='copy-status';
+  copyStatus.className='copy-status';
+  copyStatus.setAttribute('role','status');
+  copyStatus.setAttribute('aria-live','polite');
+  copyButtons[0].closest('section').appendChild(copyStatus);
+}
+copyButtons.forEach((button)=>{
+  button.setAttribute('aria-describedby','copy-status');
   button.addEventListener('click',async()=>{
     const path=button.dataset.copyPath;
     if(!path)return;
     const original=button.textContent;
+    copyStatus.textContent='Copying template…';
     try{
       const response=await fetch(path);
       if(!response.ok)throw new Error('Template unavailable');
       const text=await response.text();
       await navigator.clipboard.writeText(text);
       button.textContent='Copied ✓';
+      copyStatus.textContent='Template copied to the clipboard.';
     }catch{
       button.textContent='Open Markdown to copy';
+      copyStatus.textContent='Copy was unavailable. Use the Download Markdown link to open or save the template.';
     }
     window.setTimeout(()=>{button.textContent=original;},1800);
   });
