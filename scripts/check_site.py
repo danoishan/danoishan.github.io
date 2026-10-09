@@ -15,12 +15,16 @@ class Page(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids = []; self.refs = []; self.canonical = []; self.h1 = 0
         self.title = False; self.description = False; self.styles = []; self.noindex = False
+        self.tables = 0; self.captions = 0; self.header_scopes = []
         self.feed(text)
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if a.get('id'): self.ids.append(a['id'])
         if tag == 'h1': self.h1 += 1
         if tag == 'title': self.title = True
+        if tag == 'table': self.tables += 1
+        if tag == 'caption': self.captions += 1
+        if tag == 'th': self.header_scopes.append(a.get('scope'))
         if tag == 'meta' and a.get('name') == 'description' and a.get('content'): self.description = True
         if tag == 'meta' and a.get('name') == 'robots' and 'noindex' in a.get('content', ''): self.noindex = True
         if tag == 'link' and a.get('rel') == 'canonical': self.canonical.append(a.get('href'))
@@ -35,6 +39,8 @@ for name, page in pages.items():
     path = ROOT / name
     if len(page.ids) != len(set(page.ids)):
         errors.append(f'{name}: duplicate IDs {dict((k,v) for k,v in Counter(page.ids).items() if v>1)}')
+    if page.tables != page.captions: errors.append(f'{name}: each data table needs a caption')
+    if any(s not in ['col','row','colgroup','rowgroup'] for s in page.header_scopes): errors.append(f'{name}: table header scope is missing')
     verification = name.startswith('google')
     redirect = name == 'work/form-disappearing.html'
     if not verification and not redirect:

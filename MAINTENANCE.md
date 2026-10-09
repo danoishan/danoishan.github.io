@@ -6,6 +6,8 @@ Run the three checks in the root README. Review the changed pages in both themes
 
 The site fails open when JavaScript is unavailable. Core career content and recorded Waypoint results should remain reachable. Check the custom 404 page and preserve existing case and note URLs and section IDs when editing.
 
+The PDF can be reproduced with `python3 scripts/build_resume.py` using ReportLab and DejaVu Sans fonts. The default font directory is `/usr/share/fonts/truetype/dejavu`; set `RESUME_FONT_DIR` when the fonts live elsewhere. Render both pages after any edit to verify wrapping and employer boundaries.
+
 ## Content and evidence
 
 - Keep the official role title separate from the delivery function.

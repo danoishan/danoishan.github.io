@@ -288,15 +288,15 @@
 <caption class="sr-only">A million-customer launch under a request limit.</caption>
 <tbody>
 <tr>
-<th>If one request = one customer</th>
+<th scope="row">If one request = one customer</th>
 <td>1,000,000 ÷ 10,000 requests/sec = 100 seconds minimum ingestion time, before network variance, retries or send processing.</td>
 </tr>
 <tr>
-<th>If data can be staged</th>
+<th scope="row">If data can be staged</th>
 <td>Load audience and access data before 10:00 AM, then let the orchestration layer start the communication at the required business time.</td>
 </tr>
 <tr>
-<th>If true sub-minute freshness is required</th>
+<th scope="row">If true sub-minute freshness is required</th>
 <td>Revisit batching, endpoint behavior, architecture, rate limits and whether the business SLA is achievable rather than promising an impossible clock time.</td>
 </tr>
 </tbody>

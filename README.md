@@ -2,6 +2,8 @@
 
 [Live portfolio](https://danoishan.github.io/) · [Resume](https://danoishan.github.io/resume.html) · [Runnable Waypoint exercise](https://danoishan.github.io/lab/waypoint-demo.html)
 
+[![Portfolio homepage preview](docs/screenshots/homepage-preview-1791570850440.jpg)](https://danoishan.github.io/)
+
 I am a Senior Account Manager at Vigorate in Toronto, focused on technical project and program delivery across enterprise CRM, lifecycle marketing, customer data and MarTech. This repository presents my delivery ownership, decisions, specialist handoffs and operating approach.
 
 ## Start here
