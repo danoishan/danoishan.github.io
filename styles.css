@@ -170,9 +170,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   :root[data-theme="dark"] .ai-work-link .ai-accent{--ai-silver:#c2c9d2;--ai-silver-glint:#f3f5f8}
 }
 @keyframes ai-link-shimmer{
-  0%,8%{background-position:100% 0}
-  46%,54%{background-position:0% 0}
-  92%,100%{background-position:100% 0}
+  0%,29%{background-position:100% 0}
+  48%,52%{background-position:0% 0}
+  71%,100%{background-position:100% 0}
 }
 @keyframes ai-word-shimmer{
   0%,7%{background-position:100% 0}
