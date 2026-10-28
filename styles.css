@@ -140,34 +140,51 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 }
 
 
-/* Subtle, theme-aware shimmer on the homepage AI link only. */
+/* Homepage AI accents: a silver round trip in the hero, subtle glints in Selected Work. */
 .ai-work-link{color:var(--accent)}
 .ai-work-link:hover{text-decoration:underline;text-underline-offset:.25em}
 .ai-work-link .ai-accent{color:var(--accent);font-weight:inherit}
+.ai-shimmer,.work-meta .ai-shimmer{display:inline-block;color:inherit;font-weight:inherit;border:0;padding:0;margin:0}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
-  .ai-work-link .ai-accent{
-    --ai-glint:#d5e4ff;
-    background-image:linear-gradient(105deg,var(--accent) 0%,var(--accent) 38%,var(--ai-glint) 49%,var(--accent) 60%,var(--accent) 100%);
+  .ai-work-link .ai-accent,.ai-shimmer{
     background-size:340% 100%;
     background-position:100% 0;
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
+  }
+  .ai-work-link .ai-accent{
+    --ai-silver:#a8b0bc;
+    --ai-silver-glint:#e6eaf0;
+    background-image:linear-gradient(105deg,var(--ai-silver) 0%,var(--ai-silver) 38%,var(--ai-silver-glint) 47%,var(--accent) 60%,var(--accent) 100%);
     animation:ai-link-shimmer 3s ease-in-out infinite;
   }
-  :root[data-theme="dark"] .ai-work-link .ai-accent{--ai-glint:#f3f5ff}
+  .ai-shimmer{
+    --ai-word-glint:#cbd1da;
+    background-image:linear-gradient(105deg,currentColor 0%,currentColor 38%,var(--ai-word-glint) 49%,currentColor 60%,currentColor 100%);
+    animation:ai-word-shimmer 7s ease-in-out infinite;
+  }
+  @supports(color:color-mix(in srgb,blue,white)){
+    .ai-shimmer{--ai-word-glint:color-mix(in srgb,currentColor 55%,white)}
+  }
+  :root[data-theme="dark"] .ai-work-link .ai-accent{--ai-silver:#c2c9d2;--ai-silver-glint:#f3f5f8}
 }
 @keyframes ai-link-shimmer{
+  0%,8%{background-position:100% 0}
+  46%,54%{background-position:0% 0}
+  92%,100%{background-position:100% 0}
+}
+@keyframes ai-word-shimmer{
   0%,7%{background-position:100% 0}
   26%,100%{background-position:0% 0}
 }
 @media(prefers-reduced-motion:reduce){
-  .ai-work-link .ai-accent{
+  .ai-work-link .ai-accent,.ai-shimmer{
     animation:none;
     background-image:none;
     -webkit-text-fill-color:currentColor;
   }
 }
 @media print{
-  .ai-work-link .ai-accent{animation:none;background-image:none;-webkit-text-fill-color:currentColor}
+  .ai-work-link .ai-accent,.ai-shimmer{animation:none;background-image:none;-webkit-text-fill-color:currentColor}
 }
