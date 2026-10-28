@@ -49,8 +49,8 @@ for name, page in pages.items():
         if page.h1 != 1: errors.append(f'{name}: expected one H1, found {page.h1}')
         if not page.title or not page.description: errors.append(f'{name}: missing title or description')
         if page.canonical != [expected]: errors.append(f'{name}: canonical differs: {page.canonical}')
-        bases = [i for i,s in enumerate(page.styles) if s and s.endswith('styles-base.css')]
-        overrides = [i for i,s in enumerate(page.styles) if s and s.endswith('styles.css')]
+        bases = [i for i,s in enumerate(page.styles) if s and urlsplit(s).path.endswith('styles-base.css')]
+        overrides = [i for i,s in enumerate(page.styles) if s and urlsplit(s).path.endswith('styles.css')]
         if not bases or not overrides or bases[0] >= overrides[0]: errors.append(f'{name}: base CSS must load before overrides')
         if not page.noindex: canonical_urls.add(expected)
     for reference in page.refs:
