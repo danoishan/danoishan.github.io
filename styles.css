@@ -138,3 +138,36 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   .case-facts{break-inside:avoid}.reveal,.reveal.reveal-pending{opacity:1!important;transform:none!important}
   a{text-decoration:none}.code{white-space:pre-wrap}.artifact{break-inside:avoid}
 }
+
+
+/* Subtle, theme-aware shimmer on the homepage AI link only. */
+.ai-work-link{color:var(--ink)}
+.ai-work-link:hover{text-decoration:underline;text-underline-offset:.25em}
+.ai-work-link .ai-accent{color:var(--accent);font-weight:700}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ai-work-link .ai-accent{
+    --ai-glint:#d5e4ff;
+    background-image:linear-gradient(105deg,var(--accent) 0%,var(--accent) 38%,var(--ai-glint) 49%,var(--accent) 60%,var(--accent) 100%);
+    background-size:340% 100%;
+    background-position:100% 0;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:ai-link-shimmer 7s ease-in-out infinite;
+  }
+  :root[data-theme="dark"] .ai-work-link .ai-accent{--ai-glint:#f3f5ff}
+}
+@keyframes ai-link-shimmer{
+  0%,7%{background-position:100% 0}
+  26%,100%{background-position:0% 0}
+}
+@media(prefers-reduced-motion:reduce){
+  .ai-work-link .ai-accent{
+    animation:none;
+    background-image:none;
+    -webkit-text-fill-color:currentColor;
+  }
+}
+@media print{
+  .ai-work-link .ai-accent{animation:none;background-image:none;-webkit-text-fill-color:currentColor}
+}
