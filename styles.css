@@ -141,7 +141,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 
 
 /* Subtle, theme-aware shimmer on the homepage AI link only. */
-.ai-work-link{color:var(--ink)}
+.ai-work-link{color:var(--accent)}
 .ai-work-link:hover{text-decoration:underline;text-underline-offset:.25em}
 .ai-work-link .ai-accent{color:var(--accent);font-weight:700}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
