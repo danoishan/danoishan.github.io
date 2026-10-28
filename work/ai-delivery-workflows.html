@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f0e8">
+<title>AI-Assisted Delivery Workflows | Danoishan Sinnathamby</title>
+<link rel="canonical" href="https://danoishan.github.io/work/ai-delivery-workflows.html">
+<meta name="description" content="A documented AI-assisted delivery workflow using Claude Code, custom subagents, reusable Agent Skills, source validation and technical handoffs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles-base.css">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI-Assisted Delivery Workflows | Danoishan Sinnathamby">
+<meta property="og:description" content="AI-assisted requirements, technical research and QA planning with clear human review boundaries.">
+<meta property="og:url" content="https://danoishan.github.io/work/ai-delivery-workflows.html">
+<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Assisted Delivery Workflows | Danoishan Sinnathamby">
+<meta name="twitter:description" content="AI-assisted requirements, technical research and QA planning with clear human review boundaries.">
+<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header"><div class="wrap nav">
+<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
+</div></header>
+<main id="main-content">
+<section class="case-hero"><div class="wrap reveal">
+<a class="back-link" href="../index.html#work">← selected work</a>
+<p class="eyebrow">Case 05 · AI-enabled technical delivery · reusable workflows</p>
+<h1>From Brief to Testable Delivery.</h1>
+<p class="case-dek">How I use Claude Code, custom subagents and reusable Agent Skills to turn complex CRM and MarTech inputs into clearer questions, dependencies and QA plans, with source checks and specialist review before anything enters the delivery process.</p>
+<p class="case-note"><strong>PRACTICE PATTERN + ILLUSTRATIVE EXAMPLE.</strong> The tools and usage areas reflect my reported regular practice; the sample workflow below is a generalized representation, not an exported client project or independently measured efficiency result. No client records, proprietary prompts or production AI deployment are shown.</p>
+</div></section>
+<section class="case-facts"><div class="case-fact"><small>Tooling</small><strong>Claude Code · subagents · Agent Skills</strong></div><div class="case-fact"><small>Inputs</small><strong>Requirements · solution notes · technical findings</strong></div><div class="case-fact"><small>Outputs</small><strong>Tasks · dependencies · acceptance criteria · QA scenarios</strong></div><div class="case-fact"><small>Control</small><strong>Source checks and human review</strong></div></section>
+<div class="case-body"><div class="wrap case-grid">
+<aside class="case-nav"><a href="#snapshot">00 Snapshot</a><a href="#practice">01 How I use AI</a><a href="#example">02 Illustrative workflow</a><a href="#review">03 Review gates</a><a href="#reuse">04 Reuse and sharing</a><a href="#boundaries">05 Evidence limits</a></aside>
+<article class="case-content">
+<section id="snapshot"><h2>Decision snapshot.</h2>
+<div class="artifact"><div class="artifact-head"><span>Operating choice</span><span>Human-accountable delivery</span></div><div class="artifact-body"><table><caption class="sr-only">AI delivery workflow summary</caption><tbody><tr><th scope="row">Problem</th><td>Requirements, platform notes and technical decisions are spread across documents and people.</td></tr><tr><th scope="row">Approach</th><td>Use focused AI-assisted reviews to surface questions, dependencies and tests before planning.</td></tr><tr><th scope="row">Ownership</th><td>I own the delivery framing and review path; engineers and platform specialists own technical authority and production implementation.</td></tr><tr><th scope="row">Result shown here</th><td>A reusable review process and illustrative output structure, not a claimed client efficiency metric.</td></tr></tbody></table></div></div>
+<p>AI can shorten the distance between a messy input and a useful first draft. It does not make an incomplete source correct or replace the people who own the system.</p></section>
+<section id="practice"><h2>Break the problem into focused reviews.</h2>
+<p>I regularly use Claude and Claude Code, including custom subagents and Agent Skills, for research synthesis, requirements interpretation, implementation questions, draft QA scenarios and structured documentation. I also use AI-assisted code and implementation review to identify questions for technical specialists.</p>
+<div class="phase-grid"><div class="phase"><span>01 / REVIEW</span><h3>What does the source say?</h3><p>Extract requirements, assumptions, exclusions and unresolved decisions from available materials.</p></div><div class="phase"><span>02 / DEPENDENCIES</span><h3>What must happen first?</h3><p>Surface integration, data, consent, QA and approval dependencies for sequencing.</p></div><div class="phase"><span>03 / TESTABILITY</span><h3>How would we know?</h3><p>Draft acceptance criteria, negative cases, evidence needs and handoff questions.</p></div></div>
+<p>Specialist work is not simply “accepted” because it appears in generated output. The point is to bring a better starting question to the right owner.</p></section>
+<section id="example"><h2>A generalized requirements-to-QA example.</h2>
+<p><strong>Illustrative scenario:</strong> A CRM team wants to change who enters a lifecycle journey when status and consent data arrive from different systems. This example is synthetic and is intended to demonstrate a review format, not to claim that this exact engagement occurred.</p>
+<div class="artifact"><div class="artifact-head"><span>Possible review output</span><span>Example only</span></div><div class="artifact-body"><table><caption class="sr-only">Sample AI-assisted requirements review</caption><thead><tr><th scope="col">Area</th><th scope="col">Question / draft output</th><th scope="col">Owner to confirm</th></tr></thead><tbody><tr><td>Source</td><td>Which system is authoritative for current status?</td><td>Data owner</td></tr><tr><td>Consent</td><td>Does opt-out always override inclusion?</td><td>Compliance / CRM owner</td></tr><tr><td>Timing</td><td>Can status arrive after a scheduled journey entry?</td><td>Integration specialist</td></tr><tr><td>QA</td><td>Test eligible, recently changed, opted-out and missing-ID records</td><td>QA and client UAT</td></tr><tr><td>Release</td><td>Name reconciliation evidence, monitoring and rollback owner</td><td>Delivery / operations</td></tr></tbody></table></div></div>
+<p>The useful output is not a polished summary; it is a set of reviewable questions and testable conditions that specialists can accept, reject or refine.</p></section>
+<section id="review"><h2>Use explicit review gates.</h2>
+<div class="checklist"><div class="check">Source claim can be traced to a document or owner</div><div class="check">Assumptions are labelled, not hidden</div><div class="check">Technical findings are validated with specialists</div><div class="check">Sensitive client material stays within approved handling rules</div><div class="check">Negative test cases are included</div><div class="check">Final client decisions remain human-owned</div></div>
+<p>AI-generated code observations may become investigation leads; they are not accepted as confirmed defects without reproduction, source evidence or developer validation.</p></section>
+<section id="reuse"><h2>Make useful patterns repeatable.</h2>
+<p>I also share reusable instructions and AI-assisted review patterns with colleagues for ticket preparation, issue triage, requirements questions and documentation. The principle is to preserve the review structure, not to turn one client's confidential material into a reusable prompt.</p>
+<p>Useful reuse depends on small, maintainable instructions with an explicit input scope, expected output, validation step and human owner. A shared workflow is only valuable if another person can understand its limitations and use it safely.</p>
+<p><a href="../artifacts/index.html">See public, generic delivery templates →</a></p></section>
+<section id="boundaries"><h2>What this page proves, and what it doesn't.</h2>
+<p><strong>Described from my reported practice:</strong> regular use of Claude Code, subagents, Agent Skills, AI-assisted code review and team-shared workflows.</p>
+<p><strong>Illustrative:</strong> the sample lifecycle journey, table and review sequence. It is not a redacted production transcript, an AI product deployed for a client, or a measured time-saving experiment.</p>
+<p><strong>Not claimed:</strong> autonomous production changes, completed MCP implementation, a numerical productivity uplift or full delegation of technical validation to AI.</p>
+<div class="pullquote">The advantage is a more disciplined starting point: clearer questions, visible uncertainties and a reviewable path into delivery.</div>
+<p>For an executable and testable example of my technical reasoning, open the <a href="../lab/waypoint-demo.html">Waypoint policy exercise →</a>.</p>
+<p>For evidence definitions and reported career metrics, see <a href="measurement-notes.html">measurement context →</a>.</p></section>
+</article></div></div>
+</main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js"></script>
+</body>
+</html>
