@@ -4,12 +4,13 @@
 
 [![Portfolio homepage preview](docs/screenshots/homepage-preview-1791570850440.jpg)](https://danoishan.github.io/)
 
-I am a Senior Account Manager at Vigorate in Toronto, focused on technical project and program delivery across enterprise CRM, lifecycle marketing, customer data and MarTech. This repository presents my delivery ownership, decisions, specialist handoffs and operating approach.
+I am a Senior Account Manager at Vigorate in Toronto, focused on technical project and program delivery across enterprise CRM, lifecycle marketing, customer data and MarTech. This repository presents my delivery ownership, decisions, specialist handoffs and operating approach, including practical AI-assisted technical reviews. AI workflow examples are identified as illustrative where appropriate.
 
 ## Start here
 
 | Evidence | What to inspect |
 | --- | --- |
+| [AI-enabled delivery practice](https://danoishan.github.io/work/ai-delivery-workflows.html) | Claude Code, custom subagents, Agent Skills and an illustrative, human-reviewed requirements-to-QA workflow |
 | [Current program pattern](https://danoishan.github.io/work/200m-messages.html) | Delivery controls across 20+ concurrent workstreams and programs supporting 200M+ annual sends |
 | [Migration diagnosis](https://danoishan.github.io/work/80-percent-drop.html) | An anonymized composite: root-cause investigation and phased validation plan |
 | [Billing investigation](https://danoishan.github.io/work/billing-journey.html) | Cross-system failures, exception handling and recovery recommendations |
