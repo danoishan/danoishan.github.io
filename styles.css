@@ -167,8 +167,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   }
 }
 @keyframes ai-link-shimmer{
-  0%,25%{background-position:100% 0}
-  52%,100%{background-position:0% 0}
+  0%,12%{background-position:100% 0}
+  47%,53%{background-position:0% 0}
+  88%,100%{background-position:100% 0}
 }
 @keyframes ai-word-shimmer{
   0%,7%{background-position:100% 0}
