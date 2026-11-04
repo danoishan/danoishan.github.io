@@ -154,8 +154,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
     -webkit-text-fill-color:transparent;
   }
   .ai-work-link .ai-accent{
-    background-image:linear-gradient(105deg,var(--accent) 0%,var(--accent) 38%,color-mix(in srgb,var(--accent) 65%,white) 49%,var(--accent) 60%,var(--accent) 100%);
-    animation:ai-link-shimmer 3s ease-in-out infinite;
+    background-size:300% 100%;
+    background-image:linear-gradient(90deg,var(--accent) 0%,var(--accent) 45%,#d7dce4 50%,var(--accent) 55%,var(--accent) 100%);
+    animation:ai-link-shimmer 3s linear infinite;
   }
   .ai-shimmer{
     --ai-word-glint:#cbd1da;
@@ -167,9 +168,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   }
 }
 @keyframes ai-link-shimmer{
-  0%,12%{background-position:100% 0}
-  47%,53%{background-position:0% 0}
-  88%,100%{background-position:100% 0}
+  0%,8%{background-position:100% 0}
+  50%{background-position:0% 0}
+  92%,100%{background-position:100% 0}
 }
 @keyframes ai-word-shimmer{
   0%,7%{background-position:100% 0}
