@@ -156,7 +156,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   .ai-work-link .ai-accent{
     background-size:300% 100%;
     background-image:linear-gradient(90deg,var(--accent) 0%,var(--accent) 45%,#d7dce4 50%,var(--accent) 55%,var(--accent) 100%);
-    animation:ai-link-shimmer 1.6s linear infinite;
+    animation:ai-link-shimmer 3.8s linear infinite;
   }
   .ai-shimmer{
     --ai-word-glint:#cbd1da;
@@ -168,9 +168,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   }
 }
 @keyframes ai-link-shimmer{
-  0%,3%{background-position:100% 0}
-  50%{background-position:0% 0}
-  97%,100%{background-position:100% 0}
+  0%{background-position:100% 0}
+  10.526%{background-position:0% 0}
+  21.053%,100%{background-position:100% 0}
 }
 @keyframes ai-word-shimmer{
   0%,7%{background-position:100% 0}
