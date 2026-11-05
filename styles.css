@@ -233,18 +233,14 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   background-clip:border-box;
   -webkit-background-clip:border-box;
   text-decoration:none;
-  transition:color .42s ease;
+  transition:color .4s ease;
 }
 .work-main h3 a:hover,
 .work-main h3 a:focus-visible {
   color:var(--accent);
   text-decoration:none;
 }
-/* Numbered case cards retain their individually requested fade speeds. */
-.work-list .work-main h3 a[href="work/200m-messages.html"] {transition-duration:.1s}
-.work-list .work-main h3 a[href="work/80-percent-drop.html"] {transition-duration:.2s}
-.work-list .work-main h3 a[href="work/billing-journey.html"] {transition-duration:.3s}
-.work-list .work-main h3 a[href="work/125-campaigns.html"] {transition-duration:.4s}
+/* All five Selected Work project titles use the same 0.4s fade. */
 @media(prefers-reduced-motion:reduce) {
   .work-main h3 a {transition:none !important}
 }
