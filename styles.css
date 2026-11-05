@@ -224,3 +224,27 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
     transform:none !important;
   }
 }
+
+/* Project title colour sweep (2026-11-05) */
+@supports ((-webkit-background-clip:text) or (background-clip:text)) {
+  .work-main h3 a {
+    background-image:linear-gradient(90deg,var(--accent) 0%,var(--accent) 50%,var(--ink) 50%,var(--ink) 100%);
+    background-size:200% 100%;
+    background-position:100% 0;
+    background-repeat:no-repeat;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+    text-decoration:none;
+    transition:background-position .42s cubic-bezier(.2,.75,.3,1);
+  }
+  .work-main h3 a:hover,
+  .work-main h3 a:focus-visible {
+    background-position:0 0;
+    text-decoration:none;
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .work-main h3 a {transition:none !important}
+  }
+}
