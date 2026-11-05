@@ -186,3 +186,41 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 @media print{
   .ai-work-link .ai-accent,.ai-shimmer{animation:none;background-image:none;-webkit-text-fill-color:currentColor}
 }
+
+
+/* Production interaction polish (2026-11-05): restrained hovers only. */
+.work-item{
+  position:relative;
+  transition:background-color .22s ease,box-shadow .22s ease;
+}
+.work-item:hover{
+  background-color:var(--paper-2);
+  box-shadow:inset 3px 0 0 var(--accent);
+}
+/* Intentionally no added project-title hover underline. */
+.case-link,.back-link{
+  display:inline-block;
+  text-decoration-line:underline;
+  text-decoration-color:transparent;
+  text-underline-offset:4px;
+  transition:transform .18s ease,color .18s ease,text-decoration-color .18s ease;
+}
+.case-link:hover,.back-link:hover{
+  transform:translateX(3px);
+  text-decoration-color:currentColor;
+}
+.button{
+  transition:transform .18s ease,border-color .18s ease,background-color .18s ease,box-shadow .18s ease;
+}
+.button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 3px 0 rgba(15,22,22,.08);
+}
+@media(prefers-reduced-motion:reduce){
+  .work-item,.case-link,.back-link,.button{
+    transition:none !important;
+  }
+  .case-link:hover,.back-link:hover,.button:hover{
+    transform:none !important;
+  }
+}
