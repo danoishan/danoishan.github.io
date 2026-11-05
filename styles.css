@@ -225,35 +225,26 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   }
 }
 
-/* Project title colour sweep (2026-11-05) */
-@supports ((-webkit-background-clip:text) or (background-clip:text)) {
-  .work-main h3 a {
-    background-image:linear-gradient(90deg,var(--accent) 0%,var(--accent) 50%,var(--ink) 50%,var(--ink) 100%);
-    background-size:200% 100%;
-    background-position:100% 0;
-    background-repeat:no-repeat;
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    color:transparent;
-    text-decoration:none;
-    transition:background-position .42s cubic-bezier(.2,.75,.3,1);
-  }
-  .work-main h3 a:hover,
-  .work-main h3 a:focus-visible {
-    background-position:0 0;
-    text-decoration:none;
-  }
-  @media(prefers-reduced-motion:reduce) {
-    .work-main h3 a {transition:none !important}
-  }
+/* Project title colour fade (2026-11-05): blue on hover, normal on exit. */
+.work-main h3 a {
+  color:var(--ink);
+  -webkit-text-fill-color:currentColor;
+  background-image:none;
+  background-clip:border-box;
+  -webkit-background-clip:border-box;
+  text-decoration:none;
+  transition:color .42s ease;
 }
-
-/* Case-specific title colour sweep speeds (2026-11-05) */
-/* The separate AI case retains its existing timing. */
-@supports ((-webkit-background-clip:text) or (background-clip:text)) {
-  .work-list .work-main h3 a[href="work/200m-messages.html"] {transition-duration:.1s}
-  .work-list .work-main h3 a[href="work/80-percent-drop.html"] {transition-duration:.2s}
-  .work-list .work-main h3 a[href="work/billing-journey.html"] {transition-duration:.3s}
-  .work-list .work-main h3 a[href="work/125-campaigns.html"] {transition-duration:.4s}
+.work-main h3 a:hover,
+.work-main h3 a:focus-visible {
+  color:var(--accent);
+  text-decoration:none;
+}
+/* Numbered case cards retain their individually requested fade speeds. */
+.work-list .work-main h3 a[href="work/200m-messages.html"] {transition-duration:.1s}
+.work-list .work-main h3 a[href="work/80-percent-drop.html"] {transition-duration:.2s}
+.work-list .work-main h3 a[href="work/billing-journey.html"] {transition-duration:.3s}
+.work-list .work-main h3 a[href="work/125-campaigns.html"] {transition-duration:.4s}
+@media(prefers-reduced-motion:reduce) {
+  .work-main h3 a {transition:none !important}
 }
