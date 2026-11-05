@@ -248,3 +248,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
     .work-main h3 a {transition:none !important}
   }
 }
+
+/* Case-specific title colour sweep speeds (2026-11-05) */
+/* The separate AI case retains its existing timing. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)) {
+  .work-list .work-main h3 a[href="work/200m-messages.html"] {transition-duration:.1s}
+  .work-list .work-main h3 a[href="work/80-percent-drop.html"] {transition-duration:.2s}
+  .work-list .work-main h3 a[href="work/billing-journey.html"] {transition-duration:.3s}
+  .work-list .work-main h3 a[href="work/125-campaigns.html"] {transition-duration:.4s}
+}
