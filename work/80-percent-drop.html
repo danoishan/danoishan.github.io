@@ -111,7 +111,7 @@
 <p>Once captured, can the record resolve to the intended person or account? Are the required source objects, fields and relationships actually available for the desired segmentation and reporting?</p>
 <h3>4. Attribution</h3>
 <p>Even if a lead exists, can marketing connect it back to the form, landing page, campaign or flow that generated it?</p></section>
-<section id="breakpoint"><h2>Then we found a concrete breakpoint at the system boundary.</h2>
+<section id="breakpoint"><h2>Isolate the browser-to-form breakpoint.</h2>
 <p>Some forms worked when rendered as simple standalone embeds, but became slow or unpredictable when loaded dynamically inside the website experience. The implementation crossed browser JavaScript, iframe behaviour, CORS and Salesforce form technology, with different teams owning different parts of the chain.</p>
 <p>That made the troubleshooting approach more important than the product label. We reproduced the failure, separated page behaviour from platform behaviour and translated the evidence into specific actions for the web and Salesforce teams.</p>
 <div class="artifact">
@@ -150,7 +150,7 @@
 </table></div>
 </div>
 <p>For the unstable embedded experiences, the team moved toward a visitor-facing external form connected through Salesforce Form Handler, with explicit field names, conditional logic, hidden values, staging and end-to-end testing defined before production.</p></section>
-<section id="audit"><h2>The visible form problem was real, but it was not the whole problem.</h2>
+<section id="audit"><h2>Fixing capture alone would miss the other gaps.</h2>
 <p>The broader audit surfaced gaps across capture, consent, identity, attribution and operations. Fixing only the JavaScript / embedded form issue would have improved one breakpoint while leaving the organization unable to fully trust the customer data chain.</p>
 <div class="artifact">
 <div class="artifact-head">
@@ -198,7 +198,7 @@
 </tbody>
 </table></div>
 </div></section>
-<section id="decision"><h2>The answer was sequencing, not one giant rebuild.</h2>
+<section id="decision"><h2>Prioritize reliable capture before attribution.</h2>
 <p>I recommended restoring trust in dependency order so each phase created evidence for the next.</p>
 <div class="phase-grid">
 <div class="phase">
@@ -256,7 +256,7 @@
 </div></section>
 <section id="adoption"><h2>Rollout was part of the recommendation.</h2>
 <p>The proposed rollout starts with a controlled form set and known test records. Client and operating teams need expected behavior, documentation, monitoring and an escalation owner before the pattern expands.</p>
-<p>Submission volumes, support issues and stakeholder feedback would then be compared with the baseline. This is a rollout and validation approach, not evidence that every phase was completed.</p></section><section id="validation"><h2>The output was a proof plan.</h2>
+<p>Submission volumes, support issues and stakeholder feedback would then be compared with the baseline. This is a rollout and validation approach, not evidence that every phase was completed.</p></section><section id="validation"><h2>What would prove the recovery worked?</h2>
 <p>For each known test record, check browser acceptance, the created or updated record, conditional and hidden values, consent, intended identity, campaign attribution and the corresponding report. Include opt-outs and other negative cases.</p>
 <table class="decision-table">
 <caption class="sr-only">The output was a proof plan.</caption>
