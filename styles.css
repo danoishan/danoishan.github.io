@@ -248,5 +248,5 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 
 /* About section: one personal photo, with the existing editorial grid intact. */
 #about .about-photo{margin:28px 0 0;width:min(100%,360px)}
-#about .about-photo img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:3px}
+#about .about-photo img{display:block;width:100%;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:center 20%;border:1px solid var(--line);border-radius:3px}
 @media(max-width:900px){#about .about-photo{width:min(100%,400px);margin:24px 0 8px}}
