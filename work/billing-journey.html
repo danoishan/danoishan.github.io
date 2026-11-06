@@ -211,7 +211,7 @@
 </ul>
 </div>
 </div></section>
-<section id="controls"><h2>Three controls to prevent another silent miss.</h2>
+<section id="controls"><h2>Three controls to prevent another silent miss.</h2><p><strong>Release decision:</strong> restoring one failed billing record is an immediate recovery task. A source-file contract and an alert for rejected rows are separate, longer-term improvements. I tracked both paths so an urgent resend did not get mistaken for a permanent solution.</p>
 <p class="evidence-callout">The items below are recommendations or explored follow-ups, rather than a verified list of completed production changes.</p>
 <h3>Make the file contract resilient</h3>
 <p>We discussed using text-qualified columns so values containing commas or other delimiters would not accidentally change the file structure. The point was not one problematic name. It was making the interface tolerant of valid customer data.</p>
