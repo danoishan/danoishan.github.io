@@ -99,7 +99,7 @@
 </table></section><section id="context"><h2>At scale, the interfaces become the risk.</h2>
 <p>Email, SMS/MMS, push and in-app programs cross audience logic, source data, content, approvals, build, QA and releases. A late source, changed rule or unclear version can affect several workstreams at once.</p>
 <p>I make the dependency, owner, decision and release evidence visible so teams can act before the final launch meeting.</p>
-<p>Personalization adds another dependency: a missing profile field, late audience update or unclear fallback can change which message a customer receives. I ask for entry rules, data freshness and negative test cases to be agreed before the release, rather than treating those as copy fixes at the end.</p></section><section id="failure"><h2>The failure modes were predictable.</h2>
+<p>Personalization adds another dependency: a missing profile field, late audience update or unclear fallback can change which message a customer receives. I ask for entry rules, data freshness and negative test cases to be agreed before the release, rather than treating those as copy fixes at the end.</p></section><section id="failure"><h2>Where scale breaks first.</h2>
 <p>Most recurring problems could be grouped into a small number of patterns:</p>
 <div class="artifact">
 <div class="artifact-head">
@@ -176,7 +176,7 @@
 </tr>
 </tbody>
 </table>
-<p>My role is to keep the context and acceptance evidence intact across teams. Production engineering and configuration remain with the appropriate specialists.</p></section><section id="controls"><h2>The controls I cared about.</h2>
+<p>My role is to keep the context and acceptance evidence intact across teams. Production engineering and configuration remain with the appropriate specialists.</p></section><section id="controls"><h2>Four controls that changed delivery decisions.</h2>
 <h3>Requirements that can be tested</h3>
 <p>I prefer requirements that describe observable behaviour rather than vague intent. “Target lapsed members” is not enough. What qualifies as lapsed? Which source owns status? What happens to recently reactivated customers? Which exclusions override inclusion?</p>
 <h3>Decision logs</h3>
@@ -219,7 +219,7 @@
 </tbody>
 </table></div>
 </div></section>
-<section id="tradeoffs"><h2>Standardize the controls, vary the ceremony.</h2>
+<section id="tradeoffs"><h2>Same evidence, lighter ceremony where appropriate.</h2>
 <p>Ownership, acceptance criteria, version naming, risk visibility, go/no-go evidence and post-launch support stay consistent. Meeting cadence, artifact depth, creative iteration and rollout size vary with complexity and risk.</p></section><section id="launch"><h2>Go/no-go should be an evidence review, not a discovery session.</h2>
 <p>Before a production release, the team should already know the answer to the questions below. The meeting exists to confirm evidence and make a decision, not to invent the readiness model live.</p>
 <div class="checklist">
@@ -301,13 +301,13 @@
 </table></div>
 </div></section>
 <section id="adoption"><h2>Release includes the operating handoff.</h2>
-<p>Stakeholder briefings, release documentation, training and early monitoring help the client team understand what changed and where to escalate. Support issues, audience and delivery data, feedback and platform analytics then feed optimization and the next rollout.</p></section><section id="outcomes"><h2>Reported outcomes, with their limits.</h2>
+<p>Stakeholder briefings, release documentation, training and early monitoring help the client team understand what changed and where to escalate. Support issues, audience and delivery data, feedback and platform analytics then feed optimization and the next rollout.</p></section><section id="outcomes"><h2>Reported operating outcomes.</h2>
 <table class="decision-table">
 <caption class="sr-only">Reported outcomes, with their limits.</caption>
 <tbody>
 <tr>
 <th scope="row">Portfolio scope</th>
-<td>20+ concurrent client workstreams each quarter; programs supporting 200M+ annual email, SMS/MMS and push sends. These describe scale, not messages I personally authored.</td>
+<td>20+ concurrent client workstreams each quarter; programs supporting 200M+ annual email and SMS/MMS sends (push and in-app initiatives tracked separately). These describe scale, not messages I personally authored.</td>
 </tr>
 <tr>
 <th scope="row">Late-stage scope changes</th>
