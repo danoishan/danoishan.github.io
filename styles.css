@@ -244,3 +244,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 @media(prefers-reduced-motion:reduce) {
   .work-main h3 a {transition:none !important}
 }
+
+
+/* About section: one personal photo, with the existing editorial grid intact. */
+#about .about-photo{margin:28px 0 0;width:min(100%,360px)}
+#about .about-photo img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:3px}
+@media(max-width:900px){#about .about-photo{width:min(100%,400px);margin:24px 0 8px}}
