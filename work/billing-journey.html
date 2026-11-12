@@ -12,9 +12,9 @@
 <meta name="description" content="An anonymized enterprise billing case about making file-driven lifecycle failures observable across source systems, imports, journey logic, monitoring and recovery ownership.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=20261112-editorial-redesign01">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Bill That Couldn’t Go Missing | Danoishan Sinnathamby">
 <meta property="og:description" content="An anonymized enterprise billing case about making file-driven lifecycle failures observable across source systems, imports, journey logic, monitoring and recovery ownership.">
@@ -27,7 +27,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
+<body class="case-study case--billing">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap nav">
 <a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
@@ -68,35 +68,14 @@
 <div class="case-body"><div class="wrap case-grid">
 <aside class="case-nav"><a href="#snapshot">00 Decision snapshot</a><a href="#context">01 Context</a><a href="#incident">02 Incident</a><a href="#frame">03 Frame</a><a href="#evidence">04 Evidence</a><a href="#handoffs">05 Handoffs</a><a href="#controls">06 Controls</a><a href="#adoption">07 Adoption</a><a href="#ownership">08 Ownership</a><a href="#lesson">09 Lesson</a></aside><article class="case-content">
 <section id="snapshot"><h2>What we were really trying to solve.</h2>
-<table class="decision-table">
-<caption class="sr-only">Decision snapshot.</caption>
-<tbody>
-<tr>
-<th scope="row">Objective</th>
-<td>Make customer-critical billing communication failures visible and recoverable.</td>
-</tr>
-<tr>
-<th scope="row">Finding</th>
-<td>A valid source record could fail downstream, while parsing exceptions were not automatically communicated upstream.</td>
-</tr>
-<tr>
-<th scope="row">My ownership</th>
-<td>Cross-system investigation, customer impact, technical handoffs, decision tracking and recovery ownership.</td>
-</tr>
-<tr>
-<th scope="row">Recommendation</th>
-<td>Strengthen the file contract, exception feedback, logs and a documented resend procedure.</td>
-</tr>
-<tr>
-<th scope="row">Trade-off</th>
-<td>Keep a clear manual recovery path while validating a more durable automated feedback mechanism.</td>
-</tr>
-<tr>
-<th scope="row">Status</th>
-<td>Findings and operating recommendations are established here. Alert implementation and end-to-end recovery still require evidence.</td>
-</tr>
-</tbody>
-</table></section><section id="context"><h2>The email was only the last visible step.</h2>
+<dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>Objective</dt><dd>Make customer-critical billing communication failures visible and recoverable.</dd></div>
+<div class="story-ledger__row"><dt>Finding</dt><dd>A valid source record could fail downstream, while parsing exceptions were not automatically communicated upstream.</dd></div>
+<div class="story-ledger__row"><dt>My ownership</dt><dd>Cross-system investigation, customer impact, technical handoffs, decision tracking and recovery ownership.</dd></div>
+<div class="story-ledger__row"><dt>Recommendation</dt><dd>Strengthen the file contract, exception feedback, logs and a documented resend procedure.</dd></div>
+<div class="story-ledger__row"><dt>Trade-off</dt><dd>Keep a clear manual recovery path while validating a more durable automated feedback mechanism.</dd></div>
+<div class="story-ledger__row"><dt>Status</dt><dd>Findings and operating recommendations are established here. Alert implementation and end-to-end recovery still require evidence.</dd></div>
+</dl></section><section id="context"><h2>The email was only the last visible step.</h2>
 <p>The customer-facing requirement sounded simple: when a billing event becomes true upstream, the right customer should receive the right communication. In practice, that outcome depended on multiple systems and teams agreeing on data structure, timing, identifiers and error behaviour.</p>
 <div class="artifact">
 <div class="artifact-head">
