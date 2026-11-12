@@ -283,3 +283,32 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   background-image:none !important;
   -webkit-text-fill-color:currentColor !important;
 }
+
+/* About layout: heading on top, story and photo aligned in one balanced row. */
+#about{padding-top:68px;padding-bottom:68px}
+#about .about-strip{display:block}
+#about .about-heading{max-width:900px;margin-bottom:32px}
+#about .about-heading h2{font-size:clamp(38px,4.5vw,60px);line-height:1.04;max-width:900px}
+#about .about-body{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(230px,300px);
+  gap:clamp(28px,5.5vw,84px);
+  align-items:start;
+}
+#about .about-copy{max-width:660px;min-width:0}
+#about .about-copy > p:first-child{margin-top:0}
+#about .outside{margin-top:22px}
+#about .about-photo{width:100%;max-width:300px;margin:0;align-self:start}
+#about .about-photo img{
+  width:100%;height:auto;aspect-ratio:3/4;
+  object-fit:cover;object-position:center 65%;
+  filter:brightness(1.25) contrast(.86) saturate(1.10);
+  -webkit-mask-image:none;mask-image:none;
+}
+#about .about-photo figcaption{margin-top:8px}
+@media(max-width:760px){
+  #about{padding-top:56px;padding-bottom:56px}
+  #about .about-heading{margin-bottom:25px}
+  #about .about-body{grid-template-columns:1fr;gap:25px}
+  #about .about-photo{width:min(100%,245px);max-width:245px;margin:0}
+}
