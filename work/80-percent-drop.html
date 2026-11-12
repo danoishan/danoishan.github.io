@@ -33,9 +33,9 @@
 <a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
 </div></header>
 <main id="main-content"><section class="case-hero"><div class="wrap reveal">
-<a class="back-link" href="../index.html#work">← selected work</a><p class="eyebrow">Case 03 · diagnostic / customer data / CRM</p>
+<a class="back-link" href="../index.html#work">← selected work</a><p class="eyebrow">Case 01 · diagnostic / customer data / CRM</p>
 <h1>The 80% Drop</h1>
-<p class="case-dek">A CRM migration appeared to wipe out most inbound demand. Instead of assuming customers had stopped converting, I led the investigation across the website, unstable form behaviour, Salesforce capture, consent, identity and attribution to find where the customer path had stopped being observable.</p>
+<p class="case-dek">Reported form submissions dropped by more than 80% after a CRM migration, but website traffic hadn't fallen in the same way. That mismatch was the clue. I worked back through the browser, embedded forms, Salesforce, consent and reporting to find where the trail was breaking.</p>
 <p class="case-note">ANONYMIZED COMPOSITE · Based on real delivery work. Names, implementation details and some sequencing are simplified or combined to protect client confidentiality.</p>
 </div></section>
 <section class="case-facts"><div class="case-fact">
@@ -59,17 +59,13 @@
 </div></section>
 <div class="case-body"><div class="wrap case-grid">
 <aside class="case-nav"><a href="#snapshot">00 Decision snapshot</a><a href="#problem">01 Signal</a><a href="#frame">02 Frame</a><a href="#breakpoint">03 Breakpoint</a><a href="#audit">04 Audit</a><a href="#decision">05 Roadmap</a><a href="#ownership">06 Handoffs</a><a href="#adoption">07 Adoption</a><a href="#validation">08 Proof</a><a href="#reflection">09 Reflection</a></aside><article class="case-content">
-<section id="snapshot"><h2>Decision snapshot.</h2>
+<section id="snapshot"><h2>The question worth answering.</h2>
 <table class="decision-table">
 <caption class="sr-only">Decision snapshot.</caption>
 <tbody>
 <tr>
 <th scope="row">Signal</th>
 <td>More than 80% reported submission decline after a migration; this was the problem signal, not a recovery result.</td>
-</tr>
-<tr>
-<th scope="row">Evidence boundary</th>
-<td>An anonymized composite of real delivery work. Details and sequencing are simplified or combined.</td>
 </tr>
 <tr>
 <th scope="row">My ownership</th>
@@ -105,7 +101,7 @@
 </div>
 </div>
 </div></section>
-<section id="frame"><h2>I split one symptom into four layers.</h2>
+<section id="frame"><h2>Four places the answer could be hiding.</h2>
 <h3>1. Capture</h3>
 <p>Can the user actually see and submit the form? Does dynamically loading it change the behaviour? Does the browser show a request, error or blocked response? Do different form patterns behave differently?</p>
 <h3>2. Consent</h3>
@@ -114,9 +110,9 @@
 <p>Once captured, can the record resolve to the intended person or account? Are the required source objects, fields and relationships actually available for the desired segmentation and reporting?</p>
 <h3>4. Attribution</h3>
 <p>Even if a lead exists, can marketing connect it back to the form, landing page, campaign or flow that generated it?</p></section>
-<section id="breakpoint"><h2>Isolate the browser-to-form breakpoint.</h2>
+<section id="breakpoint"><h2>The form worked in one place and struggled in another.</h2>
 <p>Some forms worked when rendered as simple standalone embeds, but became slow or unpredictable when loaded dynamically inside the website experience. The implementation crossed browser JavaScript, iframe behaviour, CORS and Salesforce form technology, with different teams owning different parts of the chain.</p>
-<p>That made the troubleshooting approach more important than the product label. We reproduced the failure, separated page behaviour from platform behaviour and translated the evidence into specific actions for the web and Salesforce teams.</p>
+<p>The product name didn't tell us where the fault was. We compared the working and failing form patterns, reproduced the behaviour and gave the website and Salesforce specialists specific things to check.</p>
 <div class="artifact">
 <div class="artifact-head">
 <span>Artifact 02</span><span>Breakpoint isolation</span>
@@ -201,7 +197,7 @@
 </tbody>
 </table></div>
 </div></section>
-<section id="decision"><h2>Prioritize reliable capture before attribution.</h2><p><strong>Why this order:</strong> start with test submissions through the real page and form, then confirm records and consent downstream. Only after capture is reliable does campaign attribution become a meaningful measure. This was a recommended recovery sequence, not a claim that every phase was completed.</p>
+<section id="decision"><h2>Fix capture first. Attribution comes later.</h2><p><strong>Why this order:</strong> start with test submissions through the real page and form, then confirm records and consent downstream. Only after capture is reliable does campaign attribution become a meaningful measure. This was a recommended recovery sequence, not a claim that every phase was completed.</p>
 <p>I recommended restoring trust in dependency order so each phase created evidence for the next.</p>
 <div class="phase-grid">
 <div class="phase">
@@ -218,8 +214,8 @@
 </div>
 </div>
 <p>Attribution is useless if capture is unreliable. Segmentation is risky if identity is unresolved. A polished dashboard is dangerous if the underlying event chain is not trustworthy.</p></section>
-<section id="ownership"><h2>The work moved through specialists. My job was to keep the handoffs intact.</h2>
-<p>I did not need to own every line of production code to own delivery. I needed to make sure the context, evidence, decision and acceptance criteria survived each handoff.</p>
+<section id="ownership"><h2>I didn't write every fix. I made the next step testable.</h2>
+<p>The web and Salesforce specialists owned their implementation work. I kept the symptom, test evidence, decision and acceptance criteria together so each team could pick up the right problem.</p>
 <div class="artifact">
 <div class="artifact-head">
 <span>Artifact 04</span><span>Team + handoffs</span>
@@ -257,7 +253,7 @@
 </ul>
 </div>
 </div></section>
-<section id="adoption"><h2>Rollout was part of the recommendation.</h2>
+<section id="adoption"><h2>One successful submission isn't a rollout plan.</h2>
 <p>The proposed rollout starts with a controlled form set and known test records. Client and operating teams need expected behavior, documentation, monitoring and an escalation owner before the pattern expands.</p>
 <p>Submission volumes, support issues and stakeholder feedback would then be compared with the baseline. This is a rollout and validation approach, not evidence that every phase was completed.</p></section><section id="validation"><h2>What would prove the recovery worked?</h2>
 <p>For each known test record, check browser acceptance, the created or updated record, conditional and hidden values, consent, intended identity, campaign attribution and the corresponding report. Include opt-outs and other negative cases.</p>
@@ -278,7 +274,7 @@
 </tr>
 </tbody>
 </table>
-<p>No quantified recovery is claimed in this public composite.</p></section><section id="reflection"><h2>What I would do differently before the next migration.</h2>
+</section><section id="reflection"><h2>The baseline I'd insist on before another migration.</h2>
 <p>I would define the observability baseline before migration begins: expected form volumes, canonical test records, known page behaviours, source-to-report lineage, named owners for every system boundary and an explicit enablement / adoption plan for the teams who will operate the new process.</p>
 <div class="pullquote">The lesson was not “forms are fragile.” It was that customer journeys become hard to debug and hard to adopt when the organization cannot see or own the handoffs.</div></section>
 <section class="case-cta"><p><strong>Next useful view:</strong> how I apply the same delivery discipline across 20+ concurrent enterprise workstreams.</p>
