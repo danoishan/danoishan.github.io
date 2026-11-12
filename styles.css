@@ -261,9 +261,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 }
 @media(max-width:900px){#about .about-photo{width:min(100%,390px);margin:24px 0 8px}}
 
-/* One consistent portrait treatment: a clean circular crop and a subtle,
-   evenly diffused halo. Shared by the homepage, recruiter brief and resume.
-   Avoid radial transparency masks, which emphasized the photo's uneven edge. */
+/* Shared portrait treatment: no border or dark outline.
+   A narrow, symmetric radial feather hides the PNG's hard perimeter,
+   while the soft halo sits evenly outside the circular crop. */
 .brief-hero-layout{display:grid;grid-template-columns:minmax(0,1fr) 172px;gap:clamp(24px,4vw,52px);align-items:center}
 .brief-hero-copy{min-width:0}
 .brief-portrait{
@@ -274,15 +274,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 }
 .brief-portrait::before{
   content:"";position:absolute;inset:-5px;z-index:-1;
-  border-radius:50%;background:rgba(102,119,134,.16);
-  filter:blur(7px);pointer-events:none;
+  border-radius:50%;background:rgba(102,119,134,.11);
+  filter:blur(8px);pointer-events:none;
 }
 .brief-portrait img{
   display:block;width:100%;height:100%;aspect-ratio:1;
   object-fit:cover;object-position:center;
-  border:0;border-radius:50%;background:transparent;
-  -webkit-mask-image:none;mask-image:none;
-  box-shadow:0 0 0 1px rgba(49,61,69,.08),0 0 18px rgba(29,39,47,.12);
+  border:0;border-radius:50%;background:transparent;box-shadow:none;
+  /* The same 7-8px feather in all directions, not a directional fade. */
+  -webkit-mask-image:radial-gradient(circle closest-side at center,#000 0 90%,transparent 100%);
+  mask-image:radial-gradient(circle closest-side at center,#000 0 90%,transparent 100%);
 }
 .hero-aside .home-portrait{
   width:160px;height:160px;margin:4px 0 26px;
