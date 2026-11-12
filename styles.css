@@ -276,3 +276,33 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
  .brief-hero-layout{grid-template-columns:minmax(0,1fr);gap:24px}
  .brief-portrait{width:124px;height:124px;grid-row:2;justify-self:start}
 }
+
+
+/* Editorial review branch only: visible staging label and quieter AI accents. */
+.editorial-preview-banner{
+  padding:8px 18px;
+  background:#28463b;
+  color:#f8f5ec;
+  text-align:center;
+  font:500 11px/1.5 var(--mono);
+  letter-spacing:.025em;
+}
+.editorial-preview-banner strong{
+  display:inline-block;
+  margin-right:11px;
+  padding:2px 8px;
+  border:1px solid rgba(255,255,255,.5);
+  font-size:9px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.ai-work-link .ai-accent,.ai-shimmer{
+  animation:none !important;
+  background-image:none !important;
+  -webkit-text-fill-color:currentColor !important;
+}
+@media(max-width:620px){
+  .editorial-preview-banner{font-size:10px;line-height:1.65}
+  .editorial-preview-banner strong{margin-right:5px}
+}
+@media print{.editorial-preview-banner{display:none}}
