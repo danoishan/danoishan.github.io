@@ -572,3 +572,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   .case-study .case-content h2,.portfolio-home .section-head h2{font-size:22pt}
   .case-study .case-hero h1{font-size:30pt}
 }
+
+/* Keep short-case content full width at tablet breakpoints as their nav is hidden. */
+@media(min-width:761px) and (max-width:980px){
+  .case--creative .case-grid,.case--markets .case-grid,.case--ai .case-grid{
+    grid-template-columns:minmax(0,820px);
+  }
+}
