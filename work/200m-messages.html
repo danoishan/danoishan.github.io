@@ -12,9 +12,9 @@
 <meta name="description" content="How Danoishan structures high-volume lifecycle delivery across 20+ concurrent workstreams and 200M+ annual communications using explicit handoffs, release controls and post-launch ownership.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=20261112-editorial-redesign01">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Making 200 Million Messages Boring | Danoishan Sinnathamby">
 <meta property="og:description" content="How Danoishan structures high-volume lifecycle delivery across 20+ concurrent workstreams and 200M+ annual communications using explicit handoffs, release controls and post-launch ownership.">
@@ -27,7 +27,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
+<body class="case-study case--operations">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap nav">
 <a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
@@ -70,31 +70,13 @@
 <div class="case-body"><div class="wrap case-grid">
 <aside class="case-nav"><a href="#snapshot">00 Decision snapshot</a><a href="#context">01 Context</a><a href="#failure">02 Failure modes</a><a href="#model">03 Operating model</a><a href="#handoffs">04 Handoffs</a><a href="#controls">05 Controls</a><a href="#tradeoffs">06 Trade-offs</a><a href="#launch">07 Launch</a><a href="#judgement">08 Launch judgement</a><a href="#translation">09 Translation</a><a href="#adoption">10 Adoption + scale</a><a href="#outcomes">11 Outcomes</a><a href="#reflection">12 Reflection</a></aside><article class="case-content">
 <section id="snapshot"><h2>What needed to stay under control.</h2>
-<table class="decision-table">
-<caption class="sr-only">Decision snapshot.</caption>
-<tbody>
-<tr>
-<th scope="row">Objective</th>
-<td>Deliver high-volume lifecycle programs predictably across 20+ concurrent workstreams.</td>
-</tr>
-<tr>
-<th scope="row">My ownership</th>
-<td>Requirements, dependencies, capacity, risk, UAT, launch decisions, commercial visibility and client communication.</td>
-</tr>
-<tr>
-<th scope="row">Decision</th>
-<td>Standardize ownership, testable requirements, decision logs and release evidence; scale the process to delivery risk.</td>
-</tr>
-<tr>
-<th scope="row">Trade-off</th>
-<td>Keep core controls consistent while letting artifact depth and meeting cadence vary.</td>
-</tr>
-<tr>
-<th scope="row">Reported outcomes</th>
-<td>30% fewer late-stage scope changes; 20% shorter UAT-to-launch cycles; monthly forecasts within 5% of actual delivery effort.</td>
-</tr>
-</tbody>
-</table></section><section id="context"><h2>The risk is usually between the teams.</h2>
+<dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>Objective</dt><dd>Deliver high-volume lifecycle programs predictably across 20+ concurrent workstreams.</dd></div>
+<div class="story-ledger__row"><dt>My ownership</dt><dd>Requirements, dependencies, capacity, risk, UAT, launch decisions, commercial visibility and client communication.</dd></div>
+<div class="story-ledger__row"><dt>Decision</dt><dd>Standardize ownership, testable requirements, decision logs and release evidence; scale the process to delivery risk.</dd></div>
+<div class="story-ledger__row"><dt>Trade-off</dt><dd>Keep core controls consistent while letting artifact depth and meeting cadence vary.</dd></div>
+<div class="story-ledger__row"><dt>Reported outcomes</dt><dd>30% fewer late-stage scope changes; 20% shorter UAT-to-launch cycles; monthly forecasts within 5% of actual delivery effort.</dd></div>
+</dl></section><section id="context"><h2>The risk is usually between the teams.</h2>
 <p>Email, SMS/MMS, push and in-app programs cross audience logic, source data, content, approvals, build, QA and releases. A late source, changed rule or unclear version can affect several workstreams at once.</p>
 <p>When a source slips or an audience rule changes, I want three answers early: who's on it, what else is affected, and what proof we need before launch. That is far more useful than discovering the gap in the final meeting.</p>
 <p>Personalization adds another dependency: a missing profile field, late audience update or unclear fallback can change which message a customer receives. I ask for entry rules, data freshness and negative test cases to be agreed before the release, rather than treating those as copy fixes at the end.</p></section><section id="failure"><h2>The problems that kept showing up.</h2>
@@ -157,23 +139,11 @@
 </div>
 <p>The cross-cutting controls mattered more than the boxes. A risk discovered during requirements needed to survive into launch planning. A capacity decision needed to be visible to both the client and delivery team. A late change needed an explicit impact rather than silently becoming “the new plan.”</p></section>
 <section id="handoffs"><h2>Every handoff needs a usable output.</h2>
-<table class="decision-table">
-<caption class="sr-only">Every handoff needs a usable output.</caption>
-<tbody>
-<tr>
-<th scope="row">I hand forward</th>
-<td>Objective, scope, audience and data assumptions, acceptance criteria, open decisions, dependencies and escalation path.</td>
-</tr>
-<tr>
-<th scope="row">Specialists hand back</th>
-<td>Implementation decisions, build evidence, limitations, QA results, unresolved defects and release readiness.</td>
-</tr>
-<tr>
-<th scope="row">Client / operations confirm</th>
-<td>UAT approval, customer impact, monitoring ownership and support readiness.</td>
-</tr>
-</tbody>
-</table>
+<dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>I hand forward</dt><dd>Objective, scope, audience and data assumptions, acceptance criteria, open decisions, dependencies and escalation path.</dd></div>
+<div class="story-ledger__row"><dt>Specialists hand back</dt><dd>Implementation decisions, build evidence, limitations, QA results, unresolved defects and release readiness.</dd></div>
+<div class="story-ledger__row"><dt>Client / operations confirm</dt><dd>UAT approval, customer impact, monitoring ownership and support readiness.</dd></div>
+</dl>
 <p>My role is to keep the context and acceptance evidence intact across teams. Production engineering and configuration remain with the appropriate specialists.</p></section><section id="controls"><h2>Four controls worth keeping.</h2>
 <h3>Requirements that can be tested</h3>
 <p>I prefer requirements that describe observable behaviour rather than vague intent. “Target lapsed members” is not enough. What qualifies as lapsed? Which source owns status? What happens to recently reactivated customers? Which exclusions override inclusion?</p>
@@ -276,55 +246,21 @@
 <div class="artifact-head">
 <span>Artifact 05</span><span>One issue, three audiences</span>
 </div>
-<div class="artifact-body"><table>
-<caption class="sr-only">The same technical truth needs different language for different people.</caption>
-<thead><tr>
-<th scope="col">Audience</th>
-<th scope="col">What I would say</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Marketing / strategy</td>
-<td>One signal that determines who enters is inconsistent and one personalization field is incomplete, so a broad launch could give some customers the wrong experience.</td>
-</tr>
-<tr>
-<td>Engineering / data</td>
-<td>Name the exact event or field, expected schema and timing, affected test cases, actual result, source owner and acceptance criteria.</td>
-</tr>
-<tr>
-<td>Executive / sponsor</td>
-<td>State the customer impact, release risk, realistic options, my recommendation, the decision required and the next update point.</td>
-</tr>
-</tbody>
-</table></div>
+<div class="artifact-body"><dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>Marketing / strategy</dt><dd>One signal that determines who enters is inconsistent and one personalization field is incomplete, so a broad launch could give some customers the wrong experience.</dd></div>
+<div class="story-ledger__row"><dt>Engineering / data</dt><dd>Name the exact event or field, expected schema and timing, affected test cases, actual result, source owner and acceptance criteria.</dd></div>
+<div class="story-ledger__row"><dt>Executive / sponsor</dt><dd>State the customer impact, release risk, realistic options, my recommendation, the decision required and the next update point.</dd></div>
+</dl></div>
 </div></section>
 <section id="adoption"><h2>Release includes the operating handoff.</h2>
 <p>Stakeholder briefings, release documentation, training and early monitoring help the client team understand what changed and where to escalate. Support issues, audience and delivery data, feedback and platform analytics then feed optimization and the next rollout.</p></section><section id="outcomes"><h2>Reported operating outcomes.</h2>
-<table class="decision-table">
-<caption class="sr-only">Reported outcomes, with their limits.</caption>
-<tbody>
-<tr>
-<th scope="row">Portfolio scope</th>
-<td>20+ concurrent client workstreams each quarter; programs supporting 200M+ annual email and SMS/MMS sends (push and in-app initiatives tracked separately). These describe scale, not messages I personally authored.</td>
-</tr>
-<tr>
-<th scope="row">Late-stage scope changes</th>
-<td>Reported 30% reduction associated with structured intake, prioritization, RAID and change control.</td>
-</tr>
-<tr>
-<th scope="row">UAT-to-launch cycle</th>
-<td>Reported 20% reduction associated with clearer acceptance criteria, test scenarios and release controls. This is not a reduction in the entire project cycle.</td>
-</tr>
-<tr>
-<th scope="row">Forecast</th>
-<td>Monthly forecast within 5% of actual delivery effort. This describes delivery-effort forecasting, not revenue forecasting.</td>
-</tr>
-<tr>
-<th scope="row">Measurement disclosure</th>
-<td>These are team-level work-history results, not a controlled experiment. I haven't published the raw counts or comparison windows, so they shouldn't be read as proof of my individual causal impact.</td>
-</tr>
-</tbody>
-</table>
+<dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>Portfolio scope</dt><dd>20+ concurrent client workstreams each quarter; programs supporting 200M+ annual email and SMS/MMS sends (push and in-app initiatives tracked separately). These describe scale, not messages I personally authored.</dd></div>
+<div class="story-ledger__row"><dt>Late-stage scope changes</dt><dd>Reported 30% reduction associated with structured intake, prioritization, RAID and change control.</dd></div>
+<div class="story-ledger__row"><dt>UAT-to-launch cycle</dt><dd>Reported 20% reduction associated with clearer acceptance criteria, test scenarios and release controls. This is not a reduction in the entire project cycle.</dd></div>
+<div class="story-ledger__row"><dt>Forecast</dt><dd>Monthly forecast within 5% of actual delivery effort. This describes delivery-effort forecasting, not revenue forecasting.</dd></div>
+<div class="story-ledger__row"><dt>Measurement disclosure</dt><dd>These are team-level work-history results, not a controlled experiment. I haven't published the raw counts or comparison windows, so they shouldn't be read as proof of my individual causal impact.</dd></div>
+</dl>
 <p><a class="case-link" href="measurement-notes.html">Measurement context and what can be verified publicly →</a></p></section><section id="reflection"><h2>What I'd measure more carefully next time.</h2>
 <p>Move readiness criteria earlier and keep measurement definitions alongside the work. The next improvement is a consistent baseline for scope changes, UAT-to-launch duration and effort forecasting so the operating results are easier to explain and compare.</p>
 <p><a class="case-link" href="../artifacts/waypoint-decision-record.md">Inspect a filled fictional decision record →</a></p></section><section class="case-cta"><p><strong>Next useful view:</strong> how I handle a failure that crosses source, integration and messaging boundaries.</p>
