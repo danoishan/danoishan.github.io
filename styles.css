@@ -312,3 +312,263 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   #about .about-body{grid-template-columns:1fr;gap:25px}
   #about .about-photo{width:min(100%,245px);max-width:245px;margin:0}
 }
+
+
+/* Editorial redesign: stories over dashboards.
+   New type is limited to the homepage, brief and six selected case studies.
+   Technical matrices stay as tables; narrative facts become definition lists. */
+:root{--editorial-serif:"Newsreader",Georgia,"Times New Roman",serif}
+.portfolio-home .hero h1 em{
+  font-family:var(--editorial-serif);font-weight:500;font-style:italic;
+  letter-spacing:-.028em;line-height:.96;
+}
+.portfolio-home .section-head h2{
+  font-family:var(--editorial-serif);font-weight:500;letter-spacing:-.025em;
+  font-size:clamp(44px,5vw,70px);line-height:1;
+}
+.portfolio-home .section-head{grid-template-columns:.43fr 1.57fr}
+.portfolio-home .label,.portfolio-home .eyebrow,.portfolio-home .work-meta,
+.portfolio-home .note-card small,.portfolio-home .evidence-label{
+  font-family:var(--sans);letter-spacing:.055em;
+}
+.portfolio-home .work-meta{font-size:11px}
+.portfolio-home .work-meta b{font-size:10px}
+.portfolio-home .proof-item strong{font-family:var(--editorial-serif);font-weight:600;font-size:clamp(32px,3.4vw,45px)}
+.portfolio-home .proof-item:nth-child(3) strong{font-family:var(--sans);font-size:24px}
+.portfolio-home .work-item{padding:33px 14px}
+.portfolio-home .work-main h3{letter-spacing:-.045em}
+.portfolio-home .notes-grid{gap:24px}
+.portfolio-home .note-card{border-top:1px solid var(--ink);padding-top:17px}
+.portfolio-home .note-card h3{font-family:var(--editorial-serif);font-weight:500;font-size:clamp(23px,2.1vw,30px);letter-spacing:-.02em;line-height:1.15}
+
+/* A reading index, not a dashboard masquerading as a table. */
+.capability-index{margin:0 0 22px;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.capability-item{
+  display:grid;grid-template-columns:minmax(165px,.72fr) minmax(0,1.6fr);
+  gap:26px;padding:20px 4px 21px;border-bottom:1px solid var(--line);align-items:start;
+}
+.capability-topic{font-size:12px;font-weight:600;color:var(--muted);padding-top:5px}
+.capability-detail a{
+  display:inline-block;font-family:var(--editorial-serif);
+  font-weight:500;font-size:clamp(24px,2.5vw,32px);line-height:1.12;
+  letter-spacing:-.025em;text-decoration:none;
+  transition:color .25s ease;
+}
+.capability-detail a:hover,.capability-detail a:focus-visible{color:var(--accent)}
+.capability-detail span{display:block;margin-top:7px;font-size:13px;line-height:1.55;color:var(--muted);max-width:760px}
+
+/* Waypoint exercise remains an actual interactive lab, not faux terminal UI. */
+.portfolio-home .lab-feature{
+  background:transparent;color:var(--ink);padding:24px 0 10px;
+  grid-template-columns:1.05fr .95fr;gap:clamp(34px,6vw,90px);
+  border-top:2px solid var(--ink);align-items:start;
+}
+.portfolio-home .lab-feature h3{
+  font-family:var(--editorial-serif);font-weight:500;font-size:clamp(39px,4.7vw,64px);
+  letter-spacing:-.03em;line-height:1.02;
+}
+.portfolio-home .lab-feature p{color:var(--muted)}
+.portfolio-home .lab-feature .eyebrow{color:var(--accent)}
+.portfolio-home .lab-feature .button{border-color:var(--ink)!important;color:var(--ink)!important}
+.lab-notes{border-top:1px solid var(--line)}
+.lab-notes__eyebrow{font-size:11px!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:16px 0!important}
+.lab-notes>div{display:grid;grid-template-columns:34px 1fr;gap:3px 14px;border-top:1px solid var(--line);padding:16px 0}
+.lab-notes>div span{grid-row:span 2;color:var(--accent);font-family:var(--mono);font-size:11px;padding-top:2px}
+.lab-notes>div strong{font-family:var(--editorial-serif);font-size:22px;font-weight:500;line-height:1.15}
+.lab-notes>div p{margin:0;font-size:12px!important;line-height:1.5}
+
+/* Replace the four boxed "framework" squares with an open numbered rhythm. */
+.portfolio-home .principles{border:0;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.portfolio-home .principle{padding:18px 0;border:0;border-top:1px solid var(--ink)}
+.portfolio-home .principle h3{margin:28px 0 13px;font-family:var(--editorial-serif);font-weight:500;font-size:clamp(22px,2.5vw,31px);letter-spacing:-.02em;line-height:1.08}
+.portfolio-home .principle p{font-size:13px;line-height:1.6;color:var(--muted)}
+
+/* The case studies are editorial chapters, not repeated product dashboards. */
+.case-study .case-hero{padding:66px 0 36px}
+.case-study .case-hero .wrap{max-width:1030px}
+.case-study .case-hero h1{
+  font-family:var(--editorial-serif);font-weight:500;
+  font-size:clamp(54px,7.1vw,104px);letter-spacing:-.038em;line-height:.96;
+  max-width:1000px;margin:20px 0 20px;
+}
+.case-study .case-dek{font-size:clamp(18px,2vw,22px);line-height:1.55;max-width:740px}
+.case-study .case-note{font-family:var(--sans);font-size:11px;line-height:1.65;max-width:800px;border-left:1px solid var(--accent);letter-spacing:0}
+.case-study .eyebrow,.case-study .visual-kicker span{font-family:var(--sans);font-weight:600;letter-spacing:.065em}
+.case-study .case-facts{
+  width:min(1080px,calc(100% - 40px));margin:0 auto;
+  padding:21px 0 25px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.case-study .case-fact{
+  padding:0 0 0 16px;border:0!important;border-left:1px solid var(--line)!important;
+  min-width:0;
+}
+.case-study .case-fact small{font-family:var(--sans);font-size:10px;letter-spacing:.035em;line-height:1.4}
+.case-study .case-fact strong{font-size:13px;line-height:1.5;font-weight:600;overflow-wrap:anywhere}
+.case-study .case-body{padding:56px 0 80px}
+.case-study .case-grid{
+  display:grid;grid-template-columns:minmax(145px,180px) minmax(0,790px);
+  gap:clamp(30px,4.3vw,74px);justify-content:center;
+}
+.case-study .case-content{min-width:0}
+.case-study .case-content section{margin-bottom:69px}
+.case-study .case-content h2{
+  font-family:var(--editorial-serif);font-size:clamp(36px,3.5vw,47px);
+  font-weight:500;letter-spacing:-.025em;line-height:1.08;margin-bottom:20px;
+}
+.case-study .case-content h3{font-size:20px;letter-spacing:-.015em;margin-top:31px}
+.case-study .case-content p,.case-study .case-content li{font-size:15px;line-height:1.78}
+.case-study .case-nav{
+  position:sticky;top:105px;align-self:start;display:grid;gap:2px;
+  font-family:var(--sans);font-size:11px;border-top:1px solid var(--line);padding-top:10px;
+  max-height:calc(100vh - 120px);overflow-y:auto;
+}
+.case-study .case-nav a{padding:5px 0;min-height:0;line-height:1.5;display:block}
+.case-study .case-visual{background:transparent;padding:35px 0 40px}
+.case-study .visual-kicker{margin-bottom:23px}
+.case-study .visual-kicker strong{font-family:var(--editorial-serif);font-size:clamp(20px,2.3vw,29px);font-weight:500;letter-spacing:-.015em;text-align:left;max-width:620px}
+.case-study .pullquote{
+  font-family:var(--editorial-serif);font-size:clamp(25px,3vw,37px);
+  letter-spacing:-.01em;line-height:1.26;font-weight:500;
+}
+.case-study .artifact{border-color:var(--line);background:transparent}
+.case-study .artifact-head{font-family:var(--sans);font-size:10px;letter-spacing:.045em;border-bottom-color:var(--line);padding:12px 14px}
+.case-study .artifact-body{padding:14px}
+.case-study .artifact th{font-family:var(--sans);font-weight:600;font-size:11px;line-height:1.4}
+.case-study .artifact td{font-size:12px;line-height:1.55}
+.case-study .related-links a,.case-study .case-cta{background:transparent}
+
+/* A definition list reads as an editorial record, not a pseudo-spreadsheet. */
+.story-ledger{margin:18px 0 24px;padding:0;border-top:1px solid var(--ink)}
+.story-ledger__row{
+  display:grid;grid-template-columns:minmax(140px,.55fr) minmax(0,1.45fr);
+  gap:12px 28px;padding:16px 0 17px;border-bottom:1px solid var(--line);
+}
+.story-ledger dt{font-size:12px;font-weight:700;line-height:1.45;color:var(--ink)}
+.story-ledger dd{margin:0;font-size:14px;line-height:1.68;color:var(--muted)}
+.story-ledger dd a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.case-study .artifact:has(.story-ledger){border:0;background:transparent}
+.case-study .artifact:has(.story-ledger) .artifact-head{padding-left:0;padding-right:0}
+.case-study .artifact:has(.story-ledger) .artifact-body{padding:0}
+.case-study .artifact:has(.story-ledger) .story-ledger{margin-top:0}
+
+/* Shorter stories are comfortable to read without a duplicate chapter navigator. */
+.case--creative .case-nav,.case--markets .case-nav,.case--ai .case-nav{display:none}
+.case--creative .case-grid,.case--markets .case-grid,.case--ai .case-grid{grid-template-columns:minmax(0,820px)}
+.case--markets .case-hero h1{max-width:800px}
+.case--ai .case-hero h1{max-width:790px}
+.case--billing .case-hero h1{max-width:840px}
+
+/* The diagnostic and billing visuals retain the actual failure path, not filler. */
+.case--diagnostic .trace-track,.case--billing .billing-flow{
+  font-family:var(--sans);font-size:12px;gap:10px;
+}
+.case--diagnostic .trace-track>span,.case--billing .billing-flow>div{
+  padding:12px 8px 10px;border:0;border-top:2px solid var(--line);
+  background:transparent;white-space:nowrap;
+}
+.case--diagnostic .trace-track>.fault,.case--billing .billing-flow>.fault{
+  border:0;border-top:3px solid #b45536;background:transparent;color:var(--ink);font-weight:700;
+}
+.case--diagnostic .trace-track .fault b,.case--billing .billing-flow .fault b{font-family:var(--sans);font-weight:700;font-size:10px;color:#a54530}
+.case--billing .feedback-loop{
+  border:0;border-top:1px solid var(--line);padding:14px 0;margin-top:18px;
+  font-family:var(--sans);font-weight:600;font-size:12px;color:var(--accent);
+}
+
+/* The operating lifecycle becomes a reading sequence rather than eight boxed cells. */
+.case--operations .ops-flow{border:0;gap:0;grid-template-columns:repeat(4,minmax(0,1fr))}
+.case--operations .ops-flow div{
+  min-height:74px;position:relative;display:flex;align-items:flex-start;
+  border:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);
+  background:transparent;padding:15px 8px 14px 0;text-align:left;
+  font-family:var(--sans);font-size:13px;font-weight:600;
+}
+.case--operations .ops-flow div:nth-child(4n + 1){border-top-color:var(--accent)}
+.case--operations .control-rail{
+  border:0;border-bottom:1px solid var(--line);padding:16px 0 12px;
+  font-family:var(--sans);font-size:11px;letter-spacing:0;color:var(--muted);
+  justify-content:flex-start;gap:12px 22px;
+}
+
+/* Creative production: six-second video versus HTML is a genuine format difference,
+   not four fake thumbnails pretending to be campaign artwork. */
+.case--creative .case-visual{padding:42px 0}
+.case--creative .creative-board{grid-template-columns:repeat(4,minmax(0,1fr));gap:21px}
+.case--creative .creative-panel{
+  background:transparent;border:0;border-top:1px solid var(--ink);padding:0 0 0 0;
+}
+.case--creative .creative-thumb{
+  background:transparent;color:var(--accent);place-items:start;
+  min-height:0;padding:20px 0 30px;margin:0;
+  font-family:var(--editorial-serif);font-size:clamp(25px,2.4vw,35px);letter-spacing:-.02em;
+}
+.case--creative .creative-panel strong{font-family:var(--sans);font-size:14px}
+.case--creative .creative-panel small{font-family:var(--sans);font-size:11px}
+.case--creative .creative-panel p{font-size:12px;color:var(--muted);line-height:1.65}
+
+/* The national team story uses typographic scale instead of six boxed provinces. */
+.case--markets .market-row{gap:14px}
+.case--markets .market-row span{
+  display:block;aspect-ratio:auto;border:0;border-bottom:1px solid var(--line);
+  background:transparent;font-family:var(--editorial-serif);
+  font-size:clamp(34px,4.5vw,64px);font-weight:500;
+  text-align:center;padding:11px 0 17px;
+}
+.case--markets .market-rhythm{font-family:var(--sans);justify-content:flex-start;margin-top:24px;font-size:12px}
+
+/* AI use case: real questions and human approval shown as a readable comparison. */
+.review-examples{border-top:1px solid var(--ink);margin:24px 0}
+.review-example{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:15px 26px;padding:21px 0;border-bottom:1px solid var(--line)}
+.review-example__request p{font-family:var(--editorial-serif);font-size:24px!important;line-height:1.25!important;color:var(--ink)!important}
+.review-example__review p{font-size:14px!important;line-height:1.65!important}
+.review-example__owner{grid-column:2}
+.review-example__owner p{font-size:12px!important;line-height:1.5!important;color:var(--muted)}
+.review-example__label{display:block;font:700 10px/1.5 var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.review-example p{margin:8px 0 0}
+
+/* Recruiter brief is a readable personal page, not a miniature software dashboard. */
+.brief-page .brief-hero h1{font-family:var(--editorial-serif);font-weight:500;letter-spacing:-.03em}
+.brief-page .brief-card h2{font-family:var(--editorial-serif);font-weight:500;letter-spacing:-.025em}
+.brief-page .note-card h3{font-family:var(--editorial-serif);font-weight:500}
+
+@media(max-width:980px){
+  .case-study .case-grid{grid-template-columns:150px minmax(0,1fr);gap:30px}
+  .case-study .case-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .portfolio-home .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .portfolio-home .section-head{grid-template-columns:1fr}
+  .capability-item{grid-template-columns:1fr;gap:7px;padding:17px 0}
+  .capability-topic{padding-top:0}
+  .portfolio-home .lab-feature{grid-template-columns:1fr}
+  .case-study .case-hero{padding:44px 0 30px}
+  .case-study .case-hero h1{font-size:clamp(46px,11vw,69px);line-height:.99}
+  .case-study .case-grid{grid-template-columns:minmax(0,1fr)}
+  .case-study .case-nav{display:none}
+  .case-study .case-content h2{font-size:clamp(32px,8vw,40px)}
+  .case-study .case-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px 9px}
+  .case-study .case-fact{padding-left:11px}
+  .story-ledger__row{grid-template-columns:1fr;gap:3px;padding:15px 0}
+  .case--creative .creative-board{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+  .case--operations .ops-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .review-example{grid-template-columns:1fr;gap:16px}
+  .review-example__owner{grid-column:1}
+  .case--markets .market-row{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:440px){
+  .case-study .case-facts{grid-template-columns:1fr}
+  .case--creative .creative-board{grid-template-columns:1fr}
+  .case-study .visual-kicker{display:block}
+  .case-study .visual-kicker strong{margin-top:8px}
+  .portfolio-home .principles{grid-template-columns:1fr}
+  .case-study .case-body{padding-top:38px}
+}
+@media(prefers-reduced-motion:reduce){
+  .capability-detail a{transition:none}
+}
+@media print{
+  .capability-index,.story-ledger,.review-examples{break-inside:auto}
+  .case-study .case-content h2,.portfolio-home .section-head h2{font-size:22pt}
+  .case-study .case-hero h1{font-size:30pt}
+}
