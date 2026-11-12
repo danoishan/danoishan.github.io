@@ -276,3 +276,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
  .brief-hero-layout{grid-template-columns:minmax(0,1fr);gap:24px}
  .brief-portrait{width:124px;height:124px;grid-row:2;justify-self:start}
 }
+
+/* Editorial refresh: keep AI labels readable without an attention-grabbing shimmer. */
+.ai-work-link .ai-accent,.ai-shimmer{
+  animation:none !important;
+  background-image:none !important;
+  -webkit-text-fill-color:currentColor !important;
+}
