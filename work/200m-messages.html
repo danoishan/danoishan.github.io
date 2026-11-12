@@ -33,10 +33,10 @@
 <a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
 </div></header>
 <main id="main-content"><section class="case-hero"><div class="wrap reveal">
-<a class="back-link" href="../index.html#work">← selected work</a><p class="eyebrow">Case 04 · lifecycle / operating model</p>
+<a class="back-link" href="../index.html#work">← selected work</a><p class="eyebrow">Case 02 · lifecycle / operating model</p>
 <h1>Making 200 Million Messages Boring</h1>
-<p class="case-dek">The interesting part of high-volume lifecycle marketing is not the send count. It is building enough delivery control that a large, cross-functional communication program stops feeling heroic.</p>
-<p class="case-note">CURRENT PROGRAM PATTERN · Based on my work at Vigorate, September 2021–present. Scale and outcome figures are reported work-history measures across programs, rather than one project or an independently audited experiment. Examples below illustrate the operating model.</p>
+<p class="case-dek">In programs supporting 200M+ annual sends, the hard part isn't the Send button. It's what has to be true before anyone can safely press it: audience data, approvals, testing and release decisions across 20+ workstreams.</p>
+<p class="case-note">FROM MY WORK AT VIGORATE · September 2021–present. Scale and improvement figures describe work across programs, not one campaign or a controlled experiment. The examples illustrate how I manage delivery; measurement details are below.</p>
 </div></section>
 <section class="case-facts"><div class="case-fact">
 <small>Scale</small><strong>200M+ annual email and SMS/MMS sends</strong>
@@ -69,7 +69,7 @@
 </div></section>
 <div class="case-body"><div class="wrap case-grid">
 <aside class="case-nav"><a href="#snapshot">00 Decision snapshot</a><a href="#context">01 Context</a><a href="#failure">02 Failure modes</a><a href="#model">03 Operating model</a><a href="#handoffs">04 Handoffs</a><a href="#controls">05 Controls</a><a href="#tradeoffs">06 Trade-offs</a><a href="#launch">07 Launch</a><a href="#judgement">08 Launch judgement</a><a href="#translation">09 Translation</a><a href="#adoption">10 Adoption + scale</a><a href="#outcomes">11 Outcomes</a><a href="#reflection">12 Reflection</a></aside><article class="case-content">
-<section id="snapshot"><h2>Decision snapshot.</h2>
+<section id="snapshot"><h2>What needed to stay under control.</h2>
 <table class="decision-table">
 <caption class="sr-only">Decision snapshot.</caption>
 <tbody>
@@ -93,17 +93,12 @@
 <th scope="row">Reported outcomes</th>
 <td>30% fewer late-stage scope changes; 20% shorter UAT-to-launch cycles; monthly forecasts within 5% of actual delivery effort.</td>
 </tr>
-<tr>
-<th scope="row">Evidence boundary</th>
-<td>Program-level work-history results. Baseline periods, raw counts and calculation records are not published. <a href="measurement-notes.html">Read measurement context →</a>
-</td>
-</tr>
 </tbody>
-</table></section><section id="context"><h2>At scale, the interfaces become the risk.</h2>
+</table></section><section id="context"><h2>The risk is usually between the teams.</h2>
 <p>Email, SMS/MMS, push and in-app programs cross audience logic, source data, content, approvals, build, QA and releases. A late source, changed rule or unclear version can affect several workstreams at once.</p>
-<p>I make the dependency, owner, decision and release evidence visible so teams can act before the final launch meeting.</p>
-<p>Personalization adds another dependency: a missing profile field, late audience update or unclear fallback can change which message a customer receives. I ask for entry rules, data freshness and negative test cases to be agreed before the release, rather than treating those as copy fixes at the end.</p></section><section id="failure"><h2>Where scale breaks first.</h2>
-<p>Most recurring problems could be grouped into a small number of patterns:</p>
+<p>When a source slips or an audience rule changes, I want three answers early: who's on it, what else is affected, and what proof we need before launch. That is far more useful than discovering the gap in the final meeting.</p>
+<p>Personalization adds another dependency: a missing profile field, late audience update or unclear fallback can change which message a customer receives. I ask for entry rules, data freshness and negative test cases to be agreed before the release, rather than treating those as copy fixes at the end.</p></section><section id="failure"><h2>The problems that kept showing up.</h2>
+<p>Across concurrent workstreams, the same risks came up in different forms: late audience changes, data that wasn't ready, mismatched versions and work being squeezed by urgent requests. Here's how I grouped and managed them:</p>
 <div class="artifact">
 <div class="artifact-head">
 <span>Artifact 01</span><span>Common failure modes</span>
@@ -144,8 +139,8 @@
 </tbody>
 </table></div>
 </div></section>
-<section id="model"><h2>I treated delivery as an operating system.</h2>
-<p>Rather than manage each campaign as an isolated mini-project, I used a repeatable lifecycle that could flex by complexity. Every stage had to produce something the next stage could rely on.</p>
+<section id="model"><h2>I needed a repeatable way to run the work.</h2>
+<p>Each campaign had its own details, but starting from scratch every time wasn't practical. I used a common delivery path, then adjusted the depth of planning and review to the risk. The important part was that the next team could actually use what the previous team handed over.</p>
 <div class="artifact">
 <div class="artifact-head">
 <span>Artifact 02</span><span>Delivery lifecycle</span>
@@ -179,7 +174,7 @@
 </tr>
 </tbody>
 </table>
-<p>My role is to keep the context and acceptance evidence intact across teams. Production engineering and configuration remain with the appropriate specialists.</p></section><section id="controls"><h2>Four controls that changed delivery decisions.</h2>
+<p>My role is to keep the context and acceptance evidence intact across teams. Production engineering and configuration remain with the appropriate specialists.</p></section><section id="controls"><h2>Four controls worth keeping.</h2>
 <h3>Requirements that can be tested</h3>
 <p>I prefer requirements that describe observable behaviour rather than vague intent. “Target lapsed members” is not enough. What qualifies as lapsed? Which source owns status? What happens to recently reactivated customers? Which exclusions override inclusion?</p>
 <h3>Decision logs</h3>
@@ -223,7 +218,7 @@
 </table></div>
 </div></section>
 <section id="tradeoffs"><p>The core controls remain consistent. A small creative revision may need only a named owner, affected-version list and approval, while a data-source change needs deeper dependency evidence and QA before release.</p><h2>Same evidence, lighter ceremony where appropriate.</h2>
-<p>Ownership, acceptance criteria, version naming, risk visibility, go/no-go evidence and post-launch support stay consistent. Meeting cadence, artifact depth, creative iteration and rollout size vary with complexity and risk.</p></section><section id="launch"><h2>Go/no-go should be an evidence review, not a discovery session.</h2>
+<p>Ownership, acceptance criteria, version naming, risk visibility, go/no-go evidence and post-launch support stay consistent. Meeting cadence, artifact depth, creative iteration and rollout size vary with complexity and risk.</p></section><section id="launch"><h2>Go/no-go is for a decision, not a surprise.</h2>
 <p>Before a production release, the team should already know the answer to the questions below. The meeting exists to confirm evidence and make a decision, not to invent the readiness model live.</p>
 <div class="checklist">
 <div class="check">Requirements accepted</div>
@@ -275,7 +270,7 @@
 </table></div>
 </div>
 <p>The point is to translate technical gaps into customer impact and viable options, make a recommendation, and record the decision. “The date is fixed” is a constraint, not a substitute for launch evidence.</p></section>
-<section id="translation"><h2>The same technical truth needs different language for different people.</h2>
+<section id="translation"><h2>Same facts. Different conversations.</h2>
 <p>Part of technical delivery is preserving the facts while changing the level of detail. The table below is an illustrative communication pattern, not a client quote.</p>
 <div class="artifact">
 <div class="artifact-head">
@@ -326,11 +321,11 @@
 </tr>
 <tr>
 <th scope="row">Measurement disclosure</th>
-<td>The public portfolio does not include the underlying comparison windows, denominators, raw records or a controlled attribution analysis. These results reflect team delivery; they do not isolate my individual causal contribution.</td>
+<td>These are team-level work-history results, not a controlled experiment. I haven't published the raw counts or comparison windows, so they shouldn't be read as proof of my individual causal impact.</td>
 </tr>
 </tbody>
 </table>
-<p><a class="case-link" href="measurement-notes.html">Measurement context and what can be verified publicly →</a></p></section><section id="reflection"><h2>What I would improve next.</h2>
+<p><a class="case-link" href="measurement-notes.html">Measurement context and what can be verified publicly →</a></p></section><section id="reflection"><h2>What I'd measure more carefully next time.</h2>
 <p>Move readiness criteria earlier and keep measurement definitions alongside the work. The next improvement is a consistent baseline for scope changes, UAT-to-launch duration and effort forecasting so the operating results are easier to explain and compare.</p>
 <p><a class="case-link" href="../artifacts/waypoint-decision-record.md">Inspect a filled fictional decision record →</a></p></section><section class="case-cta"><p><strong>Next useful view:</strong> how I handle a failure that crosses source, integration and messaging boundaries.</p>
 <div class="hero-actions">
