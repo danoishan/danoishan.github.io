@@ -491,7 +491,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   justify-content:flex-start;gap:12px 22px;
 }
 
-/* Creative production: six-second video versus HTML is a genuine format difference,
+/* Creative production: video, motion and HTML involve different review paths,
    not four fake thumbnails pretending to be campaign artwork. */
 .case--creative .case-visual{padding:42px 0}
 .case--creative .creative-board{grid-template-columns:repeat(4,minmax(0,1fr));gap:21px}
