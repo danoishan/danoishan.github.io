@@ -141,7 +141,7 @@
 </div>
 </div></section>
 <section id="evidence"><h2>Failed rows weren't telling anyone they'd failed.</h2>
-<p>One failure pattern involved column mismatches caused by unexpected delimiters or characters in name fields. A record could fail import and therefore never become visible to the downstream journey. More importantly, failed rows were not automatically communicated back to the upstream teams.</p>
+<p>One clue was surprisingly ordinary: a comma or other unexpected character in a name field could shift the parsed columns. The record might then fail import, never reach the journey and never trigger an automatic warning to the upstream team. A small file-format edge case became a customer-communication problem.</p>
 <div class="artifact">
 <div class="artifact-head">
 <span>Artifact 02</span><span>Failure modes</span>
