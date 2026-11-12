@@ -36,7 +36,7 @@
 <section class="case-hero"><div class="wrap reveal">
 <a class="back-link" href="../index.html#work">← selected work</a><p class="eyebrow">Case 05 · enterprise lifecycle / file-driven integration</p>
 <h1>The Bill That Couldn’t Go Missing</h1>
-<p class="case-dek">A billing communication is not just an email. It is the visible end of a chain of source data, file processing, identifiers, imports, journey logic, monitoring and exception handling. When one record disappeared, the useful question was not “can we resend it?” It was “how do we make the failure observable and prevent the same class of miss again?”</p>
+<p class="case-dek">A billing record existed upstream, but the expected communication didn't follow. Resending it might solve today's problem. I wanted to know where it went missing, why the process hadn't flagged it, and what would stop the next record from disappearing just as quietly.</p>
 <p class="case-note">ANONYMIZED INVESTIGATION · Based on real cross-system delivery work. Client identifiers and implementation details are simplified. The case distinguishes investigated behavior from recommended controls; it does not claim a measured post-change delivery rate.</p>
 </div></section>
 <section class="case-facts"><div class="case-fact">
@@ -67,7 +67,7 @@
 </div></section>
 <div class="case-body"><div class="wrap case-grid">
 <aside class="case-nav"><a href="#snapshot">00 Decision snapshot</a><a href="#context">01 Context</a><a href="#incident">02 Incident</a><a href="#frame">03 Frame</a><a href="#evidence">04 Evidence</a><a href="#handoffs">05 Handoffs</a><a href="#controls">06 Controls</a><a href="#adoption">07 Adoption</a><a href="#ownership">08 Ownership</a><a href="#lesson">09 Lesson</a></aside><article class="case-content">
-<section id="snapshot"><h2>Decision snapshot.</h2>
+<section id="snapshot"><h2>What we were really trying to solve.</h2>
 <table class="decision-table">
 <caption class="sr-only">Decision snapshot.</caption>
 <tbody>
@@ -96,7 +96,7 @@
 <td>Findings and operating recommendations are established here. Alert implementation and end-to-end recovery still require evidence.</td>
 </tr>
 </tbody>
-</table></section><section id="context"><h2>The email was the last step, not the system.</h2>
+</table></section><section id="context"><h2>The email was only the last visible step.</h2>
 <p>The customer-facing requirement sounded simple: when a billing event becomes true upstream, the right customer should receive the right communication. In practice, that outcome depended on multiple systems and teams agreeing on data structure, timing, identifiers and error behaviour.</p>
 <div class="artifact">
 <div class="artifact-head">
@@ -112,12 +112,12 @@
 </div>
 </div>
 <p>That distinction matters. If the message does not arrive, the failure may have occurred long before the marketing platform had a chance to send anything.</p></section>
-<section id="incident"><h2>One missing bill exposed a larger control gap.</h2>
+<section id="incident"><h2>One missing record raised a bigger question.</h2>
 <p>A billing record expected to trigger communication could be confirmed upstream, yet the downstream process did not produce the expected customer outcome. The immediate operational need was to understand the specific record. The more important delivery question was whether the system could reliably tell us when similar records failed.</p>
 <p>We also encountered batch processing behaviour where a resent file needed a unique cycle identifier to avoid colliding with prior processing. That made idempotency and operational naming part of the communication design, not merely a file transfer detail.</p>
 <div class="pullquote">If a record can disappear between systems without creating an alert, the problem is bigger than the record that disappeared.</div>
 <p>A unique transport batch identifier can allow a resend to be processed. It does not, by itself, prevent duplicate customer messages. Recovery also needs a stable business key, record reconciliation and a tested duplicate policy.</p></section>
-<section id="frame"><h2>I split the investigation into five proof points.</h2>
+<section id="frame"><h2>Five places to check before blaming the send.</h2>
 <div class="phase-grid">
 <div class="phase">
 <span>01</span><h3>Source truth</h3>
@@ -140,7 +140,7 @@
 <p>If any step failed, who was told, with enough information to act?</p>
 </div>
 </div></section>
-<section id="evidence"><h2>The investigation surfaced an observability problem.</h2>
+<section id="evidence"><h2>Failed rows weren't telling anyone they'd failed.</h2>
 <p>One failure pattern involved column mismatches caused by unexpected delimiters or characters in name fields. A record could fail import and therefore never become visible to the downstream journey. More importantly, failed rows were not automatically communicated back to the upstream teams.</p>
 <div class="artifact">
 <div class="artifact-head">
@@ -177,7 +177,7 @@
 </tbody>
 </table></div>
 </div></section>
-<section id="handoffs"><h2>Map the ownership breaks.</h2>
+<section id="handoffs"><h2>Follow the record, and the responsibility.</h2>
 <p>The source team, integration / engineering team, Marketing Cloud specialists, QA and business owners each controlled a different part of the chain. My role was to keep one customer impact story intact as the investigation moved across those groups.</p>
 <div class="artifact">
 <div class="artifact-head">
@@ -214,7 +214,7 @@
 </ul>
 </div>
 </div></section>
-<section id="controls"><h2>Three controls to prevent another silent miss.</h2><p><strong>Release decision:</strong> restoring one failed billing record is an immediate recovery task. A source-file contract and an alert for rejected rows are separate, longer-term improvements. I tracked both paths so an urgent resend did not get mistaken for a permanent solution.</p>
+<section id="controls"><h2>Four controls to prevent another silent miss.</h2><p><strong>Release decision:</strong> restoring one failed billing record is an immediate recovery task. A source-file contract and an alert for rejected rows are separate, longer-term improvements. I tracked both paths so an urgent resend did not get mistaken for a permanent solution.</p>
 <p class="evidence-callout">The items below are recommendations or explored follow-ups, rather than a verified list of completed production changes.</p>
 <h3>Make the file contract resilient</h3>
 <p>We discussed using text-qualified columns so values containing commas or other delimiters would not accidentally change the file structure. The point was not one problematic name. It was making the interface tolerant of valid customer data.</p>
@@ -226,7 +226,7 @@
 <p>A resend procedure, unique batch identifier, monitoring owner and failed record path are part of a production design. They should not be invented during the incident.</p></section>
 <section id="adoption"><h2>Recovery needs an owner and a test.</h2>
 <p>A durable rollout would document failure and resend steps, name the response owner, brief support teams and test whether an alert leads to action. Early monitoring would then confirm the recovery process works beyond synthetic records.</p>
-<p>These are readiness requirements for the recommended controls; the case does not establish that automated alerts were deployed.</p></section><section id="ownership"><h2>What I contributed.</h2>
+<p>These are readiness requirements for the recommended controls; the case does not establish that automated alerts were deployed.</p></section><section id="ownership"><h2>My part in getting to an answer.</h2>
 <div class="ownership">
 <div>
 <h3>I owned / coordinated</h3>
@@ -250,7 +250,7 @@
 </ul>
 </div>
 </div></section>
-<section id="lesson"><h2>Design the failure path, not only the happy path.</h2>
+<section id="lesson"><h2>The failure path is part of the design.</h2>
 <p>This case is useful because it shows why enterprise lifecycle delivery cannot stop at the marketing platform boundary. The customer experiences one communication. The organization experiences a distributed process.</p>
 <p>The stronger design is the one that can answer three questions quickly: Did the source produce the right record? Did every handoff accept it? If not, who knows and what do they do next?</p>
 <h3>What I would establish earlier next time</h3>
