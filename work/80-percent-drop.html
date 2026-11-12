@@ -12,9 +12,9 @@
 <meta name="description" content="An anonymized CRM and customer data diagnostic case: tracing an apparent 80% submission decline across web forms, Salesforce, consent, identity, attribution and reporting.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=20261112-editorial-redesign01">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The 80% Drop | Danoishan Sinnathamby">
 <meta property="og:description" content="An anonymized CRM and customer data diagnostic case: tracing an apparent 80% submission decline across web forms, Salesforce, consent, identity, attribution and reporting.">
@@ -27,7 +27,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
+<body class="case-study case--diagnostic">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap nav">
 <a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
@@ -60,31 +60,13 @@
 <div class="case-body"><div class="wrap case-grid">
 <aside class="case-nav"><a href="#snapshot">00 Decision snapshot</a><a href="#problem">01 Signal</a><a href="#frame">02 Frame</a><a href="#breakpoint">03 Breakpoint</a><a href="#audit">04 Audit</a><a href="#decision">05 Roadmap</a><a href="#ownership">06 Handoffs</a><a href="#adoption">07 Adoption</a><a href="#validation">08 Proof</a><a href="#reflection">09 Reflection</a></aside><article class="case-content">
 <section id="snapshot"><h2>The question worth answering.</h2>
-<table class="decision-table">
-<caption class="sr-only">Decision snapshot.</caption>
-<tbody>
-<tr>
-<th scope="row">Signal</th>
-<td>More than 80% reported submission decline after a migration; this was the problem signal, not a recovery result.</td>
-</tr>
-<tr>
-<th scope="row">My ownership</th>
-<td>Discovery, diagnosis, prioritization, technical handoffs, client decisions and a validation plan.</td>
-</tr>
-<tr>
-<th scope="row">Recommendation</th>
-<td>Prove capture first, then consent and customer data visibility, then identity and attribution.</td>
-</tr>
-<tr>
-<th scope="row">Output</th>
-<td>A root-cause path and phased roadmap with owners and acceptance criteria.</td>
-</tr>
-<tr>
-<th scope="row">Not established here</th>
-<td>A quantified post-fix recovery or confirmed completion of every proposed control.</td>
-</tr>
-</tbody>
-</table></section><section id="problem"><h2>The metric said demand collapsed. The traffic did not.</h2>
+<dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>Signal</dt><dd>More than 80% reported submission decline after a migration; this was the problem signal, not a recovery result.</dd></div>
+<div class="story-ledger__row"><dt>My ownership</dt><dd>Discovery, diagnosis, prioritization, technical handoffs, client decisions and a validation plan.</dd></div>
+<div class="story-ledger__row"><dt>Recommendation</dt><dd>Prove capture first, then consent and customer data visibility, then identity and attribution.</dd></div>
+<div class="story-ledger__row"><dt>Output</dt><dd>A root-cause path and phased roadmap with owners and acceptance criteria.</dd></div>
+<div class="story-ledger__row"><dt>Not established here</dt><dd>A quantified post-fix recovery or confirmed completion of every proposed control.</dd></div>
+</dl></section><section id="problem"><h2>The metric said demand collapsed. The traffic did not.</h2>
 <p>After a significant CRM migration, reported inbound form submissions dropped sharply. Historically, the business saw a steady stream of leads. The new reporting suggested that demand had nearly disappeared.</p>
 <p>But website traffic did not show a comparable collapse. That mismatch changed the starting assumption. The safest question was not “why did customers stop converting?” It was “where did the end-to-end customer path stop being observable?”</p>
 <div class="pullquote">I did not start by rebuilding forms. I started by mapping every handoff required for a visitor to become a measurable marketing record.</div>
@@ -257,23 +239,11 @@
 <p>The proposed rollout starts with a controlled form set and known test records. Client and operating teams need expected behavior, documentation, monitoring and an escalation owner before the pattern expands.</p>
 <p>Submission volumes, support issues and stakeholder feedback would then be compared with the baseline. This is a rollout and validation approach, not evidence that every phase was completed.</p></section><section id="validation"><h2>What would prove the recovery worked?</h2>
 <p>For each known test record, check browser acceptance, the created or updated record, conditional and hidden values, consent, intended identity, campaign attribution and the corresponding report. Include opt-outs and other negative cases.</p>
-<table class="decision-table">
-<caption class="sr-only">The output was a proof plan.</caption>
-<tbody>
-<tr>
-<th scope="row">Observed / diagnosed</th>
-<td>Breakpoints across the browser-to-reporting chain and inconsistent implementation patterns.</td>
-</tr>
-<tr>
-<th scope="row">Recommended</th>
-<td>A phased recovery roadmap, specialist handoffs and explicit acceptance criteria.</td>
-</tr>
-<tr>
-<th scope="row">Requires validation</th>
-<td>End-to-end reconciliation, a measured capture baseline, controlled rollout and sustained post-change performance.</td>
-</tr>
-</tbody>
-</table>
+<dl class="story-ledger" aria-label="Key decisions and context">
+<div class="story-ledger__row"><dt>Observed / diagnosed</dt><dd>Breakpoints across the browser-to-reporting chain and inconsistent implementation patterns.</dd></div>
+<div class="story-ledger__row"><dt>Recommended</dt><dd>A phased recovery roadmap, specialist handoffs and explicit acceptance criteria.</dd></div>
+<div class="story-ledger__row"><dt>Requires validation</dt><dd>End-to-end reconciliation, a measured capture baseline, controlled rollout and sustained post-change performance.</dd></div>
+</dl>
 </section><section id="reflection"><h2>The baseline I'd insist on before another migration.</h2>
 <p>I would define the observability baseline before migration begins: expected form volumes, canonical test records, known page behaviours, source-to-report lineage, named owners for every system boundary and an explicit enablement / adoption plan for the teams who will operate the new process.</p>
 <div class="pullquote">The lesson was not “forms are fragile.” It was that customer journeys become hard to debug and hard to adopt when the organization cannot see or own the handoffs.</div></section>
