@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://danoishan.github.io'
+FEATURED_PAGES = ('index.html', 'work/200m-messages.html', 'work/ai-delivery-workflows.html')
 
 class Page(HTMLParser):
     def __init__(self, text):
@@ -16,6 +17,7 @@ class Page(HTMLParser):
         self.ids = []; self.refs = []; self.canonical = []; self.h1 = 0
         self.title = False; self.description = False; self.styles = []; self.noindex = False
         self.tables = 0; self.captions = 0; self.header_scopes = []
+        self.share = {}
         self.feed(text)
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -27,10 +29,14 @@ class Page(HTMLParser):
         if tag == 'th': self.header_scopes.append(a.get('scope'))
         if tag == 'meta' and a.get('name') == 'description' and a.get('content'): self.description = True
         if tag == 'meta' and a.get('name') == 'robots' and 'noindex' in a.get('content', ''): self.noindex = True
+        if tag == 'meta' and a.get('property', '').startswith('og:image'):
+            self.share[a['property']] = a.get('content', '')
         if tag == 'link' and a.get('rel') == 'canonical': self.canonical.append(a.get('href'))
         if tag == 'link' and a.get('rel') == 'stylesheet': self.styles.append(a.get('href'))
         for attr in ['href', 'src']:
             if a.get(attr): self.refs.append(a[attr])
+        if tag in ('img', 'source') and a.get('srcset'):
+            self.refs.extend(item.split()[0] for item in a['srcset'].split(',') if item.strip())
 
 pages = {p.relative_to(ROOT).as_posix(): Page(p.read_text()) for p in ROOT.rglob('*.html') if '.git' not in p.parts}
 errors = []; references = 0; fragments = 0
@@ -52,7 +58,14 @@ for name, page in pages.items():
         bases = [i for i,s in enumerate(page.styles) if s and urlsplit(s).path.endswith('styles-base.css')]
         overrides = [i for i,s in enumerate(page.styles) if s and urlsplit(s).path.endswith('styles.css')]
         if not bases or not overrides or bases[0] >= overrides[0]: errors.append(f'{name}: base CSS must load before overrides')
-        if not page.noindex: canonical_urls.add(expected)
+        if not page.noindex:
+            canonical_urls.add(expected)
+            if not page.share.get('og:image') or not page.share.get('og:image:alt'):
+                errors.append(f'{name}: missing share image or alt text')
+            elif not page.share['og:image'].startswith(f'{ORIGIN}/'):
+                errors.append(f'{name}: share image must use an absolute portfolio URL')
+            else:
+                page.refs.append(page.share['og:image'])
     for reference in page.refs:
         u = urlsplit(reference)
         if u.scheme and u.scheme not in ['http', 'https']: continue
@@ -75,6 +88,8 @@ urls = [el.text for el in ET.parse(ROOT/'sitemap.xml').findall('s:url/s:loc', ns
 text_urls = (ROOT/'sitemap.txt').read_text().splitlines()
 if set(urls) != canonical_urls or len(urls) != len(canonical_urls): errors.append('XML sitemap differs from indexable canonical pages')
 if set(text_urls) != canonical_urls or len(text_urls) != len(canonical_urls): errors.append('Text sitemap differs from indexable canonical pages')
+featured_images = {pages[name].share.get('og:image') for name in FEATURED_PAGES}
+if len(featured_images) != len(FEATURED_PAGES): errors.append('Featured pages need distinct share images')
 pdf=(ROOT/'Danoishan_Sinnathamby_Resume_2026.pdf').read_bytes()
 if not pdf.startswith(b'%PDF-') or b'%%EOF' not in pdf[-1024:]: errors.append('Resume PDF is incomplete')
 if '@import' in (ROOT/'styles.css').read_text(): errors.append('CSS override still blocks on an import')
@@ -84,7 +99,20 @@ def luminance(hex_color):
     linear = [c/12.92 if c <= .04045 else ((c+.055)/1.055)**2.4 for c in rgb]
     return sum(a*b for a,b in zip(linear,[.2126,.7152,.0722]))
 contrast={}
-for label,fg,bg in [('case_navigation_light','#565c65','#f3f0e8'),('fault_label_dark','#f1d6d0','#3a201c')]:
+theme_css = (ROOT/'styles-base.css').read_text()
+def theme_variables(selector):
+    block = re.search(re.escape(selector) + r'\s*\{([^}]+)\}', theme_css).group(1)
+    return dict(re.findall(r'--([\w-]+):\s*(#[0-9a-f]{6});', block))
+
+light_vars = theme_variables(':root')
+dark_vars = theme_variables(':root[data-theme="dark"]')
+for label,fg,bg in [
+    ('navigation_light',light_vars['ink'],light_vars['paper']),
+    ('muted_light',light_vars['muted'],light_vars['paper']),
+    ('accent_on_tinted_paper',light_vars['accent'],light_vars['paper-2']),
+    ('accent_dark',dark_vars['accent'],dark_vars['paper']),
+    ('fault_label_dark',dark_vars['fault'],dark_vars['fault-bg']),
+]:
     light,dark=sorted([luminance(fg),luminance(bg)],reverse=True)
     ratio=(light+.05)/(dark+.05);contrast[label]=round(ratio,2)
     if ratio < 4.5: errors.append(f'{label}: contrast below 4.5:1')

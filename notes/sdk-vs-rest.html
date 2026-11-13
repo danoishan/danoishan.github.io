@@ -6,32 +6,41 @@
 <meta property="og:site_name" content="Danoishan Sinnathamby">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f3f0e8">
+<meta name="theme-color" content="#f6f3ea">
 <title>SDK vs REST Is Usually an Ownership Question | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/notes/sdk-vs-rest.html">
 <meta name="description" content="A technical note on choosing SDK vs REST based on where the behavior originates, data authority, latency and ownership.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SDK vs REST Is Usually an Ownership Question | Danoishan Sinnathamby">
 <meta property="og:description" content="A technical note on choosing SDK vs REST based on where the behavior originates, data authority, latency and ownership.">
 <meta property="og:url" content="https://danoishan.github.io/notes/sdk-vs-rest.html">
-<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SDK vs REST Is Usually an Ownership Question | Danoishan Sinnathamby">
 <meta name="twitter:description" content="A technical note on choosing SDK vs REST based on where the behavior originates, data authority, latency and ownership.">
-<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta name="twitter:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header"><div class="wrap nav">
-<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ notes</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
-</div></header><main id="main-content"><section class="case-hero"><div class="wrap reveal">
-<a class="back-link" href="index.html">← all notes</a><p class="eyebrow">SEP 2026 · Technical note</p>
+<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work">Work</a><a href="/#about">About</a><a href="/notes/" aria-current="location">Notes</a><a href="/resume.html">Résumé</a>
+    </nav>
+  </div>
+</header><main id="main-content" tabindex="-1"><section class="case-hero"><div class="wrap">
+<a class="back-link" href="/notes/">← All notes</a><p class="eyebrow">SEP 2026 · Technical note</p>
 <h1>SDK vs REST is usually an ownership question.</h1>
 <p class="case-dek">The transport decision should follow the source of truth decision.</p>
 </div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>“Which API should we use?” is often the second question.</h2>
@@ -42,7 +51,8 @@
 <div class="artifact-head">
 <span>Pattern</span><span>Typical source</span>
 </div>
-<div class="artifact-body"><table>
+<div class="artifact-body"><div class="table-scroll" role="region" tabindex="0" aria-label="Client behaviour and business truth are different.">
+<table>
 <caption class="sr-only">Client behaviour and business truth are different.</caption>
 <thead><tr>
 <th scope="col">Event</th>
@@ -71,13 +81,20 @@
 <td>Durable business state should come from the system of record</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div></div>
 </div></section><section><h2>Reliability changes the answer too.</h2>
 <p>If an event must survive a closed browser, intermittent mobile connection or client manipulation, server-side delivery may be safer. If the event is inherently behavioural and useful even before identification, the SDK may be the natural source.</p>
-<p>The goal is not ideological purity. It is to avoid having two systems independently claim authority over the same fact.</p></section><section><h2>The practical rule.</h2>
+<p>The goal is not ideological purity. It is to avoid having two systems independently claim authority over the same fact.</p></section><section><h2>Decide who owns the event</h2>
 <p>Before choosing SDK or REST, write one sentence: “This event becomes true when ___, and ___ is the system that knows that first with enough authority.” Then choose the transport that preserves that ownership.</p></section><section class="related-links"><p class="label">Keep going</p>
 <div>
 <a href="../lab/waypoint.html#ingestion"><small>Related lab</small><strong>Waypoint ingestion choices</strong></a><a href="../work/80-percent-drop.html"><small>Related case</small><strong>The 80% Drop</strong></a>
-</div></section></article></div></div></main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js"></script>
+</div></section></article></div></div></main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
 </body>
 </html>
