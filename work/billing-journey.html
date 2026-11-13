@@ -57,7 +57,7 @@
     <article class="case-content">
       <section id="incident">
         <h2>Follow the missing record</h2>
-        <p id="snapshot">We confirmed the record upstream. I helped the source, integration and Marketing Cloud teams trace it through the file and import, then worked with them on what a repeatable recovery would need.</p>
+        <p id="snapshot">We confirmed the record upstream. I led the investigation across the source, integration and Marketing Cloud teams and defined what we’d need to verify before resending.</p>
         <ol class="trace-sequence billing-trace" role="list" id="frame" aria-label="Billing record path">
           <li id="context"><strong>Source record</strong><span>Present in the billing system.</span></li>
           <li><strong>File transfer</strong><span>A resend needed a distinct batch or cycle identifier.</span></li>
@@ -77,7 +77,7 @@
           </dl>
         </figure>
         <p>A failed row could go unnoticed upstream. The source team knew the bill existed, while the messaging team could only see records that made it past the import.</p>
-        <p id="handoffs">I kept the customer impact, batch identifiers and expected result in the same handoff. The platform and source teams could then check their part against one record.</p>
+        <p id="handoffs">I kept the customer impact, batch identifiers and expected result in one investigation record so both teams could check their part against the same evidence.</p>
       </section>
 
       <section id="controls">
@@ -88,7 +88,7 @@
           <div><dt>Prevention</dt><dd>Define how text is quoted, improve import logging, and route rejected rows to a named upstream owner.</dd></div>
           <div id="adoption"><dt>Readiness test</dt><dd>Put a valid name with a comma through the import. Then reject a test record on purpose and verify someone can act on the exception.</dd></div>
         </dl>
-        <p id="ownership">I coordinated the investigation and follow-up. Source and platform specialists owned the technical diagnosis, code and configuration.</p>
+        <p id="ownership">I worked with the source and platform specialists on the diagnosis and set out what QA would need to prove for recovery and prevention.</p>
         <p id="lesson">The investigation identified where a record could drop out and what to do next. The alert and resend controls here describe proposed follow-up. Their production rollout is outside this case.</p>
       </section>
 

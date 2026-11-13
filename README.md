@@ -4,7 +4,7 @@
 
 [![Portfolio homepage preview](docs/screenshots/portfolio-homepage.jpg)](https://danoishan.github.io/)
 
-I’m a Senior Account Manager at Vigorate in Toronto. I lead enterprise CRM and marketing technology projects, from requirements and data handoffs through testing, release and follow-up.
+I’m a Senior Account Manager at Vigorate in Toronto. I manage technical projects across enterprise CRM, customer data and marketing technology. I own delivery plans, effort budgets and release recommendations, and work with engineering and QA on what the data and integrations need to do in production.
 
 ## Start here
 

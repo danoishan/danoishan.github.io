@@ -46,18 +46,33 @@
     <a class="back-link" href="/#work">← Selected work</a>
     <p class="project-context">Enterprise CRM · Vigorate, 2021 to present</p>
     <h1>Making 200 Million Messages Boring</h1>
-    <p class="case-dek">Once a campaign is ready to send, I want to be able to name the audience file, the version QA tested and the person who can stop the next batch. Getting those answers is a big part of how I manage 20+ workstreams at once.</p>
-    <p class="case-note">An operating pattern from my work at Vigorate. The audience decision below is a worked example. The volume and reported outcomes describe the wider programs.</p>
+    <p class="case-dek">An SAP upgrade meant pausing marketing journeys without interrupting critical customer messages. On another release, a journey import failed and customers missed a message. Both put the delivery plan to a real test.</p>
+    <p class="case-note">The cutover and journey recovery come from client work at Vigorate. The audience example uses fictional numbers. Program metrics cover the wider work.</p>
   </div></header>
 
   <div class="case-body"><div class="wrap case-grid">
     <nav class="case-nav" aria-label="On this page">
-      <a href="#snapshot">An audience decision</a><a href="#model">How I run the work</a><a href="#launch">The release check</a><a href="#outcomes">Results and scope</a>
+      <a href="#production">Two production decisions</a><a href="#consent">Consent and identity</a><a href="#snapshot">An audience decision</a><a href="#model">How I run the work</a><a href="#launch">The release check</a><a href="#outcomes">Results and scope</a>
     </nav>
     <article class="case-content">
+      <section id="production">
+        <h2>Two decisions from production</h2>
+        <h3>What could we pause during an SAP upgrade?</h3>
+        <p>The cutover plan had to cover when Marketing Cloud journeys would pause and restart. Critical transactional messages still had to go out. I worked with the client’s IT and marketing teams and our developers to coordinate the timing and safeguards for more than 20 marketing journeys. The distinction between marketing and transactional messages changed what could be paused.</p>
+        <h3>How do we reach customers a journey missed?</h3>
+        <p>An import error left customers out of a live journey. I worked through recovery options with the client and developers and secured approval for a one-time send to the missed audience. In parallel, I coordinated the plan for a replacement data extension and SQL routing for future entries. That gave the client a way to address the immediate gap while the team worked on the recurring failure.</p>
+        <p>On a separate billing automation incident, I tracked restoration and confirmed that all missed bounce-report files had been reprocessed. The confirmation was for the reports that had been missed, so the client could close out the incident against a defined result.</p>
+      </section>
+
+      <section id="consent">
+        <h2>Which customer gets resubscribed?</h2>
+        <p>A resubscription change between SAP and Salesforce Marketing Cloud raised a question I brought to client IT and our developers. If a person changes their email address, what identifies the account whose consent should change? The matching rule we agreed to validate used customer ID alone. I led the client escalation and helped document six test scenarios, monitoring checkpoints and rollback considerations.</p>
+        <p>Here’s a fictional test that shows what the rule needs to prove. One customer has a new email address. Another customer still has the old address on file. A resubscribe request for the first customer should update that customer’s consent and leave the second record as it was. I’d ask QA to verify both records in Marketing Cloud before recommending release.</p>
+      </section>
+
       <section id="snapshot">
         <h2>Which audience is ready?</h2>
-        <p>Suppose a new segment is ready to review and a send is already on the calendar. I’d use the approved file for this send if it still covers the intended audience and passes the release checks. I’d keep the new segment in parallel until we could explain any differences in who qualifies.</p>
+        <p>Suppose an approved audience has 48,000 eligible records and the replacement segment has 47,400. Comparing the lists shows 900 people missing and 300 new additions. A gap of 600 records hides two different problems. I’d keep the approved file for this send if it still passes the current consent and exclusion checks, and ask the data team to explain both groups before switching sources.</p>
         <figure class="release-record" id="controls">
           <figcaption><strong>Audience source decision</strong> <span>Worked example</span></figcaption>
           <dl class="story-ledger">
@@ -73,12 +88,12 @@
 
       <section id="model">
         <h2>How I run the work across teams</h2>
-        <p id="failure">Most problems start when two teams are working from different versions of the same plan. A late audience change can make an earlier test irrelevant. An urgent release can take the people already assigned to the next one. I make those conflicts visible early enough to change the plan.</p>
-        <h3 id="handoffs">What changes hands</h3>
+        <p id="failure">A late audience change can make an earlier test irrelevant. An urgent production issue can also take the developer and QA time I’d already booked for the next release. I use the workback plan and effort forecast to show what moves, what needs a new estimate, and what decision I need from the client.</p>
+        <h3 id="handoffs">What I own from brief through launch</h3>
         <dl class="story-ledger">
-          <div><dt>From me</dt><dd>Scope, audience and data assumptions, acceptance criteria, open decisions and an escalation path.</dd></div>
-          <div><dt>From specialists</dt><dd>Implementation choices, build and test evidence, limitations and open defects.</dd></div>
-          <div><dt>From client and operations</dt><dd>Approval of the release, the expected customer impact, and a named monitoring owner.</dd></div>
+          <div><dt>Brief and plan</dt><dd>I define scope with the client, work through audience and data assumptions, and set acceptance criteria before build starts.</dd></div>
+          <div><dt>Build and test</dt><dd>I resolve dependencies with engineering and data, review test evidence with QA, and decide which defects need to be fixed before I recommend launch.</dd></div>
+          <div><dt>Release</dt><dd>I bring the recommendation and customer impact to the client’s release owner for approval. I agree with operations on what to watch and when to escalate.</dd></div>
         </dl>
         <p id="tradeoffs">A small copy revision may only need a named reviewer and a record of which version changed. A new audience source needs reconciliation, a consent check and test records for people who should stay out of the send. I also review capacity and budget so the extra work has somewhere to go.</p>
       </section>
@@ -93,7 +108,7 @@
         </ul>
         <p id="judgement">If a critical check fails, I put the recommendation and customer impact in front of the decision owner. A smaller release can work when the affected component can be isolated and the remaining work is ready.</p>
         <p id="translation">Marketing needs to know who might get the wrong message. Engineering needs the exact source field and failing test. The sponsor needs the decision, the options and when they’ll hear from us again.</p>
-        <p id="adoption">After launch, I make sure the operations team has the approved version, what to monitor and who to call if the first batch looks wrong.</p>
+        <p id="adoption">After launch, I review the first results with operations. If the counts or customer impact differ from what we expected, I follow up with the teams that can trace the issue and agree with the client on what to fix next.</p>
       </section>
 
       <section id="outcomes">
