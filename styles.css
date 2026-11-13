@@ -88,8 +88,7 @@
 }
 .about-copy p { max-width: 57ch; margin-block: 13px; }
 .about-contact { display: flex; flex-wrap: wrap; gap: 6px 16px; }
-.about-photo img { width: 100%; max-height: 330px; object-fit: cover; object-position: center 60%; border-radius: 2px; }
-.about-photo figcaption { margin-top: 5px; color: var(--muted); font-size: .875rem; }
+.about-photo img { width: 100%; border-radius: 2px; }
 
 .link-list article {
   display: grid;
