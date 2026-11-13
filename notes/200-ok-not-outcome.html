@@ -6,36 +6,45 @@
 <meta property="og:site_name" content="Danoishan Sinnathamby">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f3f0e8">
+<meta name="theme-color" content="#f6f3ea">
 <title>200 OK Is Not the Outcome | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/notes/200-ok-not-outcome.html">
 <meta name="description" content="A troubleshooting note on why a successful API response proves transport acceptance, not identity, eligibility, journey behavior or the customer outcome.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="200 OK Is Not the Outcome | Danoishan Sinnathamby">
 <meta property="og:description" content="A troubleshooting note on why a successful API response proves transport acceptance, not identity, eligibility, journey behavior or the customer outcome.">
 <meta property="og:url" content="https://danoishan.github.io/notes/200-ok-not-outcome.html">
-<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="200 OK Is Not the Outcome | Danoishan Sinnathamby">
 <meta name="twitter:description" content="A troubleshooting note on why a successful API response proves transport acceptance, not identity, eligibility, journey behavior or the customer outcome.">
-<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta name="twitter:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header"><div class="wrap nav">
-<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ notes</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
-</div></header><main id="main-content"><section class="case-hero"><div class="wrap reveal">
-<a class="back-link" href="index.html">← all notes</a><p class="eyebrow">SEP 2026 · Troubleshooting note</p>
+<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work">Work</a><a href="/#about">About</a><a href="/notes/" aria-current="location">Notes</a><a href="/resume.html">Résumé</a>
+    </nav>
+  </div>
+</header><main id="main-content" tabindex="-1"><section class="case-hero"><div class="wrap">
+<a class="back-link" href="/notes/">← All notes</a><p class="eyebrow">SEP 2026 · Troubleshooting note</p>
 <h1>200 OK is not the outcome.</h1>
 <p class="case-dek">A successful request proves that one layer accepted something. It does not prove the customer experience worked.</p>
-</div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>Green transport can sit inside a broken journey.</h2>
-<p>An API can accept a syntactically valid request while the wrong identifier, stale field, incomplete consent state or unexpected data type sends the customer down the wrong path. The transport layer did its job. The business outcome still failed.</p>
+</div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>The API accepted it. Did the customer qualify?</h2>
+<p>Suppose a search event lands successfully but the consent flag sits on a different profile. The API can return 200 and the customer may still be ineligible. I’d start with one known record and follow the ID from the request to the profile and into the journey.</p>
 <div class="pullquote">Technical success is only useful when it survives the full chain from source to customer outcome.</div></section><section><h2>I troubleshoot the chain, not the tool.</h2>
 <div class="artifact">
 <div class="artifact-head">
@@ -62,14 +71,20 @@
 <div class="check">Negative case fails safely</div>
 <div class="check">Monitoring can detect the same failure class again</div>
 <div class="check">An owner knows what to do when it happens</div>
-</div></section><section><h2>The practical rule.</h2>
+</div></section><section><h2>Where I stop the investigation</h2>
 <p>Do not stop at “the API returned success,” “the file landed,” or “the campaign sent.” Those are checkpoints. The outcome is the intended customer behaviour, reached through a chain the team can observe and operate.</p></section><section class="related-links"><p class="label">Keep going</p>
 <div>
-<a href="../work/80-percent-drop.html#validation"><small>Related case</small><strong>End-to-end proof</strong></a><a href="../artifacts/index.html#validation"><small>Related artifact</small><strong>End-to-End Validation Matrix</strong></a>
+<a href="../work/80-percent-drop.html#validation"><small>Related case</small><strong>End-to-end proof</strong></a><a href="/artifacts/#validation"><small>Related artifact</small><strong>End-to-End Validation Matrix</strong></a>
 </div></section><section id="worked-example" class="note-worked-example"><p class="eyebrow">Worked example · October 9, 2026</p>
 <h2>A concrete partial-response test.</h2>
 <p>The Waypoint mock adapter returns HTTP 200 with one accepted event and one record error. The test expects a partial result and exactly one request. It does not retry the entire accepted batch. Separately, the policy model traces an accepted search through identity, consent and the matching booking exit. Transport acceptance and customer eligibility are distinct checks.</p>
 <p><a class="case-link" href="../lab/waypoint-demo/test.mjs">Inspect the example →</a></p>
-<p class="case-note">Fictional local exercise; no live vendor or client outcome is asserted.</p></section></article></div></div></main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js"></script>
+<p class="case-note">Fictional local exercise; no live vendor or client outcome is asserted.</p></section></article></div></div></main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
 </body>
 </html>

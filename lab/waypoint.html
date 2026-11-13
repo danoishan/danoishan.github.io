@@ -6,37 +6,46 @@
 <meta property="og:site_name" content="Danoishan Sinnathamby">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f3f0e8">
+<meta name="theme-color" content="#f6f3ea">
 <title>Waypoint Lifecycle Architecture Lab | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/lab/waypoint.html">
 <meta name="description" content="A fictional lifecycle architecture lab showing technical reasoning across identity, data authority, SDK vs REST vs warehouse, real-time vs batch, scale, failure modes and rollout.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Waypoint Lifecycle Architecture Lab | Danoishan Sinnathamby">
 <meta property="og:description" content="A fictional lifecycle architecture lab showing technical reasoning across identity, data authority, SDK vs REST vs warehouse, real-time vs batch, scale, failure modes and rollout.">
 <meta property="og:url" content="https://danoishan.github.io/lab/waypoint.html">
-<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Waypoint Lifecycle Architecture Lab | Danoishan Sinnathamby">
 <meta name="twitter:description" content="A fictional lifecycle architecture lab showing technical reasoning across identity, data authority, SDK vs REST vs warehouse, real-time vs batch, scale, failure modes and rollout.">
-<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta name="twitter:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header"><div class="wrap nav">
-<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ lab</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
-</div></header>
-<div class="lab-banner"><div class="wrap">SELF-DIRECTED EXERCISE · Waypoint is fictional. Company, users, architecture and data are invented to demonstrate technical reasoning. This is not presented as client work.</div></div>
-<main id="main-content"><section class="case-hero"><div class="wrap reveal">
-<a class="back-link" href="../index.html">← home</a><p class="eyebrow">Architecture lab 01 · lifecycle / identity / Braze</p>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work">Work</a><a href="/#about">About</a><a href="/notes/">Notes</a><a href="/resume.html">Résumé</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1"><section class="case-hero"><div class="wrap">
+<a class="back-link" href="/">← home</a><p class="project-context">Architecture exercise · Fictional</p>
 <h1>Waypoint: design the lifecycle stack</h1>
-<p class="case-dek">A fictional travel company wants fast, relevant lifecycle messaging across mobile and web. The point of the exercise is not to draw the fanciest architecture. It is to show how I move from business objective to the few facts that change the recommendation, then define the trade-off, ownership and proof.</p>
+<p class="case-dek">A fictional travel company wants to send useful messages without sending them twice or sending them after someone books. Here’s how I’d decide which events to trust, where consent lives and how to test the handoffs.</p>
+<p><a class="button primary" href="waypoint-demo.html">Run a scenario</a></p>
 </div></section>
 <section class="case-facts"><div class="case-fact">
 <small>Company</small><strong>Fictional travel marketplace</strong>
@@ -51,7 +60,7 @@
 <small>Goal</small><strong>Reliable lifecycle activation</strong>
 </div></section>
 <div class="case-body"><div class="wrap case-grid">
-<aside class="case-nav"><a href="#decision">00 Decision filter</a><a href="#brief">01 Brief</a><a href="#identity">02 Identity + authority</a><a href="#ingestion">03 Ingestion</a><a href="#realtime">04 Real-time vs batch</a><a href="#journey">05 Journey</a><a href="#throughput">06 Throughput</a><a href="#failure">07 Failure modes</a><a href="#test">08 Test plan</a><a href="#rollout">09 Rollout</a><a href="#scale">10 At scale</a></aside><article class="case-content">
+<nav class="case-nav" aria-label="On this page"><a href="#decision">Decision filter</a><a href="#brief">Brief</a><a href="#identity">Identity + authority</a><a href="#ingestion">Ingestion</a><a href="#realtime">Real-time vs batch</a><a href="#journey">Journey</a><a href="#throughput">Throughput</a><a href="#failure">Failure modes</a><a href="#test">Test plan</a><a href="#rollout">Rollout</a><a href="#scale">At scale</a></nav><article class="case-content">
 <section id="decision"><h2>The decision filter.</h2>
 <p>I would use the same sequence before recommending any specific Braze feature or integration pattern.</p>
 <div class="artifact">
@@ -133,7 +142,8 @@
 <div class="artifact-head">
 <span>Decision</span><span>What owns what</span>
 </div>
-<div class="artifact-body"><table>
+<div class="artifact-body"><div class="table-scroll" role="region" tabindex="0" aria-label="Identity and data authority are different decisions.">
+<table>
 <caption class="sr-only">Identity and data authority are different decisions.</caption>
 <thead><tr>
 <th scope="col">Question</th>
@@ -162,11 +172,13 @@
 <td>Durable or calculated state can have its own authority</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div></div>
 </div>
 <p>Email can change without the person becoming a new customer. A stable ID answers identity; per-field authority answers which system is allowed to update each fact.</p></section>
 <section id="ingestion"><h2>Choose ingestion by where the truth originates.</h2>
 <p>Client behaviour that naturally occurs in the app or site should usually be captured by the SDK. Trusted backend outcomes should come from the backend. Large recurring warehouse truth can use a scheduled warehouse-oriented path when immediate latency is unnecessary.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Choose ingestion by where the truth originates.">
 <table class="decision-table">
 <caption class="sr-only">Choose ingestion by where the truth originates.</caption>
 <thead><tr>
@@ -214,8 +226,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3>Example backend event</h3>
-<pre class="code"><span class="k">POST</span> /users/track
+<pre class="code" tabindex="0"><span class="k">POST</span> /users/track
 {
   <span class="s">"events"</span>: [{
     <span class="s">"external_id"</span>: <span class="s">"cust_18427"</span>,
@@ -312,7 +325,8 @@
 <div class="artifact-head">
 <span>Artifact 05</span><span>Failure mode review</span>
 </div>
-<div class="artifact-body"><table>
+<div class="artifact-body"><div class="table-scroll" role="region" tabindex="0" aria-label="Failure modes belong in the architecture.">
+<table>
 <caption class="sr-only">Failure modes belong in the architecture.</caption>
 <thead><tr>
 <th scope="col">Failure</th>
@@ -351,7 +365,8 @@
 <td>Count reconciliation, retry policy, alerting and named recovery owner</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div></div>
 </div></section>
 <section id="test"><h2>Test the customer path, not just the component.</h2>
 <p>I would create named synthetic users covering identity, consent, timing, failure and re-entry scenarios. Then I would trace evidence from source through customer outcome.</p>
@@ -403,6 +418,12 @@
 </ul>
 <div class="pullquote">At scale, technical maturity is not more architecture. It is clearer ownership, safer change, better observability and fewer surprises.</div></section>
 </article>
-</div></div></main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js"></script>
+</div></div></main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
 </body>
 </html>

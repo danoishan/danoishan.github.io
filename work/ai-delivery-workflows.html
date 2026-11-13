@@ -6,70 +6,96 @@
 <meta property="og:site_name" content="Danoishan Sinnathamby">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f3f0e8">
-<title>AI-Assisted Delivery Workflows | Danoishan Sinnathamby</title>
+<meta name="theme-color" content="#f6f3ea">
+<title>From Brief to Testable Delivery | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/work/ai-delivery-workflows.html">
-<meta name="description" content="A documented AI-assisted delivery workflow using Claude Code, custom subagents, reusable Agent Skills, source validation and technical handoffs.">
+<meta name="description" content="How Danoishan Sinnathamby uses Claude Code to surface requirements and QA questions, shown through a fictional CRM example with human review.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles-base.css">
-<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AI-Assisted Delivery Workflows | Danoishan Sinnathamby">
-<meta property="og:description" content="AI-assisted requirements, technical research and QA planning with clear human review boundaries.">
+<meta property="og:title" content="From Brief to Testable Delivery | Danoishan Sinnathamby">
+<meta property="og:description" content="How Danoishan Sinnathamby uses Claude Code to surface requirements and QA questions, shown through a fictional CRM example with human review.">
 <meta property="og:url" content="https://danoishan.github.io/work/ai-delivery-workflows.html">
-<meta property="og:image" content="https://danoishan.github.io/social-card.png">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-requirements.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="From Brief to Testable Delivery. An example win-back requirement becomes an eligibility question.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI-Assisted Delivery Workflows | Danoishan Sinnathamby">
-<meta name="twitter:description" content="AI-assisted requirements, technical research and QA planning with clear human review boundaries.">
-<meta name="twitter:image" content="https://danoishan.github.io/social-card.png">
+<meta name="twitter:title" content="From Brief to Testable Delivery | Danoishan Sinnathamby">
+<meta name="twitter:description" content="How Danoishan Sinnathamby uses Claude Code to surface requirements and QA questions, shown through a fictional CRM example with human review.">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-requirements.png">
+<meta name="twitter:image:alt" content="From Brief to Testable Delivery. An example win-back requirement becomes an eligibility question.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header"><div class="wrap nav">
-<a class="wordmark" href="../index.html">Danoishan Sinnathamby <span>/ work</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="../index.html#work">Work</a><a href="../lab/waypoint.html">Lab</a><a href="../artifacts/index.html">Artifacts</a><a href="../resume.html">Resume</a><a href="../index.html#about">About</a><a href="../notes/index.html">Notes</a></nav><a class="nav-cta" href="mailto:danoishan@gmail.com">email ↗</a>
-</div></header>
-<main id="main-content">
-<section class="case-hero"><div class="wrap reveal">
-<a class="back-link" href="../index.html#work">← selected work</a>
-<p class="eyebrow">Case 06 · AI-enabled technical delivery · reusable workflows</p>
-<h1>From Brief to Testable Delivery.</h1>
-<p class="case-dek">A vague CRM request can hide a surprising number of missing decisions. I use Claude Code, subagents and reusable Agent Skills to surface those questions, draft tests and give the right specialists something concrete to review before build begins.</p>
-<p class="case-note"><strong>PRACTICE PATTERN + ILLUSTRATIVE EXAMPLE.</strong> The tools and use cases reflect my regular practice. The example below is synthetic, not a client transcript or a measured productivity result. No client data or production AI deployment is shown.</p>
-</div></section>
-<section class="case-facts"><div class="case-fact"><small>Tooling</small><strong>Claude Code · subagents · Agent Skills</strong></div><div class="case-fact"><small>Inputs</small><strong>Requirements · solution notes · technical findings</strong></div><div class="case-fact"><small>Outputs</small><strong>Tasks · dependencies · acceptance criteria · QA scenarios</strong></div><div class="case-fact"><small>Control</small><strong>Source checks and human review</strong></div></section>
-<div class="case-body"><div class="wrap case-grid">
-<aside class="case-nav"><a href="#snapshot">00 Snapshot</a><a href="#practice">01 How I use AI</a><a href="#example">02 Illustrative workflow</a><a href="#review">03 Review gates</a><a href="#reuse">04 Reuse and sharing</a><a href="#boundaries">05 Evidence limits</a></aside>
-<article class="case-content">
-<section id="snapshot"><h2>What I use it for, and what I don't.</h2>
-<div class="artifact"><div class="artifact-head"><span>Operating choice</span><span>Human-accountable delivery</span></div><div class="artifact-body"><table><caption class="sr-only">AI delivery workflow summary</caption><tbody><tr><th scope="row">Problem</th><td>Requirements, platform notes and technical decisions are spread across documents and people.</td></tr><tr><th scope="row">Approach</th><td>Use focused AI-assisted reviews to surface questions, dependencies and tests before planning.</td></tr><tr><th scope="row">Ownership</th><td>I own the delivery framing and review path; engineers and platform specialists own technical authority and production implementation.</td></tr><tr><th scope="row">Result shown here</th><td>A reusable review process and illustrative output structure, not a claimed client efficiency metric.</td></tr></tbody></table></div></div>
-<p>AI helps me get from a messy brief to a first set of useful questions faster. It doesn't make the source correct, and it doesn't replace the people who know the system.</p></section>
-<section id="practice"><h2>Give the model a job small enough to check.</h2>
-<p>I regularly use Claude and Claude Code, including custom subagents and Agent Skills, for research synthesis, requirements interpretation, implementation questions, draft QA scenarios and structured documentation. I also use AI-assisted code and implementation review to identify questions for technical specialists.</p>
-<div class="phase-grid"><div class="phase"><span>01 / REVIEW</span><h3>What does the source say?</h3><p>Extract requirements, assumptions, exclusions and unresolved decisions from available materials.</p></div><div class="phase"><span>02 / DEPENDENCIES</span><h3>What must happen first?</h3><p>Surface integration, data, consent, QA and approval dependencies for sequencing.</p></div><div class="phase"><span>03 / TESTABILITY</span><h3>How would we know?</h3><p>Draft acceptance criteria, negative cases, evidence needs and handoff questions.</p></div></div>
-<p>Specialist work is not simply “accepted” because it appears in generated output. The point is to bring a better starting question to the right owner.</p></section>
-<section id="example"><h2>From a vague request to something testable.</h2>
-<p><strong>Illustrative scenario:</strong> A CRM team wants to change who enters a lifecycle journey when status and consent data arrive from different systems. This example is synthetic and is intended to demonstrate a review format, not to claim that this exact engagement occurred.</p>
-<div class="artifact"><div class="artifact-head"><span>Possible review output</span><span>Example only</span></div><div class="artifact-body"><table><caption class="sr-only">Sample AI-assisted requirements review</caption><thead><tr><th scope="col">Area</th><th scope="col">Question / draft output</th><th scope="col">Owner to confirm</th></tr></thead><tbody><tr><td>Source</td><td>Which system is authoritative for current status?</td><td>Data owner</td></tr><tr><td>Consent</td><td>Does opt-out always override inclusion?</td><td>Compliance / CRM owner</td></tr><tr><td>Timing</td><td>Can status arrive after a scheduled journey entry?</td><td>Integration specialist</td></tr><tr><td>QA</td><td>Test eligible, recently changed, opted-out and missing-ID records</td><td>QA and client UAT</td></tr><tr><td>Release</td><td>Name reconciliation evidence, monitoring and rollback owner</td><td>Delivery / operations</td></tr></tbody></table></div></div>
-<div class="artifact"><div class="artifact-head"><span>Artifact 02</span><span>Synthetic input → reviewed delivery handoff</span></div><div class="artifact-body"><table><caption class="sr-only">Before and after illustrative AI-assisted requirements review.</caption><thead><tr><th scope="col">Raw request</th><th scope="col">Draft output after AI-assisted review</th><th scope="col">Human validation</th></tr></thead><tbody><tr><td>“Send the win-back message to lapsed customers.”</td><td>Define lapsed status, source-of-truth date, consent exclusions, reactivation cut-off and expected send window.</td><td>Client owner confirms eligibility; data specialist verifies fields and freshness.</td></tr><tr><td>“Don’t message people who came back.”</td><td>Test reactivated-before-entry, reactivated-during-delay and late-arriving-status scenarios.</td><td>Engineering and QA confirm suppression behaviour; no autonomous production change.</td></tr><tr><td>“Launch Friday.”</td><td>Name a version owner, entry-count reconciliation, test evidence, rollback/stop path and approval deadline.</td><td>Delivery lead and client make go/no-go decision.</td></tr></tbody></table></div></div></section>
-<section id="review"><h2>The checks that still need a human.</h2>
-<div class="checklist"><div class="check">Source claim can be traced to a document or owner</div><div class="check">Assumptions are labelled, not hidden</div><div class="check">Technical findings are validated with specialists</div><div class="check">Sensitive client material stays within approved handling rules</div><div class="check">Negative test cases are included</div><div class="check">Final client decisions remain human-owned</div></div>
-<p>AI-generated code observations may become investigation leads; they are not accepted as confirmed defects without reproduction, source evidence or developer validation.</p></section>
-<section id="reuse"><h2>Make the useful parts easy to reuse.</h2>
-<p>I also share reusable instructions and AI-assisted review patterns with colleagues for ticket preparation, issue triage, requirements questions and documentation. The principle is to preserve the review structure, not to turn one client's confidential material into a reusable prompt.</p>
-<p>Useful reuse depends on small, maintainable instructions with an explicit input scope, expected output, validation step and human owner. A shared workflow is only valuable if another person can understand its limitations and use it safely.</p>
-<p><a href="../artifacts/index.html">See public, generic delivery templates →</a></p></section>
-<section id="boundaries"><h2>What I can actually show.</h2>
-<p><strong>What I use in practice:</strong> Claude Code, subagents, Agent Skills, AI-assisted code review and shared review workflows.</p>
-<p><strong>What's an example:</strong> the lifecycle journey, tables and review sequence. They aren't exported client records or measured time savings.</p>
-<p><strong>What I'm not claiming:</strong> autonomous production changes, a completed MCP implementation, measured productivity gains or AI replacing specialist validation.</p>
-<div class="pullquote">The advantage is a more disciplined starting point: clearer questions, visible uncertainties and a reviewable path into delivery.</div>
-<p>For an executable and testable example of my technical reasoning, open the <a href="../lab/waypoint-demo.html">Waypoint policy exercise →</a>.</p>
-<p>For evidence definitions and reported career metrics, see <a href="measurement-notes.html">measurement context →</a>.</p></section>
-</article></div></div>
-</main><footer class="wrap footer"><span>© <span data-year></span> Danoishan Sinnathamby</span><nav aria-label="Footer navigation"><a href="../index.html">Portfolio</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/danoishan" target="_blank" rel="noreferrer">GitHub ↗</a></nav></footer><script src="../script.js"></script>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/notes/">Notes</a><a href="/resume.html">Résumé</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1" class="case-study case-review">
+  <header class="case-hero"><div class="wrap">
+    <a class="back-link" href="/#work">← Selected work</a>
+    <p class="project-context">Requirements and QA · AI-assisted review</p>
+    <h1>From Brief to Testable Delivery</h1>
+    <p class="case-dek">“Send a win-back message to lapsed customers” sounds like a complete brief until someone asks whether a customer who came back yesterday should still get it. I use Claude Code to surface questions like that before a ticket goes into build.</p>
+    <p class="case-note">Tools I use in practice, shown through a fictional CRM example.</p>
+  </div></header>
+
+  <div class="case-body"><div class="wrap case-grid">
+    <nav class="case-nav" aria-label="On this page">
+      <a href="#example">Before and after</a><a href="#practice">How I use it</a><a href="#review">Who checks it</a>
+    </nav>
+    <article class="case-content">
+      <section id="example">
+        <h2>What I’d take back to the team</h2>
+        <div class="review-examples">
+          <article>
+            <blockquote>“Send the win-back message to lapsed customers.”</blockquote>
+            <dl><div><dt>Question to settle</dt><dd>Which system defines lapsed, on what date, and which consent rule takes precedence?</dd></div>
+            <div><dt>Who checks</dt><dd>The client owns eligibility. Data verifies the source and how current it is.</dd></div></dl>
+          </article>
+          <article>
+            <blockquote>“Don’t message people who came back.”</blockquote>
+            <dl><div><dt>Test to add</dt><dd>Try someone who came back before entry, someone who came back during a delay, and a status update that arrives late.</dd></div>
+            <div><dt>Who checks</dt><dd>Engineering and QA confirm what the journey does in each case.</dd></div></dl>
+          </article>
+          <article>
+            <blockquote>“Launch Friday.”</blockquote>
+            <dl><div><dt>Decision to record</dt><dd>Which version is under test, when approval is due, and who can stop the release.</dd></div>
+            <div><dt>Who checks</dt><dd>The client and delivery lead review QA evidence and make the release decision.</dd></div></dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="practice">
+        <h2>How it fits into my work</h2>
+        <p id="snapshot">I use Claude Code, subagents and reusable Agent Skills for separate passes on requirements, dependencies and test coverage. The useful output is usually a question I can bring to a specific person, or a test case we hadn’t written down yet.</p>
+        <p id="reuse">I also share review instructions with colleagues for tickets, technical documentation and issue triage. The reusable part is the review method and the checks it asks for.</p>
+      </section>
+
+      <section id="review">
+        <h2>Who checks the answer</h2>
+        <p>I check the draft against source documents and flag assumptions. A developer investigates code observations, QA validates the expected behaviour, and the client confirms business rules and sign-off. I use approved material for the review.</p>
+        <p id="boundaries">The example above illustrates the format. It uses fictional inputs and shows what I would check before turning a suggestion into a requirement.</p>
+        <p><a href="/lab/waypoint-demo.html">Run the fictional Waypoint scenarios</a> or <a href="/artifacts/">open the delivery templates</a>.</p>
+      </section>
+    </article>
+  </div></div>
+</main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
 </body>
 </html>

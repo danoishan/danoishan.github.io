@@ -1,19 +1,20 @@
 # Danoishan Sinnathamby: technical delivery portfolio
 
-[Live portfolio](https://danoishan.github.io/) · [Resume](https://danoishan.github.io/resume.html) · [Runnable Waypoint exercise](https://danoishan.github.io/lab/waypoint-demo.html)
+[Live portfolio](https://danoishan.github.io/) · [Résumé](https://danoishan.github.io/resume.html) · [Runnable Waypoint exercise](https://danoishan.github.io/lab/waypoint-demo.html)
 
-[![Portfolio homepage preview](docs/screenshots/homepage-preview-1791570850440.jpg)](https://danoishan.github.io/)
+[![Portfolio homepage preview](docs/screenshots/portfolio-homepage.jpg)](https://danoishan.github.io/)
 
-I am a Senior Account Manager at Vigorate in Toronto, focused on technical project and program delivery across enterprise CRM, lifecycle marketing, customer data and MarTech. This repository presents my delivery ownership, decisions, specialist handoffs and operating approach, including practical AI-assisted technical reviews. AI workflow examples are identified as illustrative where appropriate.
+I’m a Senior Account Manager at Vigorate in Toronto. I lead enterprise CRM and marketing technology projects, from requirements and data handoffs through testing, release and follow-up.
 
 ## Start here
 
 | Evidence | What to inspect |
 | --- | --- |
-| [AI-enabled delivery practice](https://danoishan.github.io/work/ai-delivery-workflows.html) | Claude Code, custom subagents, Agent Skills and an illustrative, human-reviewed requirements-to-QA workflow |
-| [Current program pattern](https://danoishan.github.io/work/200m-messages.html) | Delivery controls across 20+ concurrent workstreams and programs supporting 200M+ annual sends |
-| [Migration diagnosis](https://danoishan.github.io/work/80-percent-drop.html) | An anonymized composite: root-cause investigation and phased validation plan |
-| [Billing investigation](https://danoishan.github.io/work/billing-journey.html) | Cross-system failures, exception handling and recovery recommendations |
+| [Making 200 Million Messages Boring](https://danoishan.github.io/work/200m-messages.html) | Program delivery across 20+ concurrent workstreams per quarter, with a [sample audience decision record](artifacts/audience-release-record.md) |
+| [The 80% Drop](https://danoishan.github.io/work/80-percent-drop.html) | An anonymized composite tracing why form submissions fell while traffic held up |
+| [The Bill That Couldn’t Go Missing](https://danoishan.github.io/work/billing-journey.html) | The path from a billing file to a missing message, with a small CSV example |
+| [One Offer, Many Versions](https://danoishan.github.io/work/creative-production.html) | Creative production and the bilingual email approval that had to follow the revised file |
+| [From Brief to Testable Delivery](https://danoishan.github.io/work/ai-delivery-workflows.html) | A fictional before-and-after example of human-reviewed AI-assisted requirements |
 | [Waypoint exercise](lab/waypoint-demo/) | Fictional policy engine, 18 scenarios, automated tests and recorded outputs |
 | [Filled artifacts](artifacts/waypoint-decision-record.md) | A specific decision and matching [validation matrix](artifacts/waypoint-validation-matrix.md) |
 | [Templates](artifacts/templates/) | Reusable decision, handoff, readiness and validation tools |
