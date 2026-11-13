@@ -345,7 +345,7 @@
   .table-scroll { overflow: visible; }
 }
 
-/* The downloadable résumé uses this page's content. */
+/* The downloadable resume uses this page's content. */
 .resume-contact { color: var(--muted); font-size: .875rem; margin: 7px 0 0; overflow-wrap: anywhere; }
 .resume-content .resume-dates { color: var(--muted); font-size: .9375rem; }
 .resume-compact-list { margin-block: 7px; }

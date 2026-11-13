@@ -1,4 +1,4 @@
-"""Generate the tagged, two-page résumé from resume.html and its print styles."""
+"""Generate the tagged, two-page resume from resume.html and its print styles."""
 
 from argparse import ArgumentParser
 from pathlib import Path

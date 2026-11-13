@@ -1,6 +1,6 @@
 # Danoishan Sinnathamby: technical delivery portfolio
 
-[Live portfolio](https://danoishan.github.io/) · [Résumé](https://danoishan.github.io/resume.html) · [Runnable Waypoint exercise](https://danoishan.github.io/lab/waypoint-demo.html)
+[Live portfolio](https://danoishan.github.io/) · [Resume](https://danoishan.github.io/resume.html) · [Runnable Waypoint exercise](https://danoishan.github.io/lab/waypoint-demo.html)
 
 [![Portfolio homepage preview](docs/screenshots/portfolio-homepage.jpg)](https://danoishan.github.io/)
 

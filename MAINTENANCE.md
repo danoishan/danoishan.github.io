@@ -2,7 +2,7 @@
 
 ## Before publishing
 
-Run the three checks in the root README. Review both themes at 320, 390, 768, 1280 and 1440 px. Check that pages fit the viewport, keyboard focus stays visible, and the Work, About and case links land below the header. Confirm the résumé download and contact links. The automated link and contrast checks supplement the browser review.
+Run the three checks in the root README. Review both themes at 320, 390, 768, 1280 and 1440 px. Check that pages fit the viewport, keyboard focus stays visible, and the Work, About and case links land below the header. Confirm the resume download and contact links. The automated link and contrast checks supplement the browser review.
 
 The site fails open when JavaScript is unavailable. Core career content and recorded Waypoint results should remain reachable. Check the custom 404 page and preserve existing case and note URLs and section IDs when editing.
 
