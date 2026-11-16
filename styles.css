@@ -81,14 +81,14 @@
 .selected-pair h3 { font-size: clamp(1.55rem, 2.6vw, 2.1rem); }
 .home-about {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 300px);
-  align-items: center;
-  gap: clamp(24px, 7vw, 100px);
+  grid-template-columns: minmax(0, 57ch) 170px;
+  align-items: start;
+  gap: clamp(24px, 5vw, 64px);
   padding-block: 35px;
 }
 .about-copy p { max-width: 57ch; margin-block: 13px; }
-.about-contact { display: flex; flex-wrap: wrap; gap: 6px 16px; }
-.about-photo img { width: 100%; border-radius: 2px; }
+.about-copy .about-contact { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-block-end: 0; }
+.about-photo img { width: 100%; border-radius: 2px; filter: contrast(.78) brightness(1.12); }
 
 .link-list article {
   display: grid;
@@ -312,7 +312,8 @@
   .featured-case p:last-child, .selected-pair p:last-child { font-size: .9375rem; }
   .selected-pair { gap: 14px; }
   .selected-pair article { padding-top: 12px; }
-  .about-photo { width: min(100%, 300px); }
+  .home-about { row-gap: 16px; }
+  .about-photo { width: min(100%, 156px); }
   .brief-intro { padding-block: 27px 22px; }
   .case-hero h1, .brief-intro h1 { font-size: clamp(2.35rem, 10vw, 3.25rem); }
   .case-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
