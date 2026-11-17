@@ -3,7 +3,7 @@
 **Date:** 2026-10-09\
 **Environment:** deterministic local model with synthetic fixtures\
 **Owner:** Danoishan Sinnathamby, portfolio exercise\
-**Evidence:** [source and tests](../lab/waypoint-demo/), [inputs](../lab/waypoint-demo/fixtures.json), [recorded outputs](../lab/waypoint-demo/results.json)
+**Evidence:** [source and tests](https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo), [inputs](../lab/waypoint-demo/fixtures.json), [recorded outputs](../lab/waypoint-demo/results.json)
 
 | Scenario ID | Expected result | Evidence / owner if a production equivalent fails |
 | --- | --- | --- |

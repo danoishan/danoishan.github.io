@@ -51,12 +51,33 @@
 </div></section>
 <div class="case-body"><div class="wrap case-grid">
 <nav class="case-nav" aria-label="On this page"><a href="#worked-example">Filled example</a><a href="#decision">Decision record</a><a href="#handoff">Technical handoff</a><a href="#launch">Launch readiness</a><a href="#validation">End-to-end validation</a><a href="#principle">Why these work</a></nav><article class="case-content">
-<section id="worked-example"><p class="eyebrow">Filled fictional example</p>
-<h2>Two filled decision records</h2>
-<p>The audience record shows how to choose which file to send from. Waypoint pairs a different decision record with validation results you can reproduce in the browser.</p>
+<section id="worked-example">
+<h2>Worked examples</h2>
+<p>For examples from client delivery, see the <a href="/work/200m-messages.html#model">SAP cutover workback</a> and the <a href="/work/billing-monitoring.html#delivery">billing monitoring release record</a>.</p>
+<section id="audience-example">
+<h3>Choosing an audience for release</h3>
+<p class="case-note">Fictional audience and counts.</p>
+<dl class="story-ledger">
+<div><dt>What changed</dt><dd>The approved extract has 48,000 eligible records. The new segment has 47,400, with 900 records removed and 300 added.</dd></div>
+<div><dt>Recommendation</dt><dd>Release from the approved extract if it still covers the intended audience and passes current QA. Hold the send if that extract fails a critical check.</dd></div>
+<div><dt>Evidence to review</dt><dd>Reconcile additions and removals separately by customer ID. Verify eligibility, consent and suppressions in both groups before approving the new segment.</dd></div>
+</dl>
 <div class="hero-actions">
-<a class="button" href="audience-release-record.md" download>Audience release record</a><a class="button" href="waypoint-decision-record.md" download>Waypoint decision record</a><a class="button" href="waypoint-validation-matrix.md" download>Validation matrix ↓</a><a class="button primary" href="../lab/waypoint-demo.html">Run the matching scenarios →</a>
-</div></section><section id="decision"><h2>Decision Record</h2>
+<a class="button" href="audience-release-record.md" download>Download audience decision record ↓</a>
+</div></section>
+<section id="waypoint-validation">
+<h3>Waypoint validation results</h3>
+<p>These sample results come from the local reminder model. The full matrix covers 18 synthetic scenarios.</p>
+<dl class="story-ledger">
+<div><dt>Matching booking</dt><dd>The booking matches the customer and search ID. The reminder is suppressed.</dd></div>
+<div><dt>Different search</dt><dd>A booking for another search leaves the current reminder eligible.</dd></div>
+<div><dt>Stale opt-in</dt><dd>The newer opt-out takes precedence. The reminder is suppressed.</dd></div>
+<div><dt>Partially malformed batch</dt><dd>The model reports the invalid record and evaluates the valid search.</dd></div>
+</dl>
+<div class="hero-actions">
+<a class="button primary" href="../lab/waypoint-demo.html">Run the scenarios →</a><a class="button" href="waypoint-validation-matrix.md" download>Download full matrix ↓</a><a class="button" href="waypoint-decision-record.md" download>Download Waypoint decision record ↓</a>
+</div></section>
+</section><section id="decision"><h2>Decision Record</h2>
 <p>Useful when a team has several technically possible paths and needs one durable recommendation rather than a meeting that has to be relitigated later.</p>
 <div class="artifact">
 <div class="artifact-head">

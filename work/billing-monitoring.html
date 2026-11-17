@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="author" content="Danoishan Sinnathamby">
+<meta property="article:author" content="https://www.linkedin.com/in/danoishan/">
+<meta property="og:site_name" content="Danoishan Sinnathamby">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f3ea">
+<title>When a Billing Journey Goes Quiet | Danoishan Sinnathamby</title>
+<link rel="canonical" href="https://danoishan.github.io/work/billing-monitoring.html">
+<meta name="description" content="How Danoishan Sinnathamby defined a billing alert, led the change through testing and launch, and verified production monitoring.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="When a Billing Journey Goes Quiet | Danoishan Sinnathamby">
+<meta property="og:description" content="How Danoishan Sinnathamby defined a billing alert, led the change through testing and launch, and verified production monitoring.">
+<meta property="og:url" content="https://danoishan.github.io/work/billing-monitoring.html">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When a Billing Journey Goes Quiet | Danoishan Sinnathamby">
+<meta name="twitter:description" content="How Danoishan Sinnathamby defined a billing alert, led the change through testing and launch, and verified production monitoring.">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta name="twitter:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/notes/">Notes</a><a href="/resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1" class="case-study">
+  <header class="case-hero"><div class="wrap">
+    <a class="back-link" href="/#work">← Selected work</a>
+    <p class="project-context">Billing operations · Vigorate · Anonymized</p>
+    <h1>When a Billing Journey Goes Quiet</h1>
+    <p class="case-dek">A billing journey can go quiet without a visible failure. I led a monitoring update that alerts the team if seven days go by with zero sends.</p>
+    <p class="case-note">Anonymized summary of a completed monitoring release.</p>
+  </div></header>
+
+  <div class="case-body"><div class="wrap case-grid">
+    <nav class="case-nav" aria-label="On this page">
+      <a href="#requirement">The alert rule</a><a href="#delivery">Delivery and testing</a><a href="#closeout">Production verification</a>
+    </nav>
+    <article class="case-content">
+      <section id="requirement">
+        <h2>Define what counts as too quiet</h2>
+        <p>The client needed to know when a billing journey stopped sending. I made that request testable by defining the alert around a seven-day window with zero sends. The rule gave the team one condition to build and validate.</p>
+      </section>
+
+      <section id="delivery">
+        <h2>From the brief to launch</h2>
+        <figure class="release-record">
+          <figcaption><strong>Delivery record</strong> <span>Reconstructed summary</span></figcaption>
+          <dl class="story-ledger">
+            <div><dt>Requirement</dt><dd>I defined when the zero-send alert should trigger.</dd></div>
+            <div><dt>Build and UAT</dt><dd>I coordinated development and user acceptance testing against the rule.</dd></div>
+            <div><dt>Release</dt><dd>I managed the release of the monitoring update.</dd></div>
+            <div><dt>Closeout</dt><dd>I verified the monitoring runs in production after launch.</dd></div>
+          </dl>
+        </figure>
+      </section>
+
+      <section id="closeout">
+        <h2>What I verified after launch</h2>
+        <p>I checked the monitoring runs in production before closing the release. That confirmed the new check was executing in the live environment.</p>
+        <p><a href="/notes/200-ok-not-outcome.html">How I check the result after deployment</a></p>
+      </section>
+
+      <section class="case-cta"><a class="case-link" href="/#work">View all case studies <span aria-hidden="true">→</span></a></section>
+    </article>
+  </div></div>
+</main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
+</body>
+</html>

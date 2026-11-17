@@ -366,6 +366,7 @@
   .resume-page .case-content ul { margin: 3pt 0; }
   .resume-page .case-content li { margin-block: 3pt; }
   .resume-page .case-content .resume-compact-list { list-style: none; padding-left: 0; }
+  .resume-page .resume-projects a { text-decoration: underline; }
   .resume-page .case-content .resume-dates { font-size: 9.5pt; }
   .resume-page .resume-page-two { break-before: page; }
   .resume-page .resume-screen-only { display: none; }

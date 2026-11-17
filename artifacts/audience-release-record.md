@@ -1,6 +1,6 @@
 # Audience source decision
 
-Worked example for [Making 200 Million Messages Boring](../work/200m-messages.html). The scenario and values are illustrative.
+Fictional worked example inspired by [audience release decisions](../work/200m-messages.html#snapshot).
 
 | Field | Decision record |
 | --- | --- |

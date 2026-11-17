@@ -236,11 +236,12 @@
     <span class="s">"time"</span>: <span class="s">"2026-08-31T14:32:00Z"</span>,
     <span class="s">"properties"</span>: {
       <span class="s">"booking_id"</span>: <span class="s">"BKG_92118"</span>,
+      <span class="s">"search_id"</span>: <span class="s">"search_01"</span>,
       <span class="s">"destination"</span>: <span class="s">"Paris"</span>
     }
   }]
 }</pre>
-<p>The payload carries enough context for orchestration and validation without turning Braze into a second booking database.</p></section>
+<p>The booking service must include the originating search ID or resolve it through a reliable mapping. The booking property <code>properties.search_id</code> corresponds to <code>event.searchId</code> in the local model, which matches it with the customer ID.</p></section>
 <section id="realtime"><h2>Real-time welcome alongside a legacy nightly batch.</h2>
 <p>Assume Waypoint has a legacy customer system that can only export an overnight CSV, but Marketing wants a welcome message within the first few minutes of signup. The wrong starting point is “how do we make the nightly file real-time?”</p>
 <h3>What I would clarify first</h3>
@@ -275,7 +276,7 @@
 </div>
 <div class="artifact-body architecture">
 <div class="arch-row">
-<span class="node">search_completed</span><span class="arrow">→</span><span class="node">2 hour delay</span><span class="arrow">→</span><span class="node">Booked same itinerary?</span>
+<span class="node">search_completed</span><span class="arrow">→</span><span class="node">2 hour delay</span><span class="arrow">→</span><span class="node">Booking for this search?</span>
 </div>
 <div class="arch-row">
 <span class="node">YES</span><span class="arrow">→</span><span class="node">Exit</span>
@@ -286,7 +287,7 @@
 </div>
 </div>
 <ul>
-<li>Exit when booking_completed arrives for the relevant journey context</li>
+<li>Exit when booking_completed matches the customer and originating search</li>
 <li>Define re-entry / cooldown instead of allowing accidental overlap</li>
 <li>Suppress customers who are not eligible for the channel</li>
 <li>Prefer the most recent valid search if multiple searches occur</li>

@@ -20,6 +20,7 @@ https://danoishan.github.io/work/125-campaigns.html
 https://danoishan.github.io/work/200m-messages.html
 https://danoishan.github.io/work/80-percent-drop.html
 https://danoishan.github.io/work/billing-journey.html
+https://danoishan.github.io/work/billing-monitoring.html
 https://danoishan.github.io/work/measurement-notes.html
 https://danoishan.github.io/work/ai-delivery-workflows.html
 https://danoishan.github.io/work/creative-production.html

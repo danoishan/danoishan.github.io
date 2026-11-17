@@ -7,27 +7,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f6f3ea">
-<title>Making 200 Million Messages Boring | Danoishan Sinnathamby</title>
+<title>SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/work/200m-messages.html">
-<meta name="description" content="How Danoishan Sinnathamby leads delivery across enterprise CRM workstreams, with a worked audience decision and reported program outcomes.">
+<meta name="description" content="How Danoishan Sinnathamby coordinated the pause and restart of more than 20 Salesforce Marketing Cloud journeys during an SAP upgrade.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles-base.css?v=2">
 <link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Making 200 Million Messages Boring | Danoishan Sinnathamby">
-<meta property="og:description" content="How Danoishan Sinnathamby leads delivery across enterprise CRM workstreams, with a worked audience decision and reported program outcomes.">
+<meta property="og:title" content="SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby">
+<meta property="og:description" content="How Danoishan Sinnathamby coordinated the pause and restart of more than 20 Salesforce Marketing Cloud journeys during an SAP upgrade.">
 <meta property="og:url" content="https://danoishan.github.io/work/200m-messages.html">
-<meta property="og:image" content="https://danoishan.github.io/assets/share-delivery.png">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-sap-cutover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Making 200 Million Messages Boring. An example release record for choosing an audience source.">
+<meta property="og:image:alt" content="SAP Cutover Across 20+ Marketing Journeys. Pause affected marketing journeys, protect critical transactions, and coordinate the restart.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Making 200 Million Messages Boring | Danoishan Sinnathamby">
-<meta name="twitter:description" content="How Danoishan Sinnathamby leads delivery across enterprise CRM workstreams, with a worked audience decision and reported program outcomes.">
-<meta name="twitter:image" content="https://danoishan.github.io/assets/share-delivery.png">
-<meta name="twitter:image:alt" content="Making 200 Million Messages Boring. An example release record for choosing an audience source.">
+<meta name="twitter:title" content="SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby">
+<meta name="twitter:description" content="How Danoishan Sinnathamby coordinated the pause and restart of more than 20 Salesforce Marketing Cloud journeys during an SAP upgrade.">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-sap-cutover.png">
+<meta name="twitter:image:alt" content="SAP Cutover Across 20+ Marketing Journeys. Pause affected marketing journeys, protect critical transactions, and coordinate the restart.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
@@ -44,84 +44,65 @@
 <main id="main-content" tabindex="-1" class="case-study case-program">
   <header class="case-hero"><div class="wrap">
     <a class="back-link" href="/#work">← Selected work</a>
-    <p class="project-context">Enterprise CRM · Vigorate, 2021 to present</p>
-    <h1>Making 200 Million Messages Boring</h1>
-    <p class="case-dek">An SAP upgrade meant pausing marketing journeys without interrupting critical customer messages. On another release, a journey import failed and customers missed a message. Both put the delivery plan to a real test.</p>
-    <p class="case-note">The cutover and journey recovery come from client work at Vigorate. The audience example uses fictional numbers. Program metrics cover the wider work.</p>
+    <p class="project-context">Enterprise CRM cutover · Vigorate · Anonymized</p>
+    <h1>SAP Cutover Across 20+ Marketing Journeys</h1>
+    <p class="case-dek">During an SAP upgrade, we needed to pause more than 20 Salesforce Marketing Cloud journeys and keep critical transactional messages running. I coordinated the timing, safeguards, and restart with the client’s IT and marketing teams and our developers.</p>
+    <a class="case-link" href="#model">See the cutover workback <span aria-hidden="true">↓</span></a>
   </div></header>
 
   <div class="case-body"><div class="wrap case-grid">
     <nav class="case-nav" aria-label="On this page">
-      <a href="#production">Two production decisions</a><a href="#consent">Consent and identity</a><a href="#snapshot">An audience decision</a><a href="#model">How I run the work</a><a href="#launch">The release check</a><a href="#outcomes">Results and scope</a>
+      <a href="#production">The constraint</a><a href="#model">Cutover workback</a><a href="#launch">Restart checks</a><a href="#outcomes">My part in the cutover</a><a href="#recovery">Other release decisions</a>
     </nav>
     <article class="case-content">
       <section id="production">
-        <h2>Two decisions from production</h2>
-        <h3>What could we pause during an SAP upgrade?</h3>
-        <p>The cutover plan had to cover when Marketing Cloud journeys would pause and restart. Critical transactional messages still had to go out. I worked with the client’s IT and marketing teams and our developers to coordinate the timing and safeguards for more than 20 marketing journeys. The distinction between marketing and transactional messages changed what could be paused.</p>
-        <h3>How do we reach customers a journey missed?</h3>
-        <p>An import error left customers out of a live journey. I worked through recovery options with the client and developers and secured approval for a one-time send to the missed audience. In parallel, I coordinated the plan for a replacement data extension and SQL routing for future entries. That gave the client a way to address the immediate gap while the team worked on the recurring failure.</p>
-        <p>On a separate billing automation incident, I tracked restoration and confirmed that all missed bounce-report files had been reprocessed. The confirmation was for the reports that had been missed, so the client could close out the incident against a defined result.</p>
-      </section>
-
-      <section id="consent">
-        <h2>Which customer gets resubscribed?</h2>
-        <p>A resubscription change between SAP and Salesforce Marketing Cloud raised a question I brought to client IT and our developers. If a person changes their email address, what identifies the account whose consent should change? The matching rule we agreed to validate used customer ID alone. I led the client escalation and helped document six test scenarios, monitoring checkpoints and rollback considerations.</p>
-        <p>Here’s a fictional test that shows what the rule needs to prove. One customer has a new email address. Another customer still has the old address on file. A resubscribe request for the first customer should update that customer’s consent and leave the second record as it was. I’d ask QA to verify both records in Marketing Cloud before recommending release.</p>
-      </section>
-
-      <section id="snapshot">
-        <h2>Which audience is ready?</h2>
-        <p>Suppose an approved audience has 48,000 eligible records and the replacement segment has 47,400. Comparing the lists shows 900 people missing and 300 new additions. A gap of 600 records hides two different problems. I’d keep the approved file for this send if it still passes the current consent and exclusion checks, and ask the data team to explain both groups before switching sources.</p>
-        <figure class="release-record" id="controls">
-          <figcaption><strong>Audience source decision</strong> <span>Worked example</span></figcaption>
-          <dl class="story-ledger">
-            <div><dt>Recommendation</dt><dd>Use the approved extract for this send. Reconcile the new segment in parallel.</dd></div>
-            <div><dt>Before sign-off</dt><dd>QA checks the selected file’s counts, exclusions and consent rules. Data explains any differences from the approved audience.</dd></div>
-            <div><dt>Decision owner</dt><dd>The client’s release owner approves the source with the QA evidence in hand.</dd></div>
-            <div><dt>What would change it</dt><dd>Hold the send if the approved file fails a count or consent check. Revisit the new segment after its differences are accounted for.</dd></div>
-          </dl>
-          <a href="/artifacts/audience-release-record.md">Open the full sample decision record</a>
-        </figure>
-        <p id="context">I use the same rule when the thing that changes is creative. In one <a href="/work/creative-production.html#decision">bilingual automotive email release</a>, an alt-text correction meant the revised asset needed a fresh test and approval. I coordinated the revised tests and timing with the client and distribution partners.</p>
+        <h2>What could pause?</h2>
+        <p id="failure">The SAP cutover window determined when affected marketing journeys could run. An instruction to pause every journey would also affect critical customer messages, so the plan had to identify which communications could stop and which had to stay in service.</p>
+        <p>I brought IT, marketing and our developers into the same schedule. I tracked the pause and restart timing and kept the transactional exception visible when we discussed what the teams could take offline.</p>
       </section>
 
       <section id="model">
-        <h2>How I run the work across teams</h2>
-        <p id="failure">A late audience change can make an earlier test irrelevant. An urgent production issue can also take up the developer and QA time planned for the next release. I update the workback plan with the team and show the client what would move if we took on the extra work.</p>
-        <h3 id="handoffs">My role at each step</h3>
-        <dl class="story-ledger">
-          <div><dt>Brief and plan</dt><dd>I clarify the client’s requirements and work with Solutions Consulting as they define the scope, estimate and budget. I turn the agreed scope into a delivery plan and confirm the acceptance criteria with engineering and QA.</dd></div>
-          <div><dt>Build and test</dt><dd>I work through dependencies with engineering and data and review test results with QA. We agree which defects would block release before I take a recommendation to the client.</dd></div>
-          <div><dt>Release</dt><dd>I bring the recommendation and customer impact to the client’s release owner for approval. I agree with operations on what to watch and when to escalate.</dd></div>
-        </dl>
-        <p id="tradeoffs">A small copy revision may only need a named reviewer and a record of which version changed. A new audience source needs reconciliation, a consent check and test records for people who should stay out of the send. If it changes the agreed scope, I work with Solutions Consulting on the revised estimate and bring it back to the client.</p>
+        <h2>The workback from the upgrade window</h2>
+        <figure id="controls" class="release-record">
+          <figcaption id="handoffs"><strong>Cutover workback</strong> <span>Reconstructed from project scope</span></figcaption>
+          <dl class="story-ledger">
+            <div><dt>Before the window</dt><dd>Align the SAP timing with the pause and restart plan for more than 20 marketing journeys. Agree which transactional messages must stay in service.</dd></div>
+            <div><dt>At cutover</dt><dd>Coordinate the affected marketing pauses with the technical teams and keep the critical-message exception in the plan.</dd></div>
+            <div><dt>After the upgrade</dt><dd>Coordinate the restart with client IT, marketing and developers around the upgrade timing and the agreed safeguards.</dd></div>
+          </dl>
+        </figure>
+        <p id="tradeoffs">The dependency was the upgrade window. My work was to turn that window into actions the Marketing Cloud and client teams could plan around.</p>
       </section>
 
       <section id="launch">
-        <h2>What I ask before we go live</h2>
+        <h2>What I’d check around the restart</h2>
+        <p class="case-note">Example verification checks for this type of cutover.</p>
         <ul class="plain-checks">
-          <li>Can we reconcile the audience counts and explain the exclusions?</li>
-          <li>Does the approved version match the one QA tested?</li>
-          <li>Did we test someone who should never enter the journey?</li>
-          <li>Who can pause the release, and who checks the first results?</li>
+          <li>Before restart, confirm with IT that SAP is ready and that Marketing Cloud has current inputs.</li>
+          <li>After restart, trace records from the first expected run to the intended step in the journey.</li>
+          <li>Check the protected transactional messages separately. Route discrepancies to the source or platform owner based on where the record stops.</li>
         </ul>
-        <p id="judgement">If a critical check fails, I put the recommendation and customer impact in front of the decision owner. A smaller release can work when the affected component can be isolated and the remaining work is ready.</p>
-        <p id="translation">Marketing needs to know who might get the wrong message. Engineering needs the exact source field and failing test. The sponsor needs the decision, the options and when they’ll hear from us again.</p>
-        <p id="adoption">After launch, I review the first results with operations. If the counts or customer impact differ from what we expected, I follow up with the teams that can trace the issue and agree with the client on what to fix next.</p>
+        <p id="judgement">A delayed source feed would change my restart recommendation. I’d bring the delay and the impact on waiting journeys to the client’s release owner.</p>
+        <p id="translation"><a href="/notes/go-no-go.html">How I prepare for go/no-go</a> · <a href="/notes/schedule-vs-dependencies.html">How I record dependencies</a></p>
       </section>
 
       <section id="outcomes">
-        <h2>Scale and reported results</h2>
-        <dl class="story-ledger">
-          <div><dt>Program scale</dt><dd>20+ concurrent enterprise workstreams per quarter. Programs supporting 200M+ annual email and SMS/MMS sends. Push and in-app were tracked separately.</dd></div>
-          <div><dt>Scope and timing</dt><dd>Reported 30% fewer late-stage scope changes and 20% shorter UAT-to-launch cycles across the programs.</dd></div>
-          <div><dt>Forecasting</dt><dd>Reported program forecasts within 5% of actual monthly delivery effort.</dd></div>
-        </dl>
-        <p id="reflection">The improvement figures are team-level work-history results. I’d keep the starting counts, time window and measurement owner alongside the next rollout so the comparison is easier to explain. <a href="measurement-notes.html">Read the measurement notes.</a></p>
+        <h2>My part in the cutover</h2>
+        <p id="adoption">I coordinated the pause and restart of the affected marketing journeys and the safeguards for critical transactional messages. The workback summarizes how we planned that transition.</p>
+        <p id="reflection">For a separate release where I can share what I verified after launch, see <a href="billing-monitoring.html#closeout">the billing monitoring closeout</a>.</p>
       </section>
 
-      <section class="case-cta"><a class="case-link" href="billing-journey.html">Next case: a missing billing message <span aria-hidden="true">→</span></a></section>
+      <section id="recovery">
+        <h2>Other release decisions</h2>
+        <p>An import error left customers out of a live journey. I worked through recovery options with the client and developers and secured approval for a one-time send to the missed audience. In parallel, I coordinated the plan for a replacement data extension and SQL routing for future entries.</p>
+        <p>On a separate billing automation incident, I tracked restoration and confirmed that all missed bounce-report exports had been reprocessed.</p>
+        <h3 id="consent">Which customer gets resubscribed?</h3>
+        <p>When SAP and Marketing Cloud disagreed on consent, I brought client IT and our developers together to review matching by customer ID. I led the client escalation and helped document six test scenarios, monitoring checkpoints, and rollback considerations. The plan included checking that an email address change would update consent for the intended customer.</p>
+        <p id="snapshot">For a worked example of reviewing audience eligibility before a send, see <a href="/artifacts/#audience-example">the sample audience decision</a>.</p>
+        <p id="context">A similar release question came up when a bilingual automotive email changed after approval. See <a href="creative-production.html#decision">the version-specific retest</a>.</p>
+      </section>
+
+      <section class="case-cta"><a class="case-link" href="billing-monitoring.html">Related case on billing monitoring from brief to closeout <span aria-hidden="true">→</span></a></section>
     </article>
   </div></div>
 </main><footer class="wrap footer">

@@ -52,14 +52,14 @@
 </div>
 <p id="scenario-description"></p>
 <p id="demo-status" role="status" aria-live="polite">Loading the local exercise…</p>
-<div id="demo-summary" class="evidence-callout" hidden></div>
+<div id="demo-summary" class="evidence-callout" aria-live="polite" hidden></div>
 <div class="demo-panels">
 <details open><summary>Policy decisions</summary><pre class="code" tabindex="0" id="demo-decisions"></pre></details><details><summary>Input fixture</summary><pre class="code" tabindex="0" id="demo-input"></pre></details><details><summary>Processing trace and rejected records</summary><pre class="code" tabindex="0" id="demo-trace"></pre></details>
 </div>
 <noscript><p>JavaScript is needed for the evaluator. The <a href="waypoint-demo/results.json">recorded results</a> and <a href="waypoint-demo/fixtures.json">input fixtures</a> are available without it.</p></noscript></section><section id="inspect"><h2>Source and recorded results</h2>
 <p>The browser and Node tests use the same policy engine. The published result file is checked against fresh execution.</p>
 <div class="hero-actions">
-<a class="button" href="https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo" target="_blank" rel="noreferrer">Source and tests →</a><a class="button" href="waypoint-demo/results.json">Recorded results →</a><a class="button" href="../artifacts/waypoint-validation-matrix.md">Filled validation matrix →</a>
+<a class="button" href="https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo" target="_blank" rel="noreferrer">Source and tests →</a><a class="button" href="waypoint-demo/results.json">Recorded results →</a><a class="button" href="/artifacts/#waypoint-validation">Filled validation matrix →</a>
 </div>
 <pre class="code" tabindex="0">node --test lab/waypoint-demo/test.mjs
 node lab/waypoint-demo/run.mjs --check</pre></section><section id="limits"><h2>What this model leaves to production.</h2>
@@ -72,6 +72,6 @@ node lab/waypoint-demo/run.mjs --check</pre></section><section id="limits"><h2>W
     <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
   </nav>
 </footer>
-<script src="/script.js?v=2" defer></script><script type="module" src="waypoint-demo/browser.mjs"></script>
+<script src="/script.js?v=2" defer></script><script type="module" src="waypoint-demo/browser.mjs?v=2"></script>
 </body>
 </html>

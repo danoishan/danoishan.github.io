@@ -8,6 +8,14 @@ const summary = document.querySelector('#demo-summary');
 const decisions = document.querySelector('#demo-decisions');
 const input = document.querySelector('#demo-input');
 const trace = document.querySelector('#demo-trace');
+const explanations = {
+  eligible_abandoned_search: 'Eligible. The delay has passed, the search is still fresh, and the customer has email consent and no matching booking.',
+  unresolved_identity: 'Suppressed. The search could not be tied to an identified customer.',
+  matched_booking: 'Suppressed. The customer already booked from this search.',
+  stale_search: 'Expired. The search is more than 24 hours old.',
+  no_email_consent: 'Suppressed. The customer has no current email consent.',
+  delay_not_elapsed: 'Waiting. The two-hour reminder delay has yet to pass.',
+};
 let fixtures = [];
 const current = () => fixtures.find(item => item.id === select.value);
 function showInput() {
@@ -21,14 +29,22 @@ function showInput() {
 }
 runButton.addEventListener('click', () => {
   try {
-    const fixture = current(), result = evaluateScenario(fixture.input);
+    const fixture = current();
+    const result = evaluateScenario(fixture.input);
     decisions.textContent = JSON.stringify(result.decisions, null, 2);
     trace.textContent = JSON.stringify({ duplicates: result.duplicates, rejected: result.rejected, trace: result.trace }, null, 2);
-    const counts = result.decisions.reduce((out, item) => { out[item.decision] = (out[item.decision] ?? 0) + 1; return out; }, {});
-    summary.textContent = Object.entries(counts).map(([state, count]) => `${count} ${state}`).join(' · ') || 'No eligible search records were created.';
+    summary.replaceChildren();
+    for (const item of result.decisions) {
+      const explanation = document.createElement('p');
+      const label = result.decisions.length > 1 ? `${item.customerId} / ${item.searchId}. ` : '';
+      explanation.textContent = label + explanations[item.reason];
+      summary.append(explanation);
+    }
+    if (!result.decisions.length) summary.textContent = 'There was no valid search to evaluate.';
     summary.hidden = false;
     status.textContent = `${fixture.title}: evaluation complete. ${result.duplicates} duplicate events ignored; ${result.rejected.length} records rejected. No messages sent.`;
   } catch {
+    summary.hidden = true;
     status.textContent = 'This scenario could not be evaluated. The source and recorded results are available below.';
   }
 });
