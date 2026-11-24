@@ -43,7 +43,7 @@ The illustrative `body.accepted` and `body.errors` schema is **not asserted to m
 
 ## Production gaps and ownership
 
-This model does not implement durable queues, cross-run deduplication, a transactional outbox, scheduling, delivery, live identity semantics, warehouse sync, multi-search cooldowns, throughput tests, production retention or observability infrastructure. Separate searches are evaluated independently; selecting only the most recent search and limiting fatigue are broader design requirements.
+This model does not implement durable queues, cross-run deduplication, a transactional outbox, scheduling, delivery, live identity semantics, warehouse sync, multi-search cooldowns, throughput tests, production retention or observability infrastructure. The two-searches fixture shows two eligible searches for the same customer. Separate searches are evaluated independently; selecting only the most recent search and limiting fatigue are broader design requirements.
 
 For a live implementation, source owners establish business truth and consent authority; platform specialists validate identity and channel semantics; engineering owns persistence and adapter behavior; QA supplies source-to-outcome evidence; delivery coordinates the decision and rollout. Store minimal identifiers, protect credentials outside browser code, bound retention, reconcile counts and name an alert and recovery owner.
 

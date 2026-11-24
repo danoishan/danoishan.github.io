@@ -4,7 +4,7 @@ Prepared profile README: [README.md](README.md). Publish it at the root of the p
 
 | Setting | Prepared value |
 | --- | --- |
-| Bio | Technical project & program delivery · CRM / MarTech · Senior Account Manager @ Vigorate |
+| Bio | Technical Project and Program Delivery · CRM, customer data and MarTech at Vigorate |
 | Website | https://danoishan.github.io/ |
 | Company | Vigorate |
 | Location | Hamilton / Greater Toronto Area, Ontario, Canada |

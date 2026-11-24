@@ -58,6 +58,8 @@ try {
     const option = document.createElement('option');
     option.value = fixture.id; option.textContent = fixture.title; return option;
   }));
+  const requestedScenario = new URL(window.location.href).searchParams.get('scenario');
+  if (fixtures.some(fixture => fixture.id === requestedScenario)) select.value = requestedScenario;
   select.disabled = false; runButton.disabled = false;
   showInput();
 } catch {

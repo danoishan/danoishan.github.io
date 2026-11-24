@@ -4,19 +4,21 @@
 
 [![Portfolio homepage preview](docs/screenshots/portfolio-homepage.jpg)](https://danoishan.github.io/)
 
-I’m a Senior Account Manager at Vigorate in Toronto. I lead technical projects across enterprise CRM, customer data and marketing technology. I work with Solutions Consulting on scope and estimates, manage the delivery plan, and work with clients and technical teams through release and follow-up.
+I’m Dano, based in Hamilton, Ontario. At Vigorate I lead CRM, customer data, loyalty and marketing technology projects. I bring requirements to Solutions Consulting for scope and estimates, build the workback, lead testing and launch, and check how the release performs in production.
 
 ## Start here
 
 | Evidence | What to inspect |
 | --- | --- |
 | [SAP Cutover Across 20+ Marketing Journeys](https://danoishan.github.io/work/200m-messages.html) | Workback for pausing and restarting affected journeys while protecting critical messages |
-| [When a Billing Journey Goes Quiet](https://danoishan.github.io/work/billing-monitoring.html) | Requirements, UAT, launch and production verification for a zero-send alert |
+| [When a Billing Journey Goes Quiet](https://danoishan.github.io/work/billing-monitoring.html) | A weekly zero-send alert across eight journeys, from the rule to production verification |
+| [One Offer, Many Versions](https://danoishan.github.io/work/creative-production.html) | The English file a partner retested and Dano cleared for scheduling in a bilingual production |
+| [When Projects Share One Retainer](https://danoishan.github.io/work/retainer-priorities.html) | A program blueprint deferred while membership and billing work competed for approved capacity |
+| [Recovering a Missed Journey Audience](https://danoishan.github.io/work/journey-recovery.html) | Approved one-time outreach and the separate routing change planned with developers |
 | [The 80% Drop](https://danoishan.github.io/work/80-percent-drop.html) | An anonymized composite tracing why form submissions fell while traffic held up |
 | [The Bill That Couldn’t Go Missing](https://danoishan.github.io/work/billing-journey.html) | The path from a billing file to a missing message, with a small CSV example |
-| [One Offer, Many Versions](https://danoishan.github.io/work/creative-production.html) | Creative production and the bilingual email approval that had to follow the revised file |
 | [From Brief to Testable Delivery](https://danoishan.github.io/work/ai-delivery-workflows.html) | A fictional before-and-after example of human-reviewed AI-assisted requirements |
-| [Waypoint exercise](lab/waypoint-demo/) | Fictional policy engine, 18 scenarios, automated tests and recorded outputs |
+| [Waypoint exercise](lab/waypoint-demo/) | Fictional policy engine, 19 scenarios, automated tests and recorded outputs |
 | [Worked examples](https://danoishan.github.io/artifacts/#worked-example) | Sample audience decision and Waypoint validation results |
 | [Templates](artifacts/templates/) | Reusable decision, handoff, readiness and validation tools |
 

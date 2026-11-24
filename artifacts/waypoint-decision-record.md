@@ -29,7 +29,7 @@ Evaluate whether an abandoned search should qualify for a reminder after two hou
 
 ## Validation evidence
 
-`lab/waypoint-demo/test.mjs` validates the independent expectations in 18 input scenarios plus consent, boundary, input and mock transport tests. `results.json` records deterministic policy decisions and traces. The browser imports the same engine.
+`lab/waypoint-demo/test.mjs` validates the independent expectations in 19 input scenarios plus consent, boundary, input and mock transport tests. `results.json` records deterministic policy decisions and traces. The browser imports the same engine.
 
 See [the filled validation matrix](waypoint-validation-matrix.md) and [the runnable exercise](../lab/waypoint-demo.html).
 

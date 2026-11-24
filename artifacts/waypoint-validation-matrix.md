@@ -1,6 +1,6 @@
 # Waypoint validation matrix
 
-**Date:** 2026-10-09\
+**Updated:** 2026-11-24\
 **Environment:** deterministic local model with synthetic fixtures\
 **Owner:** Danoishan Sinnathamby, portfolio exercise\
 **Evidence:** [source and tests](https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo), [inputs](../lab/waypoint-demo/fixtures.json), [recorded outputs](../lab/waypoint-demo/results.json)
@@ -9,6 +9,7 @@
 | --- | --- | --- |
 | eligible | Eligible after delay | Identity, consent and timing / platform + data |
 | booked | Suppressed: matched booking | Booking correlation / source + platform |
+| two-searches | Both open searches qualify independently | Cross-search priority and cooldown / journey owner |
 | duplicate | One decision, one duplicate ignored | Event identity / integration engineering |
 | opt-out | Suppressed: no email consent | Current channel eligibility / consent owner |
 | identity-merge | Journey resolves to known customer | Canonical ID contract / identity owner |

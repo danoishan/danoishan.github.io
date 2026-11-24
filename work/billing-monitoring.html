@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#f6f3ea">
 <title>When a Billing Journey Goes Quiet | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/work/billing-monitoring.html">
-<meta name="description" content="How Danoishan Sinnathamby defined a billing alert, led the change through testing and launch, and verified production monitoring.">
+<meta name="description" content="How Danoishan defined a weekly zero-send alert for each of eight billing journeys, led testing and release, and verified scheduled monitoring in production.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
@@ -17,17 +17,17 @@
 <link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="When a Billing Journey Goes Quiet | Danoishan Sinnathamby">
-<meta property="og:description" content="How Danoishan Sinnathamby defined a billing alert, led the change through testing and launch, and verified production monitoring.">
+<meta property="og:description" content="How Danoishan defined a weekly zero-send alert for each of eight billing journeys, led testing and release, and verified scheduled monitoring in production.">
 <meta property="og:url" content="https://danoishan.github.io/work/billing-monitoring.html">
-<meta property="og:image" content="https://danoishan.github.io/assets/share-portfolio.png">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
+<meta property="og:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="When a Billing Journey Goes Quiet | Danoishan Sinnathamby">
-<meta name="twitter:description" content="How Danoishan Sinnathamby defined a billing alert, led the change through testing and launch, and verified production monitoring.">
-<meta name="twitter:image" content="https://danoishan.github.io/assets/share-portfolio.png">
-<meta name="twitter:image:alt" content="Danoishan Sinnathamby, Senior Account Manager at Vigorate, with his portrait and a headline about CRM delivery.">
+<meta name="twitter:description" content="How Danoishan defined a weekly zero-send alert for each of eight billing journeys, led testing and release, and verified scheduled monitoring in production.">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
+<meta name="twitter:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
@@ -46,8 +46,7 @@
     <a class="back-link" href="/#work">← Selected work</a>
     <p class="project-context">Billing operations · Vigorate · Anonymized</p>
     <h1>When a Billing Journey Goes Quiet</h1>
-    <p class="case-dek">A billing journey can go quiet without a visible failure. I led a monitoring update that alerts the team if seven days go by with zero sends.</p>
-    <p class="case-note">Anonymized summary of a completed monitoring release.</p>
+    <p class="case-dek">Eight billing journeys were active. If just one stopped sending, the other seven could make overall activity look healthy. I defined a weekly alert for each journey, led testing and release, and checked the monitor in production.</p>
   </div></header>
 
   <div class="case-body"><div class="wrap case-grid">
@@ -56,26 +55,25 @@
     </nav>
     <article class="case-content">
       <section id="requirement">
-        <h2>Define what counts as too quiet</h2>
-        <p>The client needed to know when a billing journey stopped sending. I made that request testable by defining the alert around a seven-day window with zero sends. The rule gave the team one condition to build and validate.</p>
+        <h2>Count sends for each journey</h2>
+        <p>The client needed a warning they could act on. Each week, the monitor had to look back seven days for each of the eight journeys and name any journey with zero sends. One send in a different journey could never clear the warning.</p>
       </section>
 
       <section id="delivery">
-        <h2>From the brief to launch</h2>
+        <h2>How I made the requirement testable</h2>
         <figure class="release-record">
-          <figcaption><strong>Delivery record</strong> <span>Reconstructed summary</span></figcaption>
+          <figcaption><strong>Expected behaviour</strong> <span>Examples from the alert rule</span></figcaption>
           <dl class="story-ledger">
-            <div><dt>Requirement</dt><dd>I defined when the zero-send alert should trigger.</dd></div>
-            <div><dt>Build and UAT</dt><dd>I coordinated development and user acceptance testing against the rule.</dd></div>
-            <div><dt>Release</dt><dd>I managed the release of the monitoring update.</dd></div>
-            <div><dt>Closeout</dt><dd>I verified the monitoring runs in production after launch.</dd></div>
+            <div><dt>One quiet journey</dt><dd>Seven journeys sent messages. The eighth had zero sends in the window. The alert should identify the eighth journey.</dd></div>
+            <div><dt>All eight active</dt><dd>If each journey had at least one send during the window, none should trigger a zero-send alert.</dd></div>
           </dl>
         </figure>
+        <p>I coordinated development and user acceptance testing against the rule, then managed the release. Checking at journey level gave the client a specific place to start investigating when an alert appeared.</p>
       </section>
 
       <section id="closeout">
         <h2>What I verified after launch</h2>
-        <p>I checked the monitoring runs in production before closing the release. That confirmed the new check was executing in the live environment.</p>
+        <p>After launch, I checked that the scheduled monitoring runs were executing in production. I closed the project once I had verified the new check was in service.</p>
         <p><a href="/notes/200-ok-not-outcome.html">How I check the result after deployment</a></p>
       </section>
 

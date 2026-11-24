@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://danoishan.github.io'
-FEATURED_PAGES = ('index.html', 'work/200m-messages.html', 'work/ai-delivery-workflows.html')
+FEATURED_PAGES = ('index.html', 'work/200m-messages.html', 'work/creative-production.html', 'work/ai-delivery-workflows.html')
 
 class Page(HTMLParser):
     def __init__(self, text):

@@ -52,6 +52,42 @@
     ]
   },
   {
+    "id": "two-searches",
+    "title": "Two open searches for one customer",
+    "decisions": [
+      {
+        "customerId": "cust_01",
+        "searchId": "search_01",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T12:00:00.000Z"
+      },
+      {
+        "customerId": "cust_01",
+        "searchId": "search_02",
+        "decision": "eligible",
+        "reason": "eligible_abandoned_search",
+        "dueAt": "2026-10-09T13:00:00.000Z"
+      }
+    ],
+    "duplicates": 0,
+    "rejected": [],
+    "trace": [
+      {
+        "eventId": "evt_search_1",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_01"
+      },
+      {
+        "eventId": "evt_search_2",
+        "action": "search_recorded",
+        "customerId": "cust_01",
+        "searchId": "search_02"
+      }
+    ]
+  },
+  {
     "id": "duplicate",
     "title": "Duplicate delivery is ignored",
     "decisions": [

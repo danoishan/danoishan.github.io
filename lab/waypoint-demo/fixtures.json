@@ -81,6 +81,56 @@
     }
   },
   {
+    "id": "two-searches",
+    "title": "Two open searches for one customer",
+    "description": "Both searches are old enough and unbooked. This exercise evaluates each search separately. A production journey would also decide which reminder takes priority.",
+    "input": {
+      "now": "2026-10-09T14:00:00Z",
+      "profiles": [
+        {
+          "id": "cust_01",
+          "identified": true,
+          "emailConsent": true,
+          "consentAt": "2026-10-08T00:00:00Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "evt_search_1",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_01",
+          "at": "2026-10-09T10:00:00Z"
+        },
+        {
+          "id": "evt_search_2",
+          "type": "search_completed",
+          "userId": "cust_01",
+          "searchId": "search_02",
+          "at": "2026-10-09T11:00:00Z"
+        }
+      ]
+    },
+    "expected": {
+      "decisions": [
+        {
+          "customerId": "cust_01",
+          "searchId": "search_01",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        },
+        {
+          "customerId": "cust_01",
+          "searchId": "search_02",
+          "decision": "eligible",
+          "reason": "eligible_abandoned_search"
+        }
+      ],
+      "duplicates": 0,
+      "rejected": []
+    }
+  },
+  {
     "id": "duplicate",
     "title": "Duplicate delivery is ignored",
     "description": "The same event ID and business payload arrive twice.",

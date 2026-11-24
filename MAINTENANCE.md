@@ -27,4 +27,4 @@ The existing GitHub Pages process publishes the site. The quality workflow valid
 
 For a new HTML page, include title, description, canonical and social metadata, direct base / override CSS links, skip link, semantic main and consistent navigation. Add its canonical URL to both sitemaps. Exclude redirects, the 404 page and verification files from the sitemap.
 
-The homepage, flagship and requirements case have separate 1200 × 630 share images. When updating them, verify each live URL and its image with LinkedIn Post Inspector.
+The default 1200 × 630 share image carries the technical delivery headline. The SAP, creative production and requirements cases have their own cards. When updating them, verify each live URL and its image with LinkedIn Post Inspector.

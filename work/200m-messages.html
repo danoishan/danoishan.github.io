@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#f6f3ea">
 <title>SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/work/200m-messages.html">
-<meta name="description" content="How Danoishan Sinnathamby coordinated the pause and restart of more than 20 Salesforce Marketing Cloud journeys during an SAP upgrade.">
+<meta name="description" content="An SAP upgrade, a confirmed pause across marketing journeys, and the client IT all-clear needed to restart Salesforce Marketing Cloud.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/styles.css?v=2">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby">
-<meta property="og:description" content="How Danoishan Sinnathamby coordinated the pause and restart of more than 20 Salesforce Marketing Cloud journeys during an SAP upgrade.">
+<meta property="og:description" content="An SAP upgrade, a confirmed pause across marketing journeys, and the client IT all-clear needed to restart Salesforce Marketing Cloud.">
 <meta property="og:url" content="https://danoishan.github.io/work/200m-messages.html">
 <meta property="og:image" content="https://danoishan.github.io/assets/share-sap-cutover.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:image:alt" content="SAP Cutover Across 20+ Marketing Journeys. Pause affected marketing journeys, protect critical transactions, and coordinate the restart.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby">
-<meta name="twitter:description" content="How Danoishan Sinnathamby coordinated the pause and restart of more than 20 Salesforce Marketing Cloud journeys during an SAP upgrade.">
+<meta name="twitter:description" content="An SAP upgrade, a confirmed pause across marketing journeys, and the client IT all-clear needed to restart Salesforce Marketing Cloud.">
 <meta name="twitter:image" content="https://danoishan.github.io/assets/share-sap-cutover.png">
 <meta name="twitter:image:alt" content="SAP Cutover Across 20+ Marketing Journeys. Pause affected marketing journeys, protect critical transactions, and coordinate the restart.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -46,55 +46,50 @@
     <a class="back-link" href="/#work">← Selected work</a>
     <p class="project-context">Enterprise CRM cutover · Vigorate · Anonymized</p>
     <h1>SAP Cutover Across 20+ Marketing Journeys</h1>
-    <p class="case-dek">During an SAP upgrade, we needed to pause more than 20 Salesforce Marketing Cloud journeys and keep critical transactional messages running. I coordinated the timing, safeguards, and restart with the client’s IT and marketing teams and our developers.</p>
-    <a class="case-link" href="#model">See the cutover workback <span aria-hidden="true">↓</span></a>
+    <p class="case-dek">During an SAP upgrade, more than 20 Salesforce Marketing Cloud journeys needed to pause. I coordinated the pause list with marketing, IT and our developers. Before anyone could restart those journeys, client IT needed to confirm that the migration was complete and the preference centre was back online.</p>
+    <a class="case-link" href="#model">See the cutover workback</a>
   </div></header>
 
   <div class="case-body"><div class="wrap case-grid">
     <nav class="case-nav" aria-label="On this page">
-      <a href="#production">The constraint</a><a href="#model">Cutover workback</a><a href="#launch">Restart checks</a><a href="#outcomes">My part in the cutover</a><a href="#recovery">Other release decisions</a>
+      <a href="#production">The constraint</a><a href="#model">Cutover workback</a><a href="#launch">The restart decision</a><a href="#outcomes">My delivery role</a><a href="#recovery">Other release decisions</a>
     </nav>
     <article class="case-content">
       <section id="production">
         <h2>What could pause?</h2>
-        <p id="failure">The SAP cutover window determined when affected marketing journeys could run. An instruction to pause every journey would also affect critical customer messages, so the plan had to identify which communications could stop and which had to stay in service.</p>
-        <p>I brought IT, marketing and our developers into the same schedule. I tracked the pause and restart timing and kept the transactional exception visible when we discussed what the teams could take offline.</p>
+        <p id="failure">Customers still needed critical transactional messages during the upgrade. I worked with marketing and developers to identify the affected journeys and keep transactional messages and internal notifications outside the pause.</p>
+        <p>The team also needed to know what would happen to people already waiting in a journey and to new records arriving during the pause. Those choices mattered because they determined which steps a customer could reach once sending resumed.</p>
       </section>
 
       <section id="model">
         <h2>The workback from the upgrade window</h2>
         <figure id="controls" class="release-record">
-          <figcaption id="handoffs"><strong>Cutover workback</strong> <span>Reconstructed from project scope</span></figcaption>
+          <figcaption id="handoffs"><strong>Cutover workback</strong> <span>Reconstructed from the delivery record</span></figcaption>
           <dl class="story-ledger">
-            <div><dt>Before the window</dt><dd>Align the SAP timing with the pause and restart plan for more than 20 marketing journeys. Agree which transactional messages must stay in service.</dd></div>
-            <div><dt>At cutover</dt><dd>Coordinate the affected marketing pauses with the technical teams and keep the critical-message exception in the plan.</dd></div>
-            <div><dt>After the upgrade</dt><dd>Coordinate the restart with client IT, marketing and developers around the upgrade timing and the agreed safeguards.</dd></div>
+            <div><dt>Scope</dt><dd>List the journey versions to pause and identify the communications that must stay in service.</dd></div>
+            <div><dt>Confirmed pause</dt><dd>The developers reported the listed journeys paused within the agreed afternoon window. They also confirmed the corrected versions after the list was updated.</dd></div>
+            <div><dt>Planned restart</dt><dd>Allow three to four hours to resume the affected journeys after client IT confirms SAP and the preference centre are ready.</dd></div>
           </dl>
         </figure>
-        <p id="tradeoffs">The dependency was the upgrade window. My work was to turn that window into actions the Marketing Cloud and client teams could plan around.</p>
+        <p id="tradeoffs">For the affected versions configured to queue new entries, the developers kept existing wait times unchanged. I followed up on those settings so the client knew how a customer waiting in a journey would be treated.</p>
       </section>
 
       <section id="launch">
-        <h2>What I’d check around the restart</h2>
-        <p class="case-note">Example verification checks for this type of cutover.</p>
-        <ul class="plain-checks">
-          <li>Before restart, confirm with IT that SAP is ready and that Marketing Cloud has current inputs.</li>
-          <li>After restart, trace records from the first expected run to the intended step in the journey.</li>
-          <li>Check the protected transactional messages separately. Route discrepancies to the source or platform owner based on where the record stops.</li>
-        </ul>
-        <p id="judgement">A delayed source feed would change my restart recommendation. I’d bring the delay and the impact on waiting journeys to the client’s release owner.</p>
+        <h2>What would authorize the restart?</h2>
+        <p id="judgement">The client asked how quickly we could restart after the SAP all-clear. I gave them a three-to-four-hour window. That let marketing plan for the work still to come after the upstream team finished the migration and restored the preference centre.</p>
+        <p>For a post-restart check, I’d trace a newly queued record and a customer already in a wait step. They reach the same journey by different paths. I’d verify the protected transactional messages separately.</p>
         <p id="translation"><a href="/notes/go-no-go.html">How I prepare for go/no-go</a> · <a href="/notes/schedule-vs-dependencies.html">How I record dependencies</a></p>
       </section>
 
       <section id="outcomes">
         <h2>My part in the cutover</h2>
-        <p id="adoption">I coordinated the pause and restart of the affected marketing journeys and the safeguards for critical transactional messages. The workback summarizes how we planned that transition.</p>
-        <p id="reflection">For a separate release where I can share what I verified after launch, see <a href="billing-monitoring.html#closeout">the billing monitoring closeout</a>.</p>
+        <p id="adoption">I lined up the client’s upgrade window, the marketing exceptions and our developers’ turnaround, then followed up on the active journey versions as the pause took effect.</p>
+        <p id="reflection">For a release I personally verified in production, see <a href="billing-monitoring.html#closeout">the billing monitoring closeout</a>.</p>
       </section>
 
       <section id="recovery">
         <h2>Other release decisions</h2>
-        <p>An import error left customers out of a live journey. I worked through recovery options with the client and developers and secured approval for a one-time send to the missed audience. In parallel, I coordinated the plan for a replacement data extension and SQL routing for future entries.</p>
+        <p>In a separate incident, a journey import missed customers. I recommended targeted outreach and secured the client’s approval. <a href="journey-recovery.html">Read the recovery decision and the routing plan</a>.</p>
         <p>On a separate billing automation incident, I tracked restoration and confirmed that all missed bounce-report exports had been reprocessed.</p>
         <h3 id="consent">Which customer gets resubscribed?</h3>
         <p>When SAP and Marketing Cloud disagreed on consent, I brought client IT and our developers together to review matching by customer ID. I led the client escalation and helped document six test scenarios, monitoring checkpoints, and rollback considerations. The plan included checking that an email address change would update consent for the intended customer.</p>

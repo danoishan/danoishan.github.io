@@ -104,6 +104,8 @@
 .home-notes li { font-size: .9375rem; }
 .brief-intro { padding-block: 54px 33px; }
 .brief-intro .hero-actions { gap: 8px 18px; }
+.decision-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 18px 0 0; }
+.decision-links a { display: inline-flex; align-items: center; min-height: 32px; font-size: .9375rem; }
 .brief-work .selected-pair article { padding-top: 12px; }
 .brief-role .story-ledger { max-width: 850px; }
 
