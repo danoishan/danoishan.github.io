@@ -1,102 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta name="author" content="Danoishan Sinnathamby">
-<meta property="article:author" content="https://www.linkedin.com/in/danoishan/">
-<meta property="og:site_name" content="Danoishan Sinnathamby">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f3ea">
-<title>From Brief to Testable Delivery | Danoishan Sinnathamby</title>
-<link rel="canonical" href="https://danoishan.github.io/work/ai-delivery-workflows.html">
-<meta name="description" content="How Danoishan Sinnathamby uses Claude Code to surface requirements and QA questions, shown through a fictional CRM example with human review.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles-base.css?v=2">
-<link rel="stylesheet" href="/styles.css?v=2">
-<meta property="og:type" content="website">
-<meta property="og:title" content="From Brief to Testable Delivery | Danoishan Sinnathamby">
-<meta property="og:description" content="How Danoishan Sinnathamby uses Claude Code to surface requirements and QA questions, shown through a fictional CRM example with human review.">
-<meta property="og:url" content="https://danoishan.github.io/work/ai-delivery-workflows.html">
-<meta property="og:image" content="https://danoishan.github.io/assets/share-requirements.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="From Brief to Testable Delivery. An example win-back requirement becomes an eligibility question.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="From Brief to Testable Delivery | Danoishan Sinnathamby">
-<meta name="twitter:description" content="How Danoishan Sinnathamby uses Claude Code to surface requirements and QA questions, shown through a fictional CRM example with human review.">
-<meta name="twitter:image" content="https://danoishan.github.io/assets/share-requirements.png">
-<meta name="twitter:image:alt" content="From Brief to Testable Delivery. An example win-back requirement becomes an eligibility question.">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Waypoint work sample | Danoishan Sinnathamby</title>
+  <link rel="canonical" href="https://danoishan.github.io/lab/waypoint-demo.html">
+  <meta http-equiv="refresh" content="0; url=/lab/waypoint-demo.html">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/notes/">Notes</a><a href="/resume.html">Resume</a>
-    </nav>
-  </div>
-</header>
-<main id="main-content" tabindex="-1" class="case-study case-review">
-  <header class="case-hero"><div class="wrap">
-    <a class="back-link" href="/#work">← Selected work</a>
-    <p class="project-context">Requirements and QA · AI-assisted review</p>
-    <h1>From Brief to Testable Delivery</h1>
-    <p class="case-dek">“Send a win-back message to lapsed customers” sounds like a complete brief until someone asks whether a customer who came back yesterday should still get it. I use Claude Code to surface questions like that before a ticket goes into build.</p>
-    <p class="case-note">Tools I use in practice, shown through a fictional CRM example.</p>
-  </div></header>
-
-  <div class="case-body"><div class="wrap case-grid">
-    <nav class="case-nav" aria-label="On this page">
-      <a href="#example">Before and after</a><a href="#practice">How I use it</a><a href="#review">Who checks it</a>
-    </nav>
-    <article class="case-content">
-      <section id="example">
-        <h2>The test I’d change before build</h2>
-        <p>In this fictional review, the first draft checks whether the customer is lapsed when they enter the journey. I’d add a second check immediately before the send. Someone can qualify on Monday, come back on Tuesday and still have a win-back message waiting for Wednesday.</p>
-        <div class="review-examples">
-          <article>
-            <blockquote>“Send the win-back message to lapsed customers.”</blockquote>
-            <dl><div><dt>Question to settle</dt><dd>Which system defines lapsed, on what date, and which consent rule takes precedence?</dd></div>
-            <div><dt>Who checks</dt><dd>The client owns eligibility. Data verifies the source and how current it is.</dd></div></dl>
-          </article>
-          <article>
-            <blockquote>“Don’t message people who came back.”</blockquote>
-            <dl><div><dt>Test to add</dt><dd>Try someone who came back before entry, someone who came back during a delay, and a status update that arrives late.</dd></div>
-            <div><dt>Who checks</dt><dd>Engineering and QA confirm what the journey does in each case.</dd></div></dl>
-          </article>
-          <article>
-            <blockquote>“Launch Friday.”</blockquote>
-            <dl><div><dt>Decision to record</dt><dd>Which version is under test, when approval is due, and who can stop the release.</dd></div>
-            <div><dt>Who checks</dt><dd>I bring the QA evidence and my release recommendation to the client’s decision owner.</dd></div></dl>
-          </article>
-        </div>
-      </section>
-
-      <section id="practice">
-        <h2>How it fits into my work</h2>
-        <p id="snapshot">I use Claude Code, subagents and reusable Agent Skills for separate passes on requirements, dependencies and test coverage. The useful output is usually a question I can bring to a specific person, or a test case we hadn’t written down yet.</p>
-        <p id="reuse">I also share review instructions with colleagues for tickets, technical documentation and issue triage. The reusable part is the review method and the checks it asks for.</p>
-      </section>
-
-      <section id="review">
-        <h2>Who checks the answer</h2>
-        <p>I check the draft against source documents and flag assumptions. A developer investigates code observations, QA validates the expected behaviour, and the client confirms business rules and sign-off. I use approved material for the review.</p>
-        <p id="boundaries">The example above illustrates the format. It uses fictional inputs and shows what I would check before turning a suggestion into a requirement.</p>
-        <p><a href="/lab/waypoint-demo.html">Run the fictional Waypoint scenarios</a> or <a href="/artifacts/">open the delivery templates</a>.</p>
-      </section>
-    </article>
-  </div></div>
-</main><footer class="wrap footer">
-  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
-  <nav aria-label="Footer navigation">
-    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
-  </nav>
-</footer>
-<script src="/script.js?v=2" defer></script>
+  <main><p><a href="/lab/waypoint-demo.html">Waypoint work sample</a></p></main>
 </body>
 </html>

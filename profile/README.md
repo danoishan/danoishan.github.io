@@ -2,18 +2,12 @@
 
 **Technical Project and Program Delivery**
 
-I’m Dano, based in Hamilton, Ontario. At Vigorate, I lead client-facing CRM, customer data, loyalty and marketing technology projects. I turn briefs into delivery plans, work through integration decisions with technical teams, and lead testing and launch. After release, I check what’s happening in production and bring the next decision back to the client.
+I’m Dano, based in Hamilton, Ontario. At Vigorate I lead CRM, loyalty and customer data projects. I work with the client on the brief, carry the requirements through development and testing, and take responsibility for release and production follow-up.
 
 ## Selected work
 
-| Project | What I did |
-| --- | --- |
-| [SAP cutover across 20+ Marketing Cloud journeys](https://danoishan.github.io/work/200m-messages.html) | Coordinated the pause list and planned the restart around SAP migration and preference centre readiness. |
-| [Billing journey monitoring](https://danoishan.github.io/work/billing-monitoring.html) | Defined a weekly alert across eight journeys, coordinated development and user acceptance testing, and verified the monitor ran in production. |
-| [Bilingual creative production](https://danoishan.github.io/work/creative-production.html) | Managed production across formats and cleared the corrected English partner proof for scheduling. |
-| [Competing retainer priorities](https://danoishan.github.io/work/retainer-priorities.html) | Tracked approved capacity and explained why a blueprint update paused while membership and billing projects needed those hours. |
-| [Journey import recovery](https://danoishan.github.io/work/journey-recovery.html) | Secured approval for targeted outreach and planned a routing change with developers. |
+- [Customer data across three retail brands](https://danoishan.github.io/work/contact-cleanup.html). I worked with the client to identify which records could be removed after customer profiles merged, then led the phased cleanup and monthly automation.
+- [SAP cutover across 20+ Marketing Cloud journeys](https://danoishan.github.io/work/200m-messages.html). I coordinated which journeys paused, which customer messages had to keep running, and when IT could give the all-clear.
+- [Tracing failures in billing communications](https://danoishan.github.io/work/billing-journey.html). I investigated a missing bill with the source and platform teams, followed failed reports through recovery and led a monitoring release across eight billing journeys.
 
-I work with Salesforce Marketing Cloud, Salesforce Data 360, Braze and connected systems. My portfolio also includes a [runnable lifecycle exercise](https://danoishan.github.io/lab/waypoint-demo.html), [worked delivery templates](https://danoishan.github.io/artifacts/) and [an example of how I review AI-assisted requirements](https://danoishan.github.io/work/ai-delivery-workflows.html).
-
-[Recruiter brief](https://danoishan.github.io/brief.html) · [Portfolio](https://danoishan.github.io/) · [Resume](https://danoishan.github.io/resume.html) · [LinkedIn](https://www.linkedin.com/in/danoishan/)
+[Portfolio](https://danoishan.github.io/) · [Recruiter brief](https://danoishan.github.io/brief.html) · [Resume](https://danoishan.github.io/resume.html) · [Interactive work sample](https://danoishan.github.io/lab/waypoint-demo.html) · [LinkedIn](https://www.linkedin.com/in/danoishan/)

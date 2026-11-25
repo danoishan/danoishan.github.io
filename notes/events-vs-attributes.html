@@ -1,104 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta name="author" content="Danoishan Sinnathamby">
-<meta property="article:author" content="https://www.linkedin.com/in/danoishan/">
-<meta property="og:site_name" content="Danoishan Sinnathamby">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f3ea">
-<title>Events Describe Moments. Attributes Describe State. | Danoishan Sinnathamby</title>
-<link rel="canonical" href="https://danoishan.github.io/notes/events-vs-attributes.html">
-<meta name="description" content="A technical note on modeling moments as events and durable state as attributes in customer data and lifecycle systems.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles-base.css?v=2">
-<link rel="stylesheet" href="/styles.css?v=2">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Events Describe Moments. Attributes Describe State. | Danoishan Sinnathamby">
-<meta property="og:description" content="A technical note on modeling moments as events and durable state as attributes in customer data and lifecycle systems.">
-<meta property="og:url" content="https://danoishan.github.io/notes/events-vs-attributes.html">
-<meta property="og:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Events Describe Moments. Attributes Describe State. | Danoishan Sinnathamby">
-<meta name="twitter:description" content="A technical note on modeling moments as events and durable state as attributes in customer data and lifecycle systems.">
-<meta name="twitter:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
-<meta name="twitter:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Waypoint design and tests | Danoishan Sinnathamby</title>
+  <link rel="canonical" href="https://danoishan.github.io/lab/waypoint-demo.html">
+  <meta http-equiv="refresh" content="0; url=/lab/waypoint-demo.html#design">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header">
-  <div class="wrap nav">
-    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="/#work">Work</a><a href="/#about">About</a><a href="/notes/" aria-current="location">Notes</a><a href="/resume.html">Resume</a>
-    </nav>
-  </div>
-</header><main id="main-content" tabindex="-1"><section class="case-hero"><div class="wrap">
-<a class="back-link" href="/notes/">← All notes</a><p class="eyebrow">SEP 2026 · Technical note</p>
-<h1>Events describe moments. Attributes describe state.</h1>
-<p class="case-dek">Lifecycle logic gets easier when transient behaviour and durable customer state are modeled differently.</p>
-</div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>Both can describe the same customer, but they answer different questions.</h2>
-<p>“Customer booked Paris” is a moment. “Customer has three lifetime bookings” is state. One is useful for triggering a journey around what just happened. The other is useful for segmentation and decisions that need the current truth.</p>
-<div class="pullquote">Use events to remember that something happened. Use attributes to know what is true now.</div></section><section><h2>Why the distinction matters.</h2>
-<p>If durable state is represented only as a stream of events, every downstream team has to reconstruct the current answer. If every moment is flattened into attributes, you lose useful sequence and timing.</p>
-<div class="artifact">
-<div class="artifact-head">
-<span>Examples</span><span>Model choice</span>
-</div>
-<div class="artifact-body"><div class="table-scroll" role="region" tabindex="0" aria-label="Why the distinction matters.">
-<table>
-<caption class="sr-only">Why the distinction matters.</caption>
-<thead><tr>
-<th scope="col">Data</th>
-<th scope="col">Shape</th>
-<th scope="col">Useful for</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Search abandoned</td>
-<td>Event</td>
-<td>Triggering a timely follow-up</td>
-</tr>
-<tr>
-<td>Purchase completed</td>
-<td>Event</td>
-<td>Confirmation / post-purchase orchestration</td>
-</tr>
-<tr>
-<td>Loyalty tier</td>
-<td>Attribute</td>
-<td>Current segmentation</td>
-</tr>
-<tr>
-<td>Lifetime booking count</td>
-<td>Attribute</td>
-<td>Eligibility / personalization</td>
-</tr>
-<tr>
-<td>Last purchase date</td>
-<td>Attribute derived from events</td>
-<td>Lapse logic / reporting</td>
-</tr>
-</tbody>
-</table>
-</div></div>
-</div></section><section><h2>Some data should exist in both forms.</h2>
-<p>A purchase can be an event because the moment matters, while lifetime purchase count and last purchase date are durable state updated as a consequence. The mistake is assuming the same shape should serve every use case.</p></section><section><h2>The practical rule.</h2>
-<p>Ask whether downstream users need to know that something happened, what is true now, or both. Model from that requirement rather than from whichever API field is easiest to populate.</p></section><section class="related-links"><p class="label">Keep going</p>
-<div>
-<a href="../lab/waypoint.html#ingestion"><small>Related lab</small><strong>Waypoint data model</strong></a><a href="/artifacts/#handoff"><small>Related artifact</small><strong>Technical Handoff Brief</strong></a>
-</div></section></article></div></div></main><footer class="wrap footer">
-  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
-  <nav aria-label="Footer navigation">
-    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
-  </nav>
-</footer>
-<script src="/script.js?v=2" defer></script>
+  <main><p><a href="/lab/waypoint-demo.html#design">Waypoint design and tests</a></p></main>
 </body>
 </html>

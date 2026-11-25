@@ -1,91 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta name="author" content="Danoishan Sinnathamby">
-<meta property="article:author" content="https://www.linkedin.com/in/danoishan/">
-<meta property="og:site_name" content="Danoishan Sinnathamby">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f3ea">
-<title>When a Billing Journey Goes Quiet | Danoishan Sinnathamby</title>
-<link rel="canonical" href="https://danoishan.github.io/work/billing-monitoring.html">
-<meta name="description" content="How Danoishan defined a weekly zero-send alert for each of eight billing journeys, led testing and release, and verified scheduled monitoring in production.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles-base.css?v=2">
-<link rel="stylesheet" href="/styles.css?v=2">
-<meta property="og:type" content="website">
-<meta property="og:title" content="When a Billing Journey Goes Quiet | Danoishan Sinnathamby">
-<meta property="og:description" content="How Danoishan defined a weekly zero-send alert for each of eight billing journeys, led testing and release, and verified scheduled monitoring in production.">
-<meta property="og:url" content="https://danoishan.github.io/work/billing-monitoring.html">
-<meta property="og:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="When a Billing Journey Goes Quiet | Danoishan Sinnathamby">
-<meta name="twitter:description" content="How Danoishan defined a weekly zero-send alert for each of eight billing journeys, led testing and release, and verified scheduled monitoring in production.">
-<meta name="twitter:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
-<meta name="twitter:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Billing journey monitoring | Danoishan Sinnathamby</title>
+  <link rel="canonical" href="https://danoishan.github.io/work/billing-journey.html">
+  <meta http-equiv="refresh" content="0; url=/work/billing-journey.html#monitoring">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/notes/">Notes</a><a href="/resume.html">Resume</a>
-    </nav>
-  </div>
-</header>
-<main id="main-content" tabindex="-1" class="case-study">
-  <header class="case-hero"><div class="wrap">
-    <a class="back-link" href="/#work">← Selected work</a>
-    <p class="project-context">Billing operations · Vigorate · Anonymized</p>
-    <h1>When a Billing Journey Goes Quiet</h1>
-    <p class="case-dek">Eight billing journeys were active. If just one stopped sending, the other seven could make overall activity look healthy. I defined a weekly alert for each journey, led testing and release, and checked the monitor in production.</p>
-  </div></header>
-
-  <div class="case-body"><div class="wrap case-grid">
-    <nav class="case-nav" aria-label="On this page">
-      <a href="#requirement">The alert rule</a><a href="#delivery">Delivery and testing</a><a href="#closeout">Production verification</a>
-    </nav>
-    <article class="case-content">
-      <section id="requirement">
-        <h2>Count sends for each journey</h2>
-        <p>The client needed a warning they could act on. Each week, the monitor had to look back seven days for each of the eight journeys and name any journey with zero sends. One send in a different journey could never clear the warning.</p>
-      </section>
-
-      <section id="delivery">
-        <h2>How I made the requirement testable</h2>
-        <figure class="release-record">
-          <figcaption><strong>Expected behaviour</strong> <span>Examples from the alert rule</span></figcaption>
-          <dl class="story-ledger">
-            <div><dt>One quiet journey</dt><dd>Seven journeys sent messages. The eighth had zero sends in the window. The alert should identify the eighth journey.</dd></div>
-            <div><dt>All eight active</dt><dd>If each journey had at least one send during the window, none should trigger a zero-send alert.</dd></div>
-          </dl>
-        </figure>
-        <p>I coordinated development and user acceptance testing against the rule, then managed the release. Checking at journey level gave the client a specific place to start investigating when an alert appeared.</p>
-      </section>
-
-      <section id="closeout">
-        <h2>What I verified after launch</h2>
-        <p>After launch, I checked that the scheduled monitoring runs were executing in production. I closed the project once I had verified the new check was in service.</p>
-        <p><a href="/notes/200-ok-not-outcome.html">How I check the result after deployment</a></p>
-      </section>
-
-      <section class="case-cta"><a class="case-link" href="/#work">View all case studies <span aria-hidden="true">→</span></a></section>
-    </article>
-  </div></div>
-</main><footer class="wrap footer">
-  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
-  <nav aria-label="Footer navigation">
-    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
-  </nav>
-</footer>
-<script src="/script.js?v=2" defer></script>
+  <main><p><a href="/work/billing-journey.html#monitoring">Billing journey monitoring</a></p></main>
 </body>
 </html>

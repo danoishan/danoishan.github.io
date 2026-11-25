@@ -8,7 +8,7 @@ Prepared profile README: [README.md](README.md). Publish it at the root of the p
 | Website | https://danoishan.github.io/ |
 | Company | Vigorate |
 | Location | Hamilton / Greater Toronto Area, Ontario, Canada |
-| Portfolio repository description | Technical delivery portfolio: enterprise CRM / MarTech case studies, runnable lifecycle policy exercise and reusable delivery artifacts. |
+| Portfolio repository description | Technical project and program delivery across CRM, customer data and loyalty, with three client projects and a runnable lifecycle exercise. |
 | Portfolio repository homepage | https://danoishan.github.io/ |
 | Portfolio repository topics | portfolio, technical-project-management, technical-program-management, crm, martech, lifecycle-marketing, braze, salesforce |
 | Pin | danoishan.github.io |

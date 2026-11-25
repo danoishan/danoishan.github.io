@@ -1,6 +1,6 @@
 # Audience source decision
 
-Fictional worked example inspired by [audience release decisions](../work/200m-messages.html#snapshot).
+Fictional worked example using two versions of a release audience.
 
 | Field | Decision record |
 | --- | --- |

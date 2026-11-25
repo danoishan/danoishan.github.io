@@ -9,25 +9,25 @@
 <meta name="theme-color" content="#f6f3ea">
 <title>SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby</title>
 <link rel="canonical" href="https://danoishan.github.io/work/200m-messages.html">
-<meta name="description" content="An SAP upgrade, a confirmed pause across marketing journeys, and the client IT all-clear needed to restart Salesforce Marketing Cloud.">
+<meta name="description" content="How I coordinated a Marketing Cloud pause around an SAP upgrade, protected critical messages and established two conditions for restarting.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles-base.css?v=2">
-<link rel="stylesheet" href="/styles.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=6">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby">
-<meta property="og:description" content="An SAP upgrade, a confirmed pause across marketing journeys, and the client IT all-clear needed to restart Salesforce Marketing Cloud.">
+<meta property="og:description" content="How I coordinated a Marketing Cloud pause around an SAP upgrade, protected critical messages and established two conditions for restarting.">
 <meta property="og:url" content="https://danoishan.github.io/work/200m-messages.html">
 <meta property="og:image" content="https://danoishan.github.io/assets/share-sap-cutover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SAP Cutover Across 20+ Marketing Journeys. Pause affected marketing journeys, protect critical transactions, and coordinate the restart.">
+<meta property="og:image:alt" content="SAP cutover workback for more than 20 Marketing Cloud journeys.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SAP Cutover Across 20+ Marketing Journeys | Danoishan Sinnathamby">
-<meta name="twitter:description" content="An SAP upgrade, a confirmed pause across marketing journeys, and the client IT all-clear needed to restart Salesforce Marketing Cloud.">
+<meta name="twitter:description" content="How I coordinated a Marketing Cloud pause around an SAP upgrade, protected critical messages and established two conditions for restarting.">
 <meta name="twitter:image" content="https://danoishan.github.io/assets/share-sap-cutover.png">
-<meta name="twitter:image:alt" content="SAP Cutover Across 20+ Marketing Journeys. Pause affected marketing journeys, protect critical transactions, and coordinate the restart.">
+<meta name="twitter:image:alt" content="SAP cutover workback for more than 20 Marketing Cloud journeys.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
@@ -37,73 +37,46 @@
   <div class="wrap nav">
     <a class="wordmark" href="/">Danoishan Sinnathamby</a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/notes/">Notes</a><a href="/resume.html">Resume</a>
+      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/brief.html">Recruiter brief</a><a href="/resume.html">Resume</a>
     </nav>
   </div>
 </header>
-<main id="main-content" tabindex="-1" class="case-study case-program">
+<main id="main-content" tabindex="-1" class="case-study">
   <header class="case-hero"><div class="wrap">
-    <a class="back-link" href="/#work">← Selected work</a>
-    <p class="project-context">Enterprise CRM cutover · Vigorate · Anonymized</p>
+    <a class="back-link" href="/#work">Selected work</a>
+    <p class="project-context">Enterprise CRM · Release planning</p>
     <h1>SAP Cutover Across 20+ Marketing Journeys</h1>
-    <p class="case-dek">During an SAP upgrade, more than 20 Salesforce Marketing Cloud journeys needed to pause. I coordinated the pause list with marketing, IT and our developers. Before anyone could restart those journeys, client IT needed to confirm that the migration was complete and the preference centre was back online.</p>
-    <a class="case-link" href="#model">See the cutover workback</a>
+    <p class="case-dek">An SAP upgrade meant pausing more than 20 Salesforce Marketing Cloud journeys. Customers still needed their transactional messages. I worked with marketing, client IT and our developers to decide which journeys could stop, what would happen to people already waiting, and who could give the all-clear.</p>
   </div></header>
-
-  <div class="case-body"><div class="wrap case-grid">
+  <div class="wrap case-body"><div class="case-grid">
     <nav class="case-nav" aria-label="On this page">
-      <a href="#production">The constraint</a><a href="#model">Cutover workback</a><a href="#launch">The restart decision</a><a href="#outcomes">My delivery role</a><a href="#recovery">Other release decisions</a>
+        <a href="#production">What stayed live</a>
+        <a href="#model">The pause</a>
+        <a href="#launch">The restart decision</a>
     </nav>
     <article class="case-content">
-      <section id="production">
-        <h2>What could pause?</h2>
-        <p id="failure">Customers still needed critical transactional messages during the upgrade. I worked with marketing and developers to identify the affected journeys and keep transactional messages and internal notifications outside the pause.</p>
-        <p>The team also needed to know what would happen to people already waiting in a journey and to new records arriving during the pause. Those choices mattered because they determined which steps a customer could reach once sending resumed.</p>
+<section id="production">
+        <h2>What had to stay live</h2>
+        <p id="failure">I reviewed the active journey versions with marketing and development. We kept critical transactional messages and internal notifications out of the pause list. Getting the version right mattered. Different versions of the same journey could still have customers waiting in them.</p>
       </section>
-
       <section id="model">
-        <h2>The workback from the upgrade window</h2>
-        <figure id="controls" class="release-record">
-          <figcaption id="handoffs"><strong>Cutover workback</strong> <span>Reconstructed from the delivery record</span></figcaption>
-          <dl class="story-ledger">
-            <div><dt>Scope</dt><dd>List the journey versions to pause and identify the communications that must stay in service.</dd></div>
-            <div><dt>Confirmed pause</dt><dd>The developers reported the listed journeys paused within the agreed afternoon window. They also confirmed the corrected versions after the list was updated.</dd></div>
-            <div><dt>Planned restart</dt><dd>Allow three to four hours to resume the affected journeys after client IT confirms SAP and the preference centre are ready.</dd></div>
-          </dl>
-        </figure>
-        <p id="tradeoffs">For the affected versions configured to queue new entries, the developers kept existing wait times unchanged. I followed up on those settings so the client knew how a customer waiting in a journey would be treated.</p>
+        <h2>The pause window</h2>
+        <span class="bookmark" id="controls" aria-hidden="true"></span><span class="bookmark" id="handoffs" aria-hidden="true"></span>
+        <p id="tradeoffs">For journeys set to queue new entries, I checked what would happen to customers who were already in a wait step. The developers kept their existing wait times. That gave marketing a way to explain which messages might still be due when sending resumed.</p>
+        <p id="outcomes">The developers confirmed the listed journeys were paused inside the agreed window. When the client corrected the version list, I followed up and the developers confirmed those versions were paused too.</p>
       </section>
-
       <section id="launch">
-        <h2>What would authorize the restart?</h2>
-        <p id="judgement">The client asked how quickly we could restart after the SAP all-clear. I gave them a three-to-four-hour window. That let marketing plan for the work still to come after the upstream team finished the migration and restored the preference centre.</p>
-        <p>For a post-restart check, I’d trace a newly queued record and a customer already in a wait step. They reach the same journey by different paths. I’d verify the protected transactional messages separately.</p>
-        <p id="translation"><a href="/notes/go-no-go.html">How I prepare for go/no-go</a> · <a href="/notes/schedule-vs-dependencies.html">How I record dependencies</a></p>
+        <h2>When the restart clock could start</h2>
+        <span class="bookmark" id="judgement" aria-hidden="true"></span><span class="bookmark" id="translation" aria-hidden="true"></span><span class="bookmark" id="adoption" aria-hidden="true"></span><span class="bookmark" id="reflection" aria-hidden="true"></span><span class="bookmark" id="recovery" aria-hidden="true"></span><span class="bookmark" id="consent" aria-hidden="true"></span><span class="bookmark" id="snapshot" aria-hidden="true"></span><span class="bookmark" id="context" aria-hidden="true"></span>
+        <p>The client asked how soon marketing could resume. I gave them a three-to-four-hour restart window starting from the point when client IT confirmed both the SAP migration and the return of the customer preference centre.</p>
+        <p>That second condition mattered. A customer receiving a marketing email needed a working place to change their preferences. Marketing could use the same all-clear as the developers when planning its next send.</p>
       </section>
-
-      <section id="outcomes">
-        <h2>My part in the cutover</h2>
-        <p id="adoption">I lined up the client’s upgrade window, the marketing exceptions and our developers’ turnaround, then followed up on the active journey versions as the pause took effect.</p>
-        <p id="reflection">For a release I personally verified in production, see <a href="billing-monitoring.html#closeout">the billing monitoring closeout</a>.</p>
-      </section>
-
-      <section id="recovery">
-        <h2>Other release decisions</h2>
-        <p>In a separate incident, a journey import missed customers. I recommended targeted outreach and secured the client’s approval. <a href="journey-recovery.html">Read the recovery decision and the routing plan</a>.</p>
-        <p>On a separate billing automation incident, I tracked restoration and confirmed that all missed bounce-report exports had been reprocessed.</p>
-        <h3 id="consent">Which customer gets resubscribed?</h3>
-        <p>When SAP and Marketing Cloud disagreed on consent, I brought client IT and our developers together to review matching by customer ID. I led the client escalation and helped document six test scenarios, monitoring checkpoints, and rollback considerations. The plan included checking that an email address change would update consent for the intended customer.</p>
-        <p id="snapshot">For a worked example of reviewing audience eligibility before a send, see <a href="/artifacts/#audience-example">the sample audience decision</a>.</p>
-        <p id="context">A similar release question came up when a bilingual automotive email changed after approval. See <a href="creative-production.html#decision">the version-specific retest</a>.</p>
-      </section>
-
-      <section class="case-cta"><a class="case-link" href="billing-monitoring.html">Related case on billing monitoring from brief to closeout <span aria-hidden="true">→</span></a></section>
     </article>
   </div></div>
 </main><footer class="wrap footer">
   <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
   <nav aria-label="Footer navigation">
-    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+    <a href="/lab/waypoint-demo.html">Waypoint demo</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
   </nav>
 </footer>
 <script src="/script.js?v=2" defer></script>

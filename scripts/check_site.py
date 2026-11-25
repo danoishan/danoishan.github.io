@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://danoishan.github.io'
-FEATURED_PAGES = ('index.html', 'work/200m-messages.html', 'work/creative-production.html', 'work/ai-delivery-workflows.html')
+FEATURED_PAGES = ('index.html', 'work/contact-cleanup.html', 'work/200m-messages.html', 'work/billing-journey.html')
 
 class Page(HTMLParser):
     def __init__(self, text):
@@ -18,6 +18,7 @@ class Page(HTMLParser):
         self.title = False; self.description = False; self.styles = []; self.noindex = False
         self.tables = 0; self.captions = 0; self.header_scopes = []
         self.share = {}
+        self.refresh = []
         self.feed(text)
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -29,6 +30,8 @@ class Page(HTMLParser):
         if tag == 'th': self.header_scopes.append(a.get('scope'))
         if tag == 'meta' and a.get('name') == 'description' and a.get('content'): self.description = True
         if tag == 'meta' and a.get('name') == 'robots' and 'noindex' in a.get('content', ''): self.noindex = True
+        if tag == 'meta' and a.get('http-equiv', '').lower() == 'refresh':
+            self.refresh.append(a.get('content', ''))
         if tag == 'meta' and a.get('property', '').startswith('og:image'):
             self.share[a['property']] = a.get('content', '')
         if tag == 'link' and a.get('rel') == 'canonical': self.canonical.append(a.get('href'))
@@ -48,7 +51,16 @@ for name, page in pages.items():
     if page.tables != page.captions: errors.append(f'{name}: each data table needs a caption')
     if any(s not in ['col','row','colgroup','rowgroup'] for s in page.header_scopes): errors.append(f'{name}: table header scope is missing')
     verification = name.startswith('google')
-    redirect = name == 'work/form-disappearing.html'
+    redirect = bool(page.refresh)
+    if redirect:
+        target = re.fullmatch(r'0;\s*url=(/[^\s]*)', page.refresh[0], re.IGNORECASE)
+        if (len(page.refresh) != 1 or not page.noindex or target is None):
+            errors.append(f'{name}: expected one immediate, noindex redirect to a local page')
+        else:
+            destination = target[1]
+            dest_url = urlsplit(destination)
+            if dest_url.netloc or page.canonical != [ORIGIN + dest_url.path] or destination not in page.refs:
+                errors.append(f'{name}: redirect, canonical and fallback link must agree')
     if not verification and not redirect:
         canonical_path = '' if name == 'index.html' else name.removesuffix('index.html') if name.endswith('/index.html') else name
         expected = ORIGIN + '/' + canonical_path
@@ -77,9 +89,11 @@ for name, page in pages.items():
         references += 1
         if not target.is_relative_to(ROOT) or not target.exists():
             errors.append(f'{name}: missing local target {reference}'); continue
+        target_name = target.relative_to(ROOT).as_posix()
+        if target_name in pages and pages[target_name].refresh:
+            errors.append(f'{name}: link to retired page {reference}')
         if u.fragment:
             fragments += 1
-            target_name = target.relative_to(ROOT).as_posix()
             if target_name in pages and unquote(u.fragment) not in pages[target_name].ids:
                 errors.append(f'{name}: missing fragment {reference}')
 

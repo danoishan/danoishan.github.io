@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="author" content="Danoishan Sinnathamby">
+<meta property="article:author" content="https://www.linkedin.com/in/danoishan/">
+<meta property="og:site_name" content="Danoishan Sinnathamby">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f3ea">
+<title>Cleaning Up Customer Records Across Three Retail Brands | Danoishan Sinnathamby</title>
+<link rel="canonical" href="https://danoishan.github.io/work/contact-cleanup.html">
+<meta name="description" content="How I established which records three retail brands could remove from Salesforce Marketing Cloud, secured approval and led the rollout of a recurring cleanup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cleaning Up Customer Records Across Three Retail Brands | Danoishan Sinnathamby">
+<meta property="og:description" content="How I established which records three retail brands could remove from Salesforce Marketing Cloud, secured approval and led the rollout of a recurring cleanup.">
+<meta property="og:url" content="https://danoishan.github.io/work/contact-cleanup.html">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-contact-cleanup.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A three-brand CRM cleanup. Verify eligibility, release in batches and set a stop condition.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cleaning Up Customer Records Across Three Retail Brands | Danoishan Sinnathamby">
+<meta name="twitter:description" content="How I established which records three retail brands could remove from Salesforce Marketing Cloud, secured approval and led the rollout of a recurring cleanup.">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-contact-cleanup.png">
+<meta name="twitter:image:alt" content="A three-brand CRM cleanup. Verify eligibility, release in batches and set a stop condition.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work" aria-current="location">Work</a><a href="/#about">About</a><a href="/brief.html">Recruiter brief</a><a href="/resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1" class="case-study">
+  <header class="case-hero"><div class="wrap">
+    <a class="back-link" href="/#work">Selected work</a>
+    <p class="project-context">Customer data · Retail</p>
+    <h1>Cleaning Up Customer Records Across Three Retail Brands</h1>
+    <p class="case-dek">A retailer could merge two customer profiles in its CRM and still have both records in Salesforce Marketing Cloud. Before removing anything, I needed the client to show us which record they still used to reach that customer.</p>
+  </div></header>
+  <div class="wrap case-body"><div class="case-grid">
+    <nav class="case-nav" aria-label="On this page">
+        <a href="#eligibility">Which record to keep</a>
+        <a href="#approval">The decision</a>
+        <a href="#rollout">What went live</a>
+    </nav>
+    <article class="case-content">
+<section id="eligibility">
+        <h2>Which record could we remove?</h2>
+        <p>I gave the client examples to trace in their CRM. They confirmed that the profiles had been merged and the surviving record still held the purchase history. Some of the old records still appeared opted in inside Marketing Cloud. That flag alone couldn’t tell us which record belonged on a send list.</p>
+        <p>With the client’s CRM team and our developers, I turned that finding into a rule we could check across all three brands. A candidate had to belong to the brand, be absent from its active email and SMS lists, and have no recent email activity or purchase. I sent the client a file and count for each brand to review before approving the deletions.</p>
+      </section>
+      <section id="approval">
+        <h2>One cleanup or a recurring process?</h2>
+        <p>About 2.2 million records met the agreed criteria. A one-time purge would deal with that backlog, but the CRM would keep merging profiles. I recommended a recurring cleanup. The plan brought each brand’s lists into the parent Marketing Cloud account, where our team could act on the approved records. The client approved both the initial population and the automated approach.</p>
+      </section>
+      <section id="rollout">
+        <h2>What went live</h2>
+        <p>We processed the backlog in batches. When one batch was still running, I moved the next one and updated the client. In December 2025 I confirmed the final batch was complete. The total contact count was about 2 million lower than before the cleanup.</p>
+        <p>We put the ongoing job on a monthly schedule with a safeguard. If an unusually large number of contacts qualified, the job would stop before deleting them. That gave the operations team a chance to investigate an unexpected change in a brand’s list.</p>
+      </section>
+    </article>
+  </div></div>
+</main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/lab/waypoint-demo.html">Waypoint demo</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
+</body>
+</html>
