@@ -2,17 +2,17 @@
 
 [Live portfolio](https://danoishan.github.io/) · [Recruiter brief](https://danoishan.github.io/brief.html) · [Resume](https://danoishan.github.io/resume.html)
 
-[![Portfolio homepage](docs/screenshots/portfolio-homepage.jpg)](https://danoishan.github.io/)
-
 I lead technical project and program delivery across CRM, loyalty and customer data at Vigorate.
 
 ## Selected work
 
 | Project | Delivery decision |
 | --- | --- |
+| [Enterprise delivery](https://danoishan.github.io/work/200m-messages.html) | How requirements, teams, testing and release decisions come together across customer communications programs |
 | [Three-brand CRM cleanup](https://danoishan.github.io/work/contact-cleanup.html) | Which records could be removed, how each brand could validate the population and when an automated run should stop |
-| [SAP cutover](https://danoishan.github.io/work/200m-messages.html) | Which of 20+ journeys to pause and what IT had to confirm before the restart |
+| [SAP cutover](https://danoishan.github.io/work/sap-cutover.html) | Which of 20+ journeys to pause and what IT had to confirm before the restart |
 | [Billing communications](https://danoishan.github.io/work/billing-journey.html) | How to trace a rejected record, restore missing reports and detect when one of eight journeys goes quiet |
+| [AI-assisted delivery review](https://danoishan.github.io/work/ai-delivery-workflows.html) | How I use AI and specialist review to surface requirements and QA questions |
 
 [Run Waypoint](https://danoishan.github.io/lab/waypoint-demo.html) to test a fictional travel reminder against booking, identity and consent events. The [source and tests](lab/waypoint-demo/) run against 19 synthetic scenarios. [Delivery templates and sample records](artifacts/) are available as Markdown.
 

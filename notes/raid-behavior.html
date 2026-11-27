@@ -1,14 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,follow">
-  <title>Planning the SAP pause | Danoishan Sinnathamby</title>
-  <link rel="canonical" href="https://danoishan.github.io/work/200m-messages.html">
-  <meta http-equiv="refresh" content="0; url=/work/200m-messages.html#model">
+<meta name="author" content="Danoishan Sinnathamby">
+<meta property="article:author" content="https://www.linkedin.com/in/danoishan/">
+<meta property="og:site_name" content="Danoishan Sinnathamby">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f3ea">
+<title>RAID Is Useful Only When It Changes Behaviour | Danoishan Sinnathamby</title>
+<link rel="canonical" href="https://danoishan.github.io/notes/raid-behavior.html">
+<meta name="description" content="Why RAID only matters when risks, assumptions, issues and dependencies change sequencing, scope, ownership or stakeholder decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles-base.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RAID Is Useful Only When It Changes Behaviour | Danoishan Sinnathamby">
+<meta property="og:description" content="Why RAID only matters when risks, assumptions, issues and dependencies change sequencing, scope, ownership or stakeholder decisions.">
+<meta property="og:url" content="https://danoishan.github.io/notes/raid-behavior.html">
+<meta property="og:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RAID Is Useful Only When It Changes Behaviour | Danoishan Sinnathamby">
+<meta name="twitter:description" content="Why RAID only matters when risks, assumptions, issues and dependencies change sequencing, scope, ownership or stakeholder decisions.">
+<meta name="twitter:image" content="https://danoishan.github.io/assets/share-technical-delivery.png">
+<meta name="twitter:image:alt" content="Danoishan Sinnathamby. Technical Project and Program Delivery across CRM, customer data, loyalty and marketing technology.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-  <main><p><a href="/work/200m-messages.html#model">Planning the SAP pause</a></p></main>
+<a class="skip-link" href="#main-content">Skip to main content</a><header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="/">Danoishan Sinnathamby</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/#work">Work</a><a href="/#about">About</a><a href="/notes/" aria-current="location">Notes</a><a href="/resume.html">Resume</a>
+    </nav>
+  </div>
+</header><main id="main-content" tabindex="-1"><section class="case-hero"><div class="wrap">
+<a class="back-link" href="/notes/">← All notes</a><p class="eyebrow">SEP 2026 · Operating note</p>
+<h1>RAID is useful only when it changes behaviour.</h1>
+<p class="case-dek">A risk register is not valuable because it contains risks. It is valuable when those risks change a decision, owner, sequence or control.</p>
+</div></section><div class="case-body"><div class="wrap"><article class="case-content" style="max-width:760px;margin:0 auto"><section><h2>A beautifully maintained RAID log can still be useless.</h2>
+<p>If a dependency has been yellow for six weeks but nobody changed the plan, assigned an owner or escalated a decision, the team is documenting uncertainty rather than managing it.</p>
+<p>I think of RAID as a forcing function. Every meaningful item should answer: what changes because we know this?</p>
+<div class="pullquote">Risk management starts when the risk changes behaviour.</div></section><section><h2>Examples of useful consequences.</h2>
+<div class="artifact">
+<div class="artifact-head">
+<span>RAID item</span><span>Behaviour change</span>
+</div>
+<div class="artifact-body"><table>
+<caption class="sr-only">Examples of useful consequences.</caption>
+<thead><tr>
+<th scope="col">Signal</th>
+<th scope="col">Action</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Source data may arrive late</td>
+<td>Sequence build around mock data and define a hard reconciliation gate</td>
+</tr>
+<tr>
+<td>Identity decision unresolved</td>
+<td>Stop downstream personalization design until source of truth choice is made</td>
+</tr>
+<tr>
+<td>Capacity is oversubscribed</td>
+<td>Make the roadmap trade-off explicit instead of silently slipping work</td>
+</tr>
+<tr>
+<td>Consent interpretation unclear</td>
+<td>Escalate decision before audience logic is finalized</td>
+</tr>
+</tbody>
+</table></div>
+</div></section><section><h2>I prefer fewer, more actionable items.</h2>
+<p>A giant list creates equal visual weight for everything. I would rather maintain a smaller set of items with clear impact, owner, due date, mitigation and escalation path.</p>
+<p>The point is not to prove the team identified every conceivable risk. It is to make the risks that can materially change the outcome hard to ignore.</p></section><section><h2>When to bring the risk up</h2>
+<p>In an SAP cutover, the marketing restart depended on IT confirming both the migration and the preference centre were ready. That dependency changed when our three-to-four-hour restart window could begin. Writing down the owner and the trigger gave the teams a usable schedule.</p></section><section class="related-links"><p class="label">Keep going</p>
+<div>
+<a href="../work/sap-cutover.html#controls"><small>Related case</small><strong>Dependencies in the SAP workback</strong></a><a href="/artifacts/#decision"><small>Related artifact</small><strong>Decision Record</strong></a>
+</div></section></article></div></div></main><footer class="wrap footer">
+  <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
+  <nav aria-label="Footer navigation">
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+  </nav>
+</footer>
+<script src="/script.js?v=2" defer></script>
 </body>
 </html>

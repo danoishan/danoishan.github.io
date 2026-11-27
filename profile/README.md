@@ -6,8 +6,11 @@ I’m Dano, based in Hamilton, Ontario. At Vigorate I lead CRM, loyalty and cust
 
 ## Selected work
 
+- [Making 200 Million Messages Work](https://danoishan.github.io/work/200m-messages.html). How I coordinate requirements, delivery, release and production follow-up across enterprise CRM programs.
 - [Customer data across three retail brands](https://danoishan.github.io/work/contact-cleanup.html). I worked with the client to identify which records could be removed after customer profiles merged, then led the phased cleanup and monthly automation.
-- [SAP cutover across 20+ Marketing Cloud journeys](https://danoishan.github.io/work/200m-messages.html). I coordinated which journeys paused, which customer messages had to keep running, and when IT could give the all-clear.
+- [SAP cutover across 20+ Marketing Cloud journeys](https://danoishan.github.io/work/sap-cutover.html). I coordinated which journeys paused, which customer messages had to keep running, and when IT could give the all-clear.
 - [Tracing failures in billing communications](https://danoishan.github.io/work/billing-journey.html). I investigated a missing bill with the source and platform teams, followed failed reports through recovery and led a monitoring release across eight billing journeys.
+
+- [From Brief to Testable Delivery](https://danoishan.github.io/work/ai-delivery-workflows.html). How I use AI-assisted review and specialist input to refine requirements and QA.
 
 [Portfolio](https://danoishan.github.io/) · [Recruiter brief](https://danoishan.github.io/brief.html) · [Resume](https://danoishan.github.io/resume.html) · [Interactive work sample](https://danoishan.github.io/lab/waypoint-demo.html) · [LinkedIn](https://www.linkedin.com/in/danoishan/)
