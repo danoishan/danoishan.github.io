@@ -8,8 +8,8 @@
 }
 .home-intro h1, .brief-intro h1, .case-hero h1 {
   margin: 0;
-  font: 500 clamp(2.4rem, 5.5vw, 4.8rem)/.99 var(--serif);
-  letter-spacing: -.038em;
+  font: 400 clamp(2.4rem, 5.5vw, 4.8rem)/.99 var(--serif);
+  letter-spacing: 0;
   overflow-wrap: anywhere;
 }
 .home-intro h1 { max-width: 25ch; font-size: clamp(2.45rem, 4.45vw, 3.85rem); text-wrap: balance; }
@@ -42,8 +42,8 @@
 }
 .home-section-heading h2, .home-about h2 {
   margin: 0;
-  font: 500 clamp(1.85rem, 3vw, 2.7rem)/1.03 var(--serif);
-  letter-spacing: -.025em;
+  font: 400 clamp(1.85rem, 3vw, 2.7rem)/1.03 var(--serif);
+  letter-spacing: 0;
 }
 .home-section-heading > a { font-size: .875rem; }
 .featured-case {
@@ -56,8 +56,8 @@
 .project-context { color: var(--muted); font-size: .8125rem; font-weight: 500; margin: 0 0 7px; }
 .featured-case h3, .selected-pair h3 {
   margin: 0;
-  font: 500 clamp(1.6rem, 3.15vw, 2.55rem)/1.03 var(--serif);
-  letter-spacing: -.02em;
+  font: 400 clamp(1.6rem, 3.15vw, 2.55rem)/1.03 var(--serif);
+  letter-spacing: 0;
 }
 .featured-case h3 a, .selected-pair h3 a { color: var(--ink); text-decoration-color: var(--line); text-decoration-thickness: 1px; }
 .featured-case h3 a:hover, .selected-pair h3 a:hover { color: var(--accent); text-decoration-color: currentColor; }
@@ -149,8 +149,8 @@
 .case-content section:last-child { margin-bottom: 0; }
 .case-content h2 {
   margin: 0 0 9px;
-  font: 500 clamp(1.95rem, 3.8vw, 2.9rem)/1.04 var(--serif);
-  letter-spacing: -.026em;
+  font: 400 clamp(1.95rem, 3.8vw, 2.9rem)/1.04 var(--serif);
+  letter-spacing: 0;
 }
 .case-content h3 { margin: 22px 0 5px; font-size: 1.13rem; line-height: 1.35; }
 .case-content p { max-width: 73ch; margin: 9px 0; }
@@ -166,7 +166,7 @@
   margin: 21px 0;
   padding: 8px 0 8px 14px;
   border-left: 2px solid var(--accent);
-  font: 500 1.45rem/1.22 var(--serif);
+  font: 400 1.45rem/1.22 var(--serif);
 }
 
 .story-ledger { margin: 12px 0; }
@@ -216,7 +216,7 @@
   padding-block: 12px;
   border-top: 1px solid var(--line);
 }
-.review-examples blockquote { margin: 0; font: 500 1.35rem/1.19 var(--serif); }
+.review-examples blockquote { margin: 0; font: 400 1.35rem/1.19 var(--serif); }
 .review-examples dl { margin: 0; }
 .review-examples dl > div + div { margin-top: 7px; }
 .review-examples dd { font-size: .9375rem; }
@@ -380,3 +380,12 @@
   .resume-page .resume-screen-only { display: none; }
   .resume-page .resume-contact { font-size: 9pt; margin: 5pt 0 0; }
 }
+
+/* Five-letter challenge */
+#guess { max-width: 10rem; padding: .55rem; border: 1px solid var(--muted); background: var(--paper); color: var(--ink); font: inherit; text-transform: uppercase; }
+#guesses { padding-left: 1.5rem; }
+#guesses li { margin: .7rem 0; }
+.word-tile { display: inline-block; margin: 2px 3px; padding: .25rem .5rem; min-width: 2rem; text-align: center; font-weight: 700; border: 1px solid var(--line); }
+.word-tile.correct { background: #326344; color: white; }
+.word-tile.present { background: #76580e; color: white; }
+.word-tile.absent { background: #505453; color: white; }
