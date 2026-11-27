@@ -14,7 +14,7 @@ I lead technical project and program delivery across CRM, loyalty and customer d
 | [Billing communications](https://danoishan.github.io/work/billing-journey.html) | How to trace a rejected record, restore missing reports and detect when one of eight journeys goes quiet |
 | [AI-assisted delivery review](https://danoishan.github.io/work/ai-delivery-workflows.html) | How I use AI and specialist review to surface requirements and QA questions |
 
-[Run Waypoint](https://danoishan.github.io/lab/waypoint-demo.html) to test a fictional travel reminder against booking, identity and consent events. The [source and tests](lab/waypoint-demo/) run against 19 synthetic scenarios. [Delivery templates and sample records](artifacts/) are available as Markdown.
+[Run Waypoint](https://danoishan.github.io/lab/waypoint-demo.html) to test a fictional travel reminder against booking, identity and consent events. The [source and tests](lab/waypoint-demo/) run against 19 synthetic scenarios. [Delivery examples](artifacts/) show project decisions and a downloadable SAP cutover snapshot.
 
 ## Local development
 

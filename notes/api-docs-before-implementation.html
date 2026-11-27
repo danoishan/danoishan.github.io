@@ -74,7 +74,7 @@
 <p>Early documentation review makes requirements better. It exposes questions the business may not know to ask, gives engineering clearer acceptance criteria and helps the delivery team distinguish a platform constraint from an implementation choice.</p>
 <p>It also makes trade-offs easier to explain. “The API cannot do that” and “we chose not to do that” are very different conversations.</p></section><section class="related-links"><p class="label">Keep going</p>
 <div>
-<a href="../lab/waypoint.html#throughput"><small>Related lab</small><strong>Throughput constraints</strong></a><a href="/artifacts/#handoff"><small>Related artifact</small><strong>Technical Handoff Brief</strong></a>
+<a href="../lab/waypoint.html#throughput"><small>Related lab</small><strong>Throughput constraints</strong></a><a href="/artifacts/#handoff"><small>Related artifact</small><strong>SAP cutover handoff</strong></a>
 </div></section><section id="worked-example" class="note-worked-example"><p class="eyebrow">Worked example · October 9, 2026</p>
 <h2>Turn the contract into tests.</h2>
 <p>Waypoint’s local mock adapter distinguishes a rate-limit response, a transient failure, a non-retryable error and a 200 response with record errors. It honors a short server wait and defers a longer one instead of shortening it. This adapter is illustrative: a live integration must read the endpoint’s actual error body, rate-limit scope and retry rules before implementing recovery.</p>
@@ -83,7 +83,7 @@
 </div></div></main><footer class="wrap footer">
   <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
   <nav aria-label="Footer navigation">
-    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Artifacts</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
+    <a href="/brief.html">Recruiter brief</a><a href="/lab/waypoint.html">Lab</a><a href="/artifacts/">Delivery examples</a><a href="mailto:danoishan@gmail.com">Email</a><a href="https://www.linkedin.com/in/danoishan/">LinkedIn</a><a href="https://github.com/danoishan">GitHub</a>
   </nav>
 </footer>
 <script src="/script.js?v=2" defer></script>

@@ -56,26 +56,23 @@
 <div class="demo-panels">
 <details><summary>Decision details</summary><pre class="code" tabindex="0" id="demo-decisions"></pre></details><details><summary>Input fixture</summary><pre class="code" tabindex="0" id="demo-input"></pre></details><details><summary>Processing trace and rejected records</summary><pre class="code" tabindex="0" id="demo-trace"></pre></details>
 </div>
-<noscript><p>JavaScript is needed for the evaluator. The <a href="waypoint-demo/results.json">recorded results</a> and <a href="waypoint-demo/fixtures.json">input fixtures</a> are available without it.</p></noscript></section><section id="design">
+<noscript><p>JavaScript is needed to run the evaluator. The recorded examples below can still be read.</p></noscript></section><section id="design">
   <h2>Why the booking needs a search ID</h2>
   <p>A customer can be planning two trips. If they book the first, a rule that looks only at their customer ID would cancel the second reminder too. This model matches both the customer and the search. Compare <a href="?scenario=booked#exercise">a booking for this search</a> with <a href="?scenario=different-search#exercise">a booking for a different search</a>.</p>
   <p id="limits">With <a href="?scenario=two-searches#exercise">two open searches</a>, both reminders can qualify. For a live rollout, the client would need to choose which search takes priority and how long to wait between messages. Here the model returns the decisions without sending anything.</p>
 </section>
 <section id="inspect">
-  <h2>Inputs, tests and results</h2>
-  <p>The browser and the automated tests use the same rules. Each of the 19 scenarios has a fixed clock and an expected result. You can inspect the input, the decision and the events that led to it.</p>
-  <div class="hero-actions"><a class="button" href="https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo">Source and tests</a><a class="text-link" href="waypoint-demo/results.json">Recorded results</a><a class="text-link" href="/artifacts/waypoint-validation-matrix.md">Validation matrix</a></div>
-</section>
-<section id="samples">
-  <details class="sample-downloads">
-    <summary>Delivery samples and templates</summary>
-    <p id="audience-example">In a separate fictional <a href="/artifacts/audience-release-record.md">audience release decision</a>, the new count was only 600 lower, but 900 people left and 300 joined. The two groups needed different eligibility checks. The decision record shows what I’d take to the release owner.</p>
-    <p id="templates"><a href="/artifacts/templates/technical-delivery-toolkit.md" download>Download all four templates</a></p>
-        <div class="artifact-actions"><a href="/artifacts/templates/decision-record.md" download>Decision record</a><button type="button" class="button copy-template" data-copy-path="/artifacts/templates/decision-record.md" aria-label="Copy decision record" hidden>Copy</button></div>
-        <div class="artifact-actions"><a href="/artifacts/templates/technical-handoff-brief.md" download>Technical handoff brief</a><button type="button" class="button copy-template" data-copy-path="/artifacts/templates/technical-handoff-brief.md" aria-label="Copy technical handoff brief" hidden>Copy</button></div>
-        <div class="artifact-actions"><a href="/artifacts/templates/launch-readiness-checklist.md" download>Launch readiness checklist</a><button type="button" class="button copy-template" data-copy-path="/artifacts/templates/launch-readiness-checklist.md" aria-label="Copy launch readiness checklist" hidden>Copy</button></div>
-        <div class="artifact-actions"><a href="/artifacts/templates/end-to-end-validation-matrix.md" download>End-to-end validation matrix</a><button type="button" class="button copy-template" data-copy-path="/artifacts/templates/end-to-end-validation-matrix.md" aria-label="Copy end-to-end validation matrix" hidden>Copy</button></div>
-  </details>
+  <span class="bookmark" id="samples" aria-hidden="true"></span><span class="bookmark" id="templates" aria-hidden="true"></span><span class="bookmark" id="audience-example" aria-hidden="true"></span>
+  <h2>Examples from the test set</h2>
+  <p>These are recorded results from the fictional local model. Each example has an expected decision and a matching observed result.</p>
+  <dl class="story-ledger">
+    <div><dt>Matching booking</dt><dd>Expected and observed: the reminder is suppressed. <a href="?scenario=booked#exercise">Run this scenario</a></dd></div>
+    <div><dt>Different search booked</dt><dd>Expected and observed: the original search remains eligible. <a href="?scenario=different-search#exercise">Run this scenario</a></dd></div>
+    <div><dt>Opt-out after entry</dt><dd>Expected and observed: the reminder is suppressed. <a href="?scenario=opt-out#exercise">Run this scenario</a></dd></div>
+    <div><dt>Two open searches</dt><dd>Expected and observed: both searches qualify independently. <a href="?scenario=two-searches#exercise">Run this scenario</a></dd></div>
+  </dl>
+  <p>The browser and automated tests use the same rules across 19 scenarios. The model evaluates eligibility in the browser and does not send messages.</p>
+  <div class="hero-actions"><a class="button" href="https://github.com/danoishan/danoishan.github.io/tree/main/lab/waypoint-demo">Explore the source and tests</a></div>
 </section>
 </div></div></main><footer class="wrap footer">
   <span>© <span data-year>2026</span> Danoishan Sinnathamby</span>
